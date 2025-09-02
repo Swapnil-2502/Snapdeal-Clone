@@ -11178,7 +11178,8 @@ li.cart-item:first-child .broder-top-line-cart {
     z-index: 53;
     width: 100%;
     background-color: #fff;
-    border-top: 1px solid #e2e2e2
+    border-top: 1px solid #e2e2e2;
+    margin-top: 180px;
 }
 
 #sdFooter .upperContent-footer {
@@ -11677,14 +11678,14 @@ li.cart-item:first-child .broder-top-line-cart {
 }
 
 .footerIconsImg {
-    background-image: url("/img/newHomePageIcons@1x.png");
+    background-image: url("../Img/newHomePageIcons@1x.png");
     display: inline-block;
     vertical-align: middle
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .footerIconsImg {
-        background-image:url("/img/newHomePageIcons@2x.png");
+        background-image:url("../Img/newHomePageIcons@1x.png");
         background-size: 362px 240px
     }
 }
