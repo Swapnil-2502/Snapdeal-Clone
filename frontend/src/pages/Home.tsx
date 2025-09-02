@@ -1,14 +1,15 @@
-import Footer1 from "../components/footer/Footer1"
+import { FooterBottom } from "../components/footer/FooterBottom"
+import FooterTop from "../components/footer/FooterTop"
 
 
 
 const Home = () => {
   return (
-    <>  
-      
-          <Footer1 />
-     
-        
+    <> 
+      <div id="sdFooter">
+          <FooterTop />
+          <FooterBottom />
+      </div>
     </>
   )
 }
