@@ -1,8 +1,52 @@
-import React from 'react'
+import { useEffect, useState } from "react"
+
 
 const Header = () => {
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsSticky(window.scrollY > 1)
+        }
+
+        window.addEventListener('scroll',handleScroll)
+
+        return () => (
+            window.removeEventListener('scroll',handleScroll)
+        )
+    },[])
+
   return (
     <>
+    <div className={`headerBar reset-padding ${isSticky ? 'stickHeadNew' : '' }`}>
+        <section className="homePageTopHooks-section dp-click-widgets">
+            <div className="topHookContainer dp-widget header_wrapper homePageSection dp-fired" data-dpidt="prm" data-dpdit="h_lst" data-dpwlbl="Homepage Top Hook" data-dpcol="c" data-dpdat="prm_lst" data-dppos="1" data-dpid="prm_175673780233227117_6743_1756800596554">
+                <span className="topHooks fastestDel lfloat fastestDelivery">India's leading online shopping destination</span>
+                    <span className="hook-section rfloat">
+                    <span className="topHooks hooksContents dp-widget-link " data-index="1">					
+                        <div className="top-hooks-icon"></div>
+                        <a href="http://blog.snapdeal.com/" className="dp-widget-link hookLink">Our Blog </a>
+                    </span>
+                    <span className="topHooks hooksContents dp-widget-link helpCentrDiv" data-index="2">					
+                            <div className="top-hooks-icon"></div>
+                            <a href="/help" className="dp-widget-link hookLink">Help Center</a>
+                    </span>
+                    <span className="topHooks hooksContents dp-widget-link " data-index="3">					
+                        <div className="top-hooks-icon"></div>
+                        <a href="https://sellers.snapdeal.com/" className="dp-widget-link hookLink">Sell On Snapdeal</a>
+                    </span>
+                    <span className="topHooks hooksContents dp-widget-link " data-index="4">					
+                        <div className="top-hooks-icon">
+                            <span className="">
+                                    <i className="customHeaderIcon"><img className="wooble" src="https://i4.sdlcdn.com/img/platinum09/downloadappicon2ndsep.png"/></i>
+                            </span>
+                        </div>
+                        <a href="http://www.snapdeal.com/offers/getsnapdealapp" className="dp-widget-link hookLink">Download App</a>
+                    </span>
+                </span>
+                <input type="hidden" className="dp-info-collect" value="[ {'k2': 'https://impactatsnapdeal.com/', 'k4': 'Impact@Snapdeal'},  {'k2': 'http://www.snapdeal.com/offers/sd-hdfc-card', 'k4': 'Help Center'},  {'k2': 'https://sellers.snapdeal.com/', 'k4': 'Sell On Snapdeal'},  {'k2': 'http://www.snapdeal.com/offers/getsnapdealapp', 'k4': 'Download App'},  {'k2': 'https://www.snapdeal.com/offers/helpageindia', 'k4': 'Donate for elderly'},  ]"/>
+            </div>
+        </section>
         <div className="topBar  top-bar-homepage  top-freeze-reference-point">
             <div className="header_wrapper">
                 <div className="logoWidth lfloat col-xs-3 reset-padding">
@@ -202,6 +246,7 @@ const Header = () => {
                 </div>
             </div>
         </div>
+    </div>
     </>
   )
 }
