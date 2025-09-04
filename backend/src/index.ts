@@ -2,6 +2,7 @@ import express, { type Request, type Response } from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import { ConnectDB } from "./config/db"
+import authRoutes from "./routes/authRoute"
 
 dotenv.config()
 
@@ -15,6 +16,8 @@ app.use(cors({
 
 //Middleware
 app.use(express.json())
+
+app.use('/api/auth',authRoutes)
 
 
 app.get("/",(req: Request,res: Response)=>{
