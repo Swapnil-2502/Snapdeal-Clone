@@ -75,7 +75,6 @@ export const registerUser = async (req: Request, res: Response) => {
 
         res.status(201).json({
             message: "OTP sent to email. Please verify to complete registration.",
-            expiresAt: expiresAt,
             user: registeredRecord
         })
 
