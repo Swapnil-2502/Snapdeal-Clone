@@ -87,9 +87,8 @@ export const registerUser = async (req: Request, res: Response) => {
 
 export const verifyOTP = async (req: Request, res: Response) => {
     const {email, otp} = req.body
+    
     try{
-        
-
         if (!email || !otp) {
             return res.status(400).json({ 
                 message: "Email and OTP are required" 
