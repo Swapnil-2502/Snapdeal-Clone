@@ -14,6 +14,13 @@ export interface UserData {
     password: string;
 } 
 
+export interface StoredUserData {
+    id: string;
+    email:string;
+    phone: string;
+    name: string;
+}
+
 export interface AuthData {
     email: string;
     purpose: 'login' | 'register';
