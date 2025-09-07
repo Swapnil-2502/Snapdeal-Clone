@@ -11,9 +11,7 @@ export const VerifyOtp = ({onClose}:{onClose: () => void}) => {
         try{
             setError(false)
             e.preventDefault()
-            const res = await verifyOtp(userData.email,otp)
-
-            console.log("FROM VERIFY.tsx", res)
+            await verifyOtp(userData.email,otp)
             onClose()
         }
         catch{

@@ -8,7 +8,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 
 export const SignIn = () => {
-    const {updateUserData} = useAuth()
+    const {storedUser , updateUserData,logout, isAuthenticated} = useAuth()
     const [isHovered, setIsHovered] = useState(false);
     const [showLoginRegister, setShowLoginRegister] = useState(false);
     const [currentStep , setCurrentStep] = useState<AuthStep>('login-register')
@@ -29,42 +29,49 @@ export const SignIn = () => {
         setCurrentStep(step)
     }
 
-
   return (
     <>
         <div className="myAccountTab accountHeaderclassName col-xs-13 reset-padding">
             <div className={`accountInner ${isHovered ? 'accountHeadColor' : ''}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
-                <span className="accountUserName col-xs-12 reset-padding">Sign In</span>
+                <span className="accountUserName col-xs-12 reset-padding">{isAuthenticated && storedUser ? storedUser.name : "Sign In"}</span>
                 <span className="accountUserImg col-xs-9">
                     <img className="hidden imgUser" />
-                    <i className="sd-icon sd-icon-user"></i>
+                    <i className="sd-icon"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></i>
                 </span>
                 <i className="sd-icon sd-icon-menu2"></i>
                 <div className={`dropdownWrapper ${isHovered ? '' : 'hard-hidden'} `}>
-                    <div className="dropdownAccount hidden">
-                        <div className="accountList">
-                            <ul>
-                                <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Orders</a></li>
-                                <li><a href="https://www.snapdeal.com/mysdcash" className="sd-information"><i className="sd-cash-icon footerIconsImg"></i><span className="sd-cash">SD Cash</span><div className="sd-balance"></div></a></li>
-                                <li><a href="https://www.snapdeal.com/myEGiftVoucher"><i className="gift-icon footerIconsImg"></i>E-Gift Voucher</a></li>
-                                <li className="accountInfoNonLoggedIn logoutNew"><a href="https://www.snapdeal.com/logout" className="accountBtn rippleWhite sign logout-account">Logout</a></li>
-                            </ul>
+                    {isAuthenticated ? (
+                        <div className="dropdownAccount">
+                            <div className="accountList">
+                                <ul>
+                                    <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Orders</a></li>
+                                    {/* <li><a href="https://www.snapdeal.com/mysdcash" className="sd-information"><i className="sd-cash-icon footerIconsImg"></i><span className="sd-cash">SD Cash</span><div className="sd-balance"></div></a></li> */}
+                                    <li><a href="https://www.snapdeal.com/myEGiftVoucher"><i className="gift-icon footerIconsImg"></i>E-Gift Voucher</a></li>
+                                    <li className="accountInfoNonLoggedIn logoutNew"><a href="/" className="accountBtn rippleWhite sign logout-account" 
+                                        onClick={()=>{
+                                            logout()
+                                        }}>Logout</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div className="dropdownAccountNonLoggedIn">
-                        <div className="accountList">
-                            <ul>
-                                <li><a href="https://www.snapdeal.com/myorders"><i className="account-icon footerIconsImg"></i>Your Account</a></li>
-                                <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Your Orders</a></li>
-                                {/* <li><a href="https://www.snapdeal.com/mysdcash"  className="sd-information"><i className="sd-cash-icon footerIconsImg"></i>SD Cash</a></li> */}
-                            </ul>
+                    ):(
+                        <div className="dropdownAccountNonLoggedIn">
+                            <div className="accountList">
+                                <ul>
+                                    <li><a href="https://www.snapdeal.com/myorders"><i className="account-icon footerIconsImg"></i>Your Account</a></li>
+                                    <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Your Orders</a></li>
+                                    {/* <li><a href="https://www.snapdeal.com/mysdcash"  className="sd-information"><i className="sd-cash-icon footerIconsImg"></i>SD Cash</a></li> */}
+                                </ul>
+                            </div>
+                            <div className="accountInfoNonLoggedIn">
+                                <p className="newUser"><span>If you are a new user</span></p>
+                                <span className="newUserRegister" onClick={handleOpenLoginRegister}>Register</span>
+                                <span className="accountBtn btn rippleWhite" onClick={handleOpenLoginRegister}><a href="#" onClick={(e) => e.preventDefault()}>login</a></span>
+                            </div>
                         </div>
-                        <div className="accountInfoNonLoggedIn">
-                            <p className="newUser"><span>If you are a new user</span></p>
-                            <span className="newUserRegister" onClick={handleOpenLoginRegister}>Register</span>
-                            <span className="accountBtn btn rippleWhite" onClick={handleOpenLoginRegister}><a href="#" onClick={(e) => e.preventDefault()}>login</a></span>
-                        </div>
-                    </div>
+                    )}
+                    
+                    
                 </div>
             </div>
         </div>
