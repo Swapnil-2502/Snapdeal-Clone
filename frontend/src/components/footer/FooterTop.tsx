@@ -3,8 +3,6 @@
 const FooterTop = () => {
   return (
     <>
-        <div id="sdFooter">
-            <div className="mt-96">
             <div className="borderBottom">
                 <div className="row upperContent-footer">
                     <a href="https://www.snapdeal.com/page/terms" target="_blank">
@@ -51,8 +49,6 @@ const FooterTop = () => {
                     </a>
 	 	        </div>
  	        </div>
-            </div>
-        </div>
     </>
   )
 }

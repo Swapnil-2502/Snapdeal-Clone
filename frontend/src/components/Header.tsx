@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { SignIn } from "./Header/SignIn";
 
 
 const Header = () => {
@@ -19,6 +20,7 @@ const Header = () => {
   return (
     <>
     <div className={`headerBar reset-padding ${isSticky ? 'stickHeadNew' : '' }`}>
+        
         <section className="homePageTopHooks-section dp-click-widgets">
             <div className="topHookContainer dp-widget header_wrapper homePageSection dp-fired" data-dpidt="prm" data-dpdit="h_lst" data-dpwlbl="Homepage Top Hook" data-dpcol="c" data-dpdat="prm_lst" data-dppos="1" data-dpid="prm_175673780233227117_6743_1756800596554">
                 <span className="topHooks fastestDel lfloat fastestDelivery">India's leading online shopping destination</span>
@@ -47,6 +49,7 @@ const Header = () => {
                 <input type="hidden" className="dp-info-collect" value="[ {'k2': 'https://impactatsnapdeal.com/', 'k4': 'Impact@Snapdeal'},  {'k2': 'http://www.snapdeal.com/offers/sd-hdfc-card', 'k4': 'Help Center'},  {'k2': 'https://sellers.snapdeal.com/', 'k4': 'Sell On Snapdeal'},  {'k2': 'http://www.snapdeal.com/offers/getsnapdealapp', 'k4': 'Download App'},  {'k2': 'https://www.snapdeal.com/offers/helpageindia', 'k4': 'Donate for elderly'},  ]"/>
             </div>
         </section>
+
         <div className="topBar  top-bar-homepage  top-freeze-reference-point">
             <div className="header_wrapper">
                 <div className="logoWidth lfloat col-xs-3 reset-padding">
@@ -59,7 +62,7 @@ const Header = () => {
                 <div className="menuIconBar hidden"><i className="sd-icon sd-icon-menu" style={{color: "rgb(255, 255, 255)"}}></i></div>
             </div>
 
-            <div className="col-xs-14 search-box-wrapper">
+            <div className="col-xs-14 search-box-wrapper" style={{paddingLeft: "15px"}}>
                 <div className="overlap"></div>
                 <input autoComplete="off" name="keyword" type="text" className="col-xs-20 searchformInput keyword" id="inputValEnter" placeholder="Search products &amp; brands" value=""/>
                 <div className="inputValEntered hidden"></div>
@@ -164,42 +167,7 @@ const Header = () => {
                     </div>
                     <div id="cartViewBtn" className="btn viewAllBtn cartViewAllBtn">VIEW ALL</div>
                 </div>
-                <div className="myAccountTab accountHeaderclassName col-xs-13 reset-padding">
-                    <div className="accountInner">
-                        <span className="accountUserName col-xs-12 reset-padding">Sign In</span>
-                        <span className="accountUserImg col-xs-9">
-                            <img className="hidden imgUser" />
-                            <i className="sd-icon sd-icon-user"></i>
-                        </span>
-                        <i className="sd-icon sd-icon-menu2"></i>
-                        <div className="dropdownWrapper hard-hidden">
-                            <div className="dropdownAccount hidden">
-                                <div className="accountList">
-                                    <ul>
-                                        <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Orders</a></li>
-                                        <li><a href="https://www.snapdeal.com/mysdcash" className="sd-information"><i className="sd-cash-icon footerIconsImg"></i><span className="sd-cash">SD Cash</span><div className="sd-balance"></div></a></li>
-                                        <li><a href="https://www.snapdeal.com/myEGiftVoucher"><i className="gift-icon footerIconsImg"></i>E-Gift Voucher</a></li>
-                                        <li className="accountInfoNonLoggedIn logoutNew"><a href="https://www.snapdeal.com/logout" className="accountBtn rippleWhite sign logout-account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="dropdownAccountNonLoggedIn">
-                                <div className="accountList">
-                                    <ul>
-                                        <li><a href="https://www.snapdeal.com/myorders"><i className="account-icon footerIconsImg"></i>Your Account</a></li>
-                                        <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Your Orders</a></li>
-                                        <li><a href="https://www.snapdeal.com/mysdcash"  className="sd-information"><i className="sd-cash-icon footerIconsImg"></i>SD Cash</a></li>
-                                    </ul>
-                                </div>
-                                <div className="accountInfoNonLoggedIn">
-                                    <p className="newUser"><span>If you are a new user</span></p>
-                                    <span className="newUserRegister">Register</span>
-                                    <span className="accountBtn btn rippleWhite"><a href="https://www.snapdeal.com/login">login</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <SignIn />
             </div>
             <div className="onlyforhelpcenter hidden row" style={{clear: "both"}}>
                 <div className="col-xs-3 logoWidth title lfloat">
