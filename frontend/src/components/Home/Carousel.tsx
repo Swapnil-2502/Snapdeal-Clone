@@ -59,7 +59,7 @@ export const Carousel = () => {
 				</div>
 				<div className="banner-link bar">
                     {banners.map((banner, index) => (
-                         <div key={index} className="banner-item active">{banner.title}</div>
+                         <div key={index} className={`banner-item  ${index === currIndex ? 'active': ''}`}>{banner.title}</div>
                     ))}
                 </div>
             </div>
