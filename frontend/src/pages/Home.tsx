@@ -3,6 +3,8 @@ import FooterTop from "../components/footer/FooterTop"
 import { Carousel } from "../components/Home/Carousel"
 import { LeftSideNavbar } from "../components/Home/LeftSideNavbar"
 import { Poster } from "../components/Home/Poster"
+import { Products } from "../components/Products/Products"
+import { TrendingProducts } from "../components/Products/TrendingProducts"
 
 
 
@@ -13,6 +15,8 @@ const Home = () => {
     <div id="content_wrapper">
       <LeftSideNavbar />
       <Carousel />
+      <Products />
+      <TrendingProducts />
       <Poster />
     </div>
     
