@@ -5,7 +5,7 @@ import type {ProductData } from "../types/types"
 import { useCart } from "../contexts/CartContext"
 
 export const Tocart = () => {
-    const {cartItems,calculateSubTotal} = useCart()
+    const {cartItems,calculateSubTotal,openCartModal} = useCart()
     const {productId} = useParams<{productId: string}>()
     const [product, setProduct] = useState<ProductData | null>(null)
     const [close, setClose] = useState(true)
@@ -64,7 +64,7 @@ export const Tocart = () => {
                             </div>
                             <div className="col-xs-15 btn-container">
                                 <a href="javascript:void(0)" className="btn marR5" id="rzp-quickcart-button">Proceed To Checkout</a>
-                                <div className="btn btn-theme-secondary open-cart">View Cart</div>
+                                <div className="btn btn-theme-secondary open-cart" onClick={() => openCartModal()}>View Cart</div>
                             </div>
                             </div>
                         </div>
