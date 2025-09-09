@@ -4,6 +4,9 @@ import type { CartItem } from "../types/types"
 
 type CartContextType = {
     cartItems: CartItem[];
+    openCart: boolean;
+    openCartModal: () => void;
+    closeCartModal: () => void;
     addItem: (item: CartItem) => void;
     removeItem: (id: string) => void;
     updateQuantity: (id: string, quantity: number) => void;
@@ -14,6 +17,9 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({children}: {children: React.ReactNode}) => {
+    const [openCart, setOpenCart] = useState(false)
+    const openCartModal = () => setOpenCart(true)
+    const closeCartModal = () => setOpenCart(false)
     const [cartItems, setCartItems] = useState<CartItem[]>(()=>{
         const saved = localStorage.getItem("CartItems")
         return saved ? JSON.parse(saved) : []
@@ -56,7 +62,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     }
 
     return (
-        <CartContext.Provider value={{cartItems, addItem, removeItem, updateQuantity, clearCart, calculateSubTotal}}>
+        <CartContext.Provider value={{cartItems, addItem, removeItem, updateQuantity, clearCart, calculateSubTotal,openCart,openCartModal,closeCartModal}}>
             {children}
         </CartContext.Provider>
     )
