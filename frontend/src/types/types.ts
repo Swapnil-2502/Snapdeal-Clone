@@ -32,3 +32,38 @@ export interface AuthData {
         password?: string;
     }
 }
+
+export interface ProductData {
+  _id: string,
+  title: string;
+  type: string;
+  category?: string;
+  subcategory?: string;
+  price: number;
+  mrp: number;
+  stars?: string | null;
+  avgRating?: string | null;
+  totalRatings?: string | null;
+  totalReviews?: string | null;
+  images: string[];
+  highlights?: string[];
+  otherSpecifications: {
+    countryOfOrigin?: string;
+    genericName?: string;
+    manufacturerAddress?: string;
+    packerAddress?: string;
+    marketerAddress?: string;
+    importerAddress?: string;
+  } | null;
+  description?: string;
+  termsAndConditions?: string | null;
+  quickLinks: {
+    productType?: string;
+    brand?: string;
+  };
+  sellerDetails?: {
+    manufacturer?: string;
+    stars?: string;
+    totalReviews?: string;
+  } | null;
+}
