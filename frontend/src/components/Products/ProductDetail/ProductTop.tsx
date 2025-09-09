@@ -1,6 +1,8 @@
 import type React from "react";
-import type { ProductData } from "../../../types/types";
+import type { CartItem, ProductData } from "../../../types/types";
 import { useState } from "react";
+import { useCart } from "../../../contexts/CartContext";
+import { Link } from "react-router-dom";
 
 
 interface ProductTopProps {
@@ -9,6 +11,21 @@ interface ProductTopProps {
 
 export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const {addItem} = useCart()
+
+    const handleAddToCart = () => {
+        if(!product) return
+
+        const cartItem: CartItem = {
+            _id: product._id,
+            title: product.title,
+            price: product.price,
+            quantity: 1,
+            imageURL: product.images[0]
+        }
+
+        addItem(cartItem)
+    }
 
     return (
     <>
@@ -181,9 +198,9 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                                 <div className="col-xs-6 btn btn-xl rippleWhite buyLink buyNow marR15  " data-state="Buy Now">
                                                     <span className="intialtext">buy now</span>
                                                 </div>
-                                                <div className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink">
+                                                <Link to={`/cart/addTocart/${product?._id}`} className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" onClick={handleAddToCart}>
                                                     <span className="intialtext">add to cart</span>
-                                                </div>
+                                                </Link>
                                                 </div>
                                             </div>
                                         </div>
