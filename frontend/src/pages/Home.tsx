@@ -11,21 +11,20 @@ import { TrendingProducts } from "../components/Products/TrendingProducts"
 const Home = () => {
   return (
     <> 
-   
-    <div id="content_wrapper">
-      <LeftSideNavbar />
-      <Carousel />
-      <Products />
-      <TrendingProducts />
-      <Poster />
-    </div>
-    
-    <div className="mt-96">
-      <div id="sdFooter">
-        <FooterTop />
-        <FooterBottom />
+      <div id="content_wrapper">
+        <LeftSideNavbar />
+        <Carousel />
+        <Products />
+        <TrendingProducts />
+        <Poster />
       </div>
-    </div>
+    
+      <div className="mt-96">
+        <div id="sdFooter">
+          <FooterTop />
+          <FooterBottom />
+        </div>
+      </div>
       
     </>
   )

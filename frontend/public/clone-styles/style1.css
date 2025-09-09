@@ -3929,10 +3929,10 @@ hr.divider-horizontal {
     opacity: 1
 }
 
-#cartModal .modal-box-dialog {
-    width: 960px;
-    margin: 15px auto
-}
+/* #cartModal .modal-box-dialog {
+     width: 960px; 
+     margin: 15px auto 
+} */
 
 #cartModal .modal-box-content {
     background-clip: padding-box;
@@ -3948,7 +3948,7 @@ hr.divider-horizontal {
 }
 
 #cartModal .modal-box-backdrop {
-    background: none repeat scroll 0 0 rgba(238,238,238,0.95);
+    background: none repeat scroll 0 0 rgba(0,0,0,0.6);
     left: 0;
     position: absolute;
     right: 0;
@@ -7164,7 +7164,7 @@ hr.divider-horizontal {
 
 .searchformInput {
     margin: 0px !important;
-    width: 78%
+    width: 78% !important
 }
 
 #sdHeader {
@@ -7900,9 +7900,9 @@ input[type=text]::-ms-clear {
 }
 
 .header-right .cartContainer .cartInner .cartTextSpan {
-    font-size: 13px;
+    font-size: 14px;
     vertical-align: text-top;
-    padding-right: 10px;
+    padding-right: 17px;
     color: #fff;
     line-height: 9px
 }
@@ -11179,7 +11179,6 @@ li.cart-item:first-child .broder-top-line-cart {
     width: 100%;
     background-color: #fff;
     border-top: 1px solid #e2e2e2;
-    margin-top: 180px;
 }
 
 #sdFooter .upperContent-footer {
@@ -13309,4 +13308,23 @@ a.faq_search_list_label_anchor:hover {
 
 .sidebar.rightside.open .sidebarin.setPwdModal .errMsgDv.yellow {
     color: #f69256
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.2s ease;
 }

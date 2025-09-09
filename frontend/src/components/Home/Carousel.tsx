@@ -45,7 +45,7 @@ export const Carousel = () => {
 
   return (
     <>
-    <section className="home-page-right-section animScroll" style={{marginTop: "140px"}}> 
+    <section className="home-page-right-section animScroll"> 
 		<section className="home-page-right-card dp-click-widgets">
 			<div className="main-banner-wrapper adtechBannerHomePage dp-widget posRelative dp-fired" style={{maxWidth: "1140px"}}>
 				<button className="carousel-btn prev" onClick={handlePrev}>‹</button>

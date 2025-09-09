@@ -5,8 +5,7 @@ export const Poster = () => {
     <>
     <div id="centerCardWidgets" className="clearfix centerCardAfterLoadWidgets padT20 centerCard-section dp-click-widgets" data-widgetlen="10" data-adtechinstance="1">
 
-    
-        <section className="homePageSection downloadAppFullWidth downloadBackImage download_App" data-index="1" data-widgetid="179" style={{marginTop:"120px"}}>
+        <section className="homePageSection downloadAppFullWidth downloadBackImage download_App" data-index="1" data-widgetid="179" >
 			<div className="widgetHead sectnDiv hidden animScroll">
 				<h2 className="widgetLabelHead" id="head-download_App-1"></h2>
 				<a className="viewAllAnchor btn loadMoreBtn dp-widget-link dp-widget-viewall viewAllBtn hidden" href="javascript:void(0);">VIEW ALL</a>
