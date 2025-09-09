@@ -9,11 +9,8 @@ export const AddToCartPage = () => {
   return (
     <>  
         <div id="content_wrapper">
-            <div style={{marginTop:"110px"}} >
-                <Tocart />
-            </div>
+            <Tocart />
         </div>
-
         <div id="sdFooter">
             <FooterTop />
             <div className="middleContent-footer">
