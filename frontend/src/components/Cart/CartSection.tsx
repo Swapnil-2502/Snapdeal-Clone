@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../contexts/CartContext"
+import { useCart } from "../../contexts/CartContext"
 import { useEffect } from "react";
+import { EmptyCartSection } from "./EmptyCartSection";
 
 export const CartSection= () => {
     const {openCart,closeCartModal, removeItem, updateQuantity} = useCart()
@@ -28,13 +29,16 @@ export const CartSection= () => {
   return (
     <>
     <div id="cartModal" className={`modal-box fade-animation ${openCart ? "in" : ""}`} style={{display: openCart ? "block" : "none"}} >
-        <div className={`modal-box-backdrop fade-animation ${openCart ? "in" : ""}`} data-omniturename="cartCloseFadedArea"></div>
+        <div className={`modal-box-backdrop fade-animation  ${openCart ? "in" : ""}`} data-omniturename="cartCloseFadedArea"></div>
         
-        <div className={`modal-box-dialog ${openCart ? "in" : ""}`} data-omniturename="cartCloseFadedArea">
+        <div className={`modal-box-dialog ${openCart ? "in" : ""} ${cartItems.length===0 ? 'empty-cart':''}`} data-omniturename="cartCloseFadedArea">
             
                 <div className="modal-box-content">
                     <div className="cart-container" id="rtbScriptContainer" style={{height: "584px"}}>
-                    
+
+                        {cartItems.length === 0 && <EmptyCartSection />}
+
+                        {cartItems.length !== 0 && <>
                         <div className="cart-heading clearfix">
                             <h3>Shopping Cart <span>({cartItems.length})</span></h3>
                             <span className="icon-font-grey-size24 close-popup-icon" data-omniturename="cartCrossedNew"> 
@@ -138,10 +142,11 @@ export const CartSection= () => {
                                 })}
                             </ul>
                         </div>
-                    
+                        </>}
                     </div>
                 </div>
                 
+                {cartItems.length !== 0 && 
                 <div className="cart-footer-wrapper clearfix">
                     <div className="cart-footer-content row">
                         <div className="col-xs-11 cart-trust-wrap">
@@ -169,7 +174,7 @@ export const CartSection= () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>}
         </div>
     </div>
     </>
