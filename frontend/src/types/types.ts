@@ -75,3 +75,17 @@ export interface CartItem {
   quantity: number;
   imageURL: string;
 }
+
+export interface UserAddress {
+    _id?: string
+    pincode: string,
+    name: string,
+    address: string,
+    landmark?: string,
+    city: string,
+    state: string,
+    mobileNumber: string,
+    alternateNumber?: string,
+    addressType: "Home" | "Office",
+    default: boolean
+}
