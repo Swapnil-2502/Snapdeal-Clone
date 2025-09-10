@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { type StoredUserData, type checkEmailResult, type UserData } from "../types/types";
 import axios from "../api/axios";
+import { useCart } from "./CartContext";
 
 type AuthContextType = {
     userData: UserData;
@@ -31,6 +32,7 @@ export const AuthProvider = ({children}: { children: React.ReactNode }) => {
     const [token, setToken] = useState<string | null>(null)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [storedUser, setStoredUser] = useState<StoredUserData | null>(null)
+    const {clearCart} = useCart()
     
 
     useEffect(() => {
@@ -85,7 +87,7 @@ export const AuthProvider = ({children}: { children: React.ReactNode }) => {
 
         setUserData(initialUserData)
         setToken(null)
-
+        clearCart()
     }
 
     return (
