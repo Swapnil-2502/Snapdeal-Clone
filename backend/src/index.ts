@@ -4,6 +4,7 @@ import cors from "cors"
 import { ConnectDB } from "./config/db"
 import authRoutes from "./routes/authRoute"
 import productRoutes from "./routes/productRoute"
+import addressRoutes from "./routes/addressRoute"
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use(express.json())
 
 app.use('/api/auth',authRoutes)
 app.use('/api/product',productRoutes)
+app.use('/api/user/addresses',addressRoutes)
 
 
 app.get("/",(req: Request,res: Response)=>{
