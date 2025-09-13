@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext"
 import { useEffect } from "react";
 import { EmptyCartSection } from "./EmptyCartSection";
+import { usePayment } from "../../contexts/PaymentContext";
 
 export const CartSection= () => {
     const {openCart,closeCartModal, removeItem, updateQuantity} = useCart()
+    const {openPayment} = usePayment()
     const {cartItems, calculateSubTotal} = useCart()
 
     useEffect(() => {
@@ -58,18 +60,18 @@ export const CartSection= () => {
                                 </div>
                                 <div className="col-xs-4 cart-list-heading text-center">Quantity</div>
                                 <div className="col-xs-6 cart-list-heading pincode-block">
-                                    <div className="pincode-check-enable disp-none">
+                                    {/* <div className="pincode-check-enable disp-none">
                                         <span className="lfloat">Delivery with Charges</span> 
                                         <input type="text" id="pincode-value"  maxLength={6} placeholder="Pincode" data-id="pincode-error-tooltip" style={{borderColor: "rgb(213, 213, 213)"}}/> 
                                         <a id="send-pincode" data-omniturename="checkZipcart" className="col-xs-5 btn btn-small btn-theme-secondary rippleWhite pincode-button">Check</a>
                                         <div id="pincode-error-tooltip" className="hidden">
                                         <p className="pincode-error-text">Please enter a valid pincode.</p>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="pincode-check-disable ">
-                                        <span className="lfloat">Showing Availability at</span> 
-                                        <span className="cart-pincode">440027</span> 
-                                        <a className="cart-pin-change" data-omniturename="changeZipcart"><i className="sd-icon sd-icon-edit"></i></a>
+                                        <span className="lfloat">Showing Availability</span> 
+                                        {/* <span className="cart-pincode">440027</span>  */}
+                                        {/* <a className="cart-pin-change" data-omniturename="changeZipcart"><i className="sd-icon sd-icon-edit"></i></a> */}
                                     </div>
                                 </div>
                                 <div className="col-xs-4 cart-list-heading cart-list-heading-subtotal">
@@ -169,8 +171,8 @@ export const CartSection= () => {
                             </div>
                         </div>
                         <div className="col-xs-7 cart-bill-summary ">
-                            <div className="cart-bill-wrapper rfloat">
-                            <input type="button" className="btn btn-xl rippleWhite cart-button" id="rzp-cart-button"  value={`PROCEED TO PAY  ₹${TotalBill}`} style={{lineHeight: "0", width:"100%"}}/>
+                            <div className="cart-bill-wrapper rfloat" >
+                                <button type="button" className="btn btn-xl rippleWhite cart-button" id="rzp-cart-button"  value={TotalBill} style={{lineHeight: "0", width:"100%"}} onClick={openPayment}>PROCEED TO PAY  ₹{TotalBill}</button>
                             </div>
                         </div>
                     </div>
