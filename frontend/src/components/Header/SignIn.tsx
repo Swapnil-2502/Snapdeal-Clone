@@ -4,6 +4,7 @@ import { SignUp } from "../AuthForm/SignUp";
 import { VerifyOtp } from "../AuthForm/VerifyOtp";
 import { type AuthStep } from "../../types/types";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 
 
@@ -44,9 +45,9 @@ export const SignIn = () => {
                         <div className="dropdownAccount">
                             <div className="accountList">
                                 <ul>
-                                    <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Orders</a></li>
+                                    <li><Link to={"/myaccount/myorders"}><i className="order-icon footerIconsImg"></i>Orders</Link></li>
                                     {/* <li><a href="https://www.snapdeal.com/mysdcash" className="sd-information"><i className="sd-cash-icon footerIconsImg"></i><span className="sd-cash">SD Cash</span><div className="sd-balance"></div></a></li> */}
-                                    <li><a href="https://www.snapdeal.com/myEGiftVoucher"><i className="gift-icon footerIconsImg"></i>E-Gift Voucher</a></li>
+                                    <li><a><i className="gift-icon footerIconsImg"></i>E-Gift Voucher</a></li>
                                     <li className="accountInfoNonLoggedIn logoutNew"><a href="/" className="accountBtn rippleWhite sign logout-account" 
                                         onClick={()=>{
                                             logout()
