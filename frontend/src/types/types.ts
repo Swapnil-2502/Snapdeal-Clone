@@ -77,15 +77,23 @@ export interface CartItem {
 }
 
 export interface UserAddress {
-    _id?: string
-    pincode: string,
-    name: string,
-    address: string,
-    landmark?: string,
-    city: string,
-    state: string,
-    mobileNumber: string,
-    alternateNumber?: string,
-    addressType: "Home" | "Office",
-    default: boolean
+  _id?: string
+  pincode: string,
+  name: string,
+  address: string,
+  landmark?: string,
+  city: string,
+  state: string,
+  mobileNumber: string,
+  alternateNumber?: string,
+  addressType: "Home" | "Office",
+  default: boolean
 }
+
+export interface OrderType{
+  _id: string,
+  user:string,
+  items: CartItem[],
+  address: UserAddress,
+  totalAmount: string
+} 
