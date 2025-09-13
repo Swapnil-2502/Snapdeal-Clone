@@ -24,6 +24,8 @@ export const AddNewAddress: React.FC<AddNewAddressProps> = ({onClose,showAddress
         default: false
     })
 
+    const [isDefaultAddress, setIsDefaultAddress] = useState(false)
+    
     useEffect(() => {
         if(initialData){
             setAddressForm(initialData)
@@ -36,6 +38,11 @@ export const AddNewAddress: React.FC<AddNewAddressProps> = ({onClose,showAddress
     }
 
     const handleSubmit = async() => {
+        if(isDefaultAddress){
+            console.log("Hello from if")
+            localStorage.setItem("DefaultAddress", JSON.stringify(AddressForm))
+        } 
+        
         if(initialData){
             const addressId = initialData._id
             await axios.put(`/user/addresses/${addressId}`,AddressForm,{headers})
@@ -43,6 +50,7 @@ export const AddNewAddress: React.FC<AddNewAddressProps> = ({onClose,showAddress
         else{
             await axios.post("/user/addresses",AddressForm,{headers})
         }
+        
         onClose()
     }
    
@@ -106,11 +114,6 @@ export const AddNewAddress: React.FC<AddNewAddressProps> = ({onClose,showAddress
                                         <label className="col-xs-5  form-lbl">Address Type</label>
                                         <div className="col-xs-12 pad-lt-0">
                                             <div className=" medium  col-xs-4 pad-lt-0">
-                                                {/* <label className="radio-label">
-                                                    <input data-required="true" type="radio" id="home-mobile" name="addressTag" value="Home" checked={AddressForm.addressType === 'Home'} onChange={(e) => setAddressForm({...AddressForm,addressType:e.target.value as 'Home' | 'Office'})}/>
-                                                    <span className="radio-custom"></span>
-                                                    Home
-                                                </label> */}
                                                 <input data-required="true" type="radio" id="home-mobile" name="addressTag" value="Home" checked={AddressForm.addressType === 'Home'} onChange={(e) => setAddressForm({...AddressForm,addressType:e.target.value as 'Home' | 'Office'})}/>
                                                 <label>
                                                     Home
@@ -128,7 +131,10 @@ export const AddNewAddress: React.FC<AddNewAddressProps> = ({onClose,showAddress
                                         <label className="col-xs-5 form-lbl"></label>
 
                                         <div className="make-as-default medium  col-xs-7 pad-lt-0">
-                                            <input type="checkbox" data-address-field="defaultAddress" name="defaultAddress" checked={AddressForm.default} id="location" onChange={(e) => setAddressForm({...AddressForm,default:e.target.checked})}/>
+                                            <input type="checkbox" data-address-field="defaultAddress" name="defaultAddress" checked={isDefaultAddress} id="location" onChange={(e) =>{
+                                                //setAddressForm({...AddressForm,default:e.target.checked})
+                                                setIsDefaultAddress(e.target.checked)
+                                            }} />
                                             <label htmlFor="location" className="label200Wide">
                                                 Make this my default address
                                             </label>

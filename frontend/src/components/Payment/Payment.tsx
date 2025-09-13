@@ -32,6 +32,8 @@ export const Payment = () => {
 
     let TotalBill = 0
 
+    const DefaultAddress = JSON.parse(localStorage.getItem("DefaultAddress") || "{}")
+
     const buynowproduct = localStorage.getItem("BuyNowProduct")
     const cartItems = localStorage.getItem("CartItems")
 
@@ -175,7 +177,7 @@ export const Payment = () => {
                                                                 <div data-test-id="edit-contact" className="contact-edit theme svelte-mjp5jo">Change</div>
                                                             </div> 
                                                             <div className="contact-info svelte-mjp5jo">
-                                                                <div className="phone-text svelte-mjp5jo">+91 8446622053</div> 
+                                                                <div className="phone-text svelte-mjp5jo">+91 {DefaultAddress.mobileNumber}</div> 
                                                             </div>   
                                                         </div>
                                                     </div> 
@@ -186,22 +188,22 @@ export const Payment = () => {
                                                                 <div className="col-center flex-row svelte-1a5r2nu"> 
                                                                     <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="14" fill="#F0F0F4"></circle><path clip-rule="evenodd" d="M8.18 12.794a5.759 5.759 0 0 1 11.517.039v.065c-.04 2.068-1.193 3.979-2.609 5.472-.809.84-1.713 1.584-2.693 2.217a.698.698 0 0 1-.913 0 14.862 14.862 0 0 1-3.79-3.547 7.37 7.37 0 0 1-1.512-4.226v-.02Z" stroke="#171A1E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.938 14.75a1.846 1.846 0 1 0 0-3.692 1.846 1.846 0 0 0 0 3.692Z" stroke="#171A1E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
                                                                     <span className="label-text svelte-1a5r2nu">Delivery Address</span> 
-                                                                    <p className="label-cta total-addresses svelte-1a5r2nu">(2 saved)</p>
+                                                                    <p className="label-cta total-addresses svelte-1a5r2nu"></p>
                                                                 </div> 
                                                                 <button data-test-id="manage-address-cta" className="label-cta theme svelte-1a5r2nu">Add / Change</button>
                                                             </div>  
                                                             <button data-testid="address-box" id="address-container-PDEKsJeH5rFBNl" className="card address-container svelte-vf2ov2"> 
                                                                 <div className="box-header svelte-vf2ov2">
                                                                     <div className="box-title svelte-vf2ov2">
-                                                                        <span className="address-name data-hj-suppress svelte-vf2ov2">Swapnil Hajare</span> 
+                                                                        <span className="address-name data-hj-suppress svelte-vf2ov2">{DefaultAddress.name}</span> 
                                                                     </div>
                                                                 </div> 
                                                                 <div className="svelte-vf2ov2">
                                                                     <div className="svelte-vf2ov2">
-                                                                        <p className="address-phone-number svelte-vf2ov2">+91 8446622053</p> 
-                                                                        <p className="address-text svelte-vf2ov2">Plot No 109 Dhadiwal Layout, Suyog Nagar Sq</p> 
-                                                                        <p className="address-text svelte-vf2ov2">Near Indrayani TVS Showroom</p> 
-                                                                        <p className="address-text svelte-vf2ov2">Nagpur, Maharashtra, India, 440027</p> 
+                                                                        <p className="address-phone-number svelte-vf2ov2">+91 {DefaultAddress.mobileNumber}</p> 
+                                                                        <p className="address-text svelte-vf2ov2">{DefaultAddress.address}</p> 
+                                                                        <p className="address-text svelte-vf2ov2">{DefaultAddress.landmark}</p> 
+                                                                        <p className="address-text svelte-vf2ov2">{DefaultAddress.city}, {DefaultAddress.state}, {DefaultAddress.pincode}</p> 
                                                                     </div>  
                                                                     <span className="svelte-1a5r2nu"></span>
                                                                 </div>

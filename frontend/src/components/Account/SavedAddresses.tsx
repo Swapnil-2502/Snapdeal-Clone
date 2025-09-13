@@ -45,6 +45,8 @@ export const SavedAddresses = () => {
         }
     }
 
+    const DefaultLocationId = JSON.parse(localStorage.getItem("DefaultAddress") || "{}")._id
+
     return (
       <>
           <div className="rightWrapper" id="dotAccountSavedAddresses">
@@ -58,8 +60,14 @@ export const SavedAddresses = () => {
                               <ul className="bxSlider loaded" id="dotAccountbxSlider" data-addcounter="1" style={{width: "315%", position: "relative"}}>
                                 { addresses.map((address, index)=> (
                                   <li key={index} data-userid="500241895" data-addressid="214241387" style={{float: "left", listStyle: "none", position: "relative", width: "195px",height:"248px"}}>
-                                      <div className="location">
+                                      <div className={`location ${DefaultLocationId === address._id ? "default" : ""}`}>
                                           <span data-name="addressTag">{address.addressType}</span>
+                                          {DefaultLocationId === address._id && 
+                                            <>
+                                            <span className="defaultMention" data-name="defaultAddress">- Default</span>
+                                            <span className="defaultAddArrow"></span>
+                                            </>
+                                          }
                                       </div>
                                           <h3 data-name="name" data-size="12" className="truncated" style={{color: 'black'}}>{address.name}</h3>
                                           <div className="address">
