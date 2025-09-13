@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { SignIn } from "./Header/SignIn";
+import { useCart } from "../contexts/CartContext";
 
 
 const Header = () => {
+    const {cartItems,openCartModal} = useCart()
     const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
@@ -53,10 +55,10 @@ const Header = () => {
         <div className="topBar  top-bar-homepage  top-freeze-reference-point">
             <div className="header_wrapper">
                 <div className="logoWidth lfloat col-xs-3 reset-padding">
-                <a className="notIeLogoHeader" href="https://www.snapdeal.com">
+                <a className="notIeLogoHeader" href="/">
                     <img title="Snapdeal" className="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" src="https://i3.sdlcdn.com/img/snapdeal/darwin/logo/sdLatestLogo.svg"/>
                 </a>
-                <a className="ieLogoHeader" href="https://www.snapdeal.com">
+                <a className="ieLogoHeader" href="/">
                     <img title="Snapdeal" className="ieLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" />
                 </a>
                 <div className="menuIconBar hidden"><i className="sd-icon sd-icon-menu" style={{color: "rgb(255, 255, 255)"}}></i></div>
@@ -143,43 +145,27 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="searchAutoSuggstn"></div>
-                    {/* <div className="cross-btn hidden">
-                        <i className="sd-icon sd-icon-delete-sign"></i>
-                        <p>Close</p>
-                    </div> */}
             </div>
 
             <div className="col-xs-5 reset-padding header-right rfloat">
                 <div className="cartContainer col-xs-11 reset-padding">
-                    <div className="cartInner">
+                    <div className="cartInner" onClick={()=>openCartModal()}>
                         <span className="cartTextSpan">Cart</span>
-                        <i className="sd-icon ">
+                        <i className="sd-icon "> 
                             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
                                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                             </svg>
+                            {cartItems.length > 0 && 
+                                <span className="cartQuantity">{cartItems.length}</span>
+                            }
                         </i>
-                       
-                        {/* <span className="cartQuantity hidden">0</span> */}
                     </div>
-                </div>
-                <div className="cartProductInfoModal hidden">
-                    <span className="cartModalArrow"></span>
-                    <div className="overFlowMoreItems">
-                        <div className="cartProduct lfloat">
-                            <img className="lazy-load cartProductImg" data-src=""/>
-                        </div>
-                        <div className="cartProductInfo rfloat">
-                            <p className="cartItemHeading">Item(s) Added To cart</p>
-                            <p className="cartProductInfoName"></p>
-                            <p>Qty.<span className="cartInfoQty">0</span></p>
-                        </div>
-                    </div>
-                    <div id="cartViewBtn" className="btn viewAllBtn cartViewAllBtn">VIEW ALL</div>
                 </div>
                 <SignIn />
             </div>
+            
             <div className="onlyforhelpcenter hidden row" style={{clear: "both"}}>
                 <div className="col-xs-3 logoWidth title lfloat">
                     <a href="/" style={{textDecoration: "none"}}>
