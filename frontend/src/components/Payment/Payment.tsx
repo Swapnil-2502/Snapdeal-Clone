@@ -3,15 +3,11 @@ import { usePayment } from "../../contexts/PaymentContext"
 import type { CartItem } from "../../types/types"
 import axios from "../../api/axios"
 
-
-
 declare global {
   interface Window {
     Razorpay: any;
   }
 }
-
-
 
 interface CreateOrderResponse {
   id: string;
@@ -29,6 +25,7 @@ interface VerifyPaymentResponse {
 export const Payment = () => {
     const {closePayment} = usePayment()
     const {calculateSubTotal} = useCart()
+
     const token = localStorage.getItem("Token")
     const headers = {
         Authorization: `Bearer ${token}`,
@@ -55,8 +52,6 @@ export const Payment = () => {
 
     if(isBuyNowCase) TotalBill = products.reduce((sum, p) => sum + p.price, 0)
 
-    const items = JSON.parse(localStorage.getItem("CartItems") || "[]")
-    const address = JSON.parse(localStorage.getItem("DefaultAddress") || "{}")
 
     const handlePayment = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
@@ -75,7 +70,7 @@ export const Payment = () => {
                 
 
                 handler: async (response:any) => {
-                    console.log(response.razorpay_order_id,response.razorpay_payment_id,response.razorpay_signature)
+                    
                     const verifyPayment = await axios.post<VerifyPaymentResponse>("/payment/verify-payment", {
                         hello: 'goodword',
                         razorpay_order_id: response.razorpay_order_id,
@@ -83,7 +78,7 @@ export const Payment = () => {
                         razorpay_signature: response.razorpay_signature
                     })
 
-                    const product = await axios.post("/order",{items,address,totalAmount:TotalBill},{headers})
+                    const product = await axios.post("/order",{items:products,address: DefaultAddress,totalAmount:TotalBill},{headers})
                     console.log("Hello->",product)
 
                     const data = verifyPayment.data
