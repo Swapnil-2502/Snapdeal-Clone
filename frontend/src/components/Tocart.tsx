@@ -3,9 +3,11 @@ import axios from "../api/axios"
 import { Link, useParams } from "react-router-dom"
 import type {ProductData } from "../types/types"
 import { useCart } from "../contexts/CartContext"
+import { usePayment } from "../contexts/PaymentContext"
 
 export const Tocart = () => {
     const {cartItems,calculateSubTotal,openCartModal} = useCart()
+    const {openPayment} = usePayment()
     const {productId} = useParams<{productId: string}>()
     const [product, setProduct] = useState<ProductData | null>(null)
     const [close, setClose] = useState(true)
@@ -63,8 +65,8 @@ export const Tocart = () => {
                                 <div className="extra-charges">(Including delivery and other charges. View Cart for details)</div>
                             </div>
                             <div className="col-xs-15 btn-container">
-                                <a href="javascript:void(0)" className="btn marR5" id="rzp-quickcart-button">Proceed To Checkout</a>
-                                <div className="btn btn-theme-secondary open-cart" onClick={() => openCartModal()}>View Cart</div>
+                                <a className="btn marR5" id="rzp-quickcart-button" onClick={openPayment}>Proceed To Checkout</a>
+                                <div className="btn btn-theme-secondary open-cart" onClick={() => openCartModal()} style={{background: "rgb(51, 51, 51)"}}>View Cart</div>
                             </div>
                             </div>
                         </div>
