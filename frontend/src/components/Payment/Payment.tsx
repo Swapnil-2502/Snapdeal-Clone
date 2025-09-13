@@ -1,9 +1,8 @@
 import { useCart } from "../../contexts/CartContext"
 import { usePayment } from "../../contexts/PaymentContext"
 import type { CartItem } from "../../types/types"
-
 import axios from "../../api/axios"
-import { redirect } from "react-router-dom";
+
 
 
 declare global {
@@ -19,6 +18,7 @@ interface CreateOrderResponse {
   amount: number;
   currency: string;
   status: string;
+  
 }
 
 interface VerifyPaymentResponse {
@@ -29,6 +29,10 @@ interface VerifyPaymentResponse {
 export const Payment = () => {
     const {closePayment} = usePayment()
     const {calculateSubTotal} = useCart()
+    const token = localStorage.getItem("Token")
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
 
     let TotalBill = 0
 
@@ -51,14 +55,16 @@ export const Payment = () => {
 
     if(isBuyNowCase) TotalBill = products.reduce((sum, p) => sum + p.price, 0)
 
+    const items = JSON.parse(localStorage.getItem("CartItems") || "[]")
+    const address = JSON.parse(localStorage.getItem("DefaultAddress") || "{}")
+
     const handlePayment = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         try{
             const response = await axios.post<CreateOrderResponse>("/payment/create-order", {amount: TotalBill, currency: "INR", receipt: "receipt#1" })
-
+            JSON.stringify(response)
             const order = response.data
-            console.log("Response->",response)
-            console.log("Response.data->",response.data)
+        
             const options = {
                 key: "rzp_test_RGdtPXPT3NrwUx",
                 amount: order.amount,
@@ -67,11 +73,21 @@ export const Payment = () => {
                 description: "Test Transaction",
                 order_id: order.id,
                 
+
                 handler: async (response:any) => {
-                    const verifyPayment = await axios.post<VerifyPaymentResponse>("/payment/verify-payment", {response})
+                    console.log(response.razorpay_order_id,response.razorpay_payment_id,response.razorpay_signature)
+                    const verifyPayment = await axios.post<VerifyPaymentResponse>("/payment/verify-payment", {
+                        hello: 'goodword',
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_signature: response.razorpay_signature
+                    })
+
+                    const product = await axios.post("/order",{items,address,totalAmount:TotalBill},{headers})
+                    console.log("Hello->",product)
 
                     const data = verifyPayment.data
-                    console.log(data)
+                    console.log("aobve if->",data)
                     if (data.status === "ok") {
                         window.location.href = "/";
                     } else {
@@ -97,7 +113,7 @@ export const Payment = () => {
         catch(err){
             console.log(err)
         }
-        redirect('/')
+       
     }
 
 
