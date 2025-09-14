@@ -2,6 +2,8 @@ import  { useState, useEffect } from 'react';
 import type { ProductData } from '../../types/types';
 import axios from '../../api/axios';
 import { AddProductForm } from '../components/AddProductForm';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 export const AdminHome = () => {
@@ -10,6 +12,8 @@ export const AdminHome = () => {
     const [editingProduct, setEditingProduct] = useState<ProductData | null>(null)
     const [isEdit, setIsEdit] = useState(false)
     const [triggerRefresh, setTriggerRefresh] = useState(0)
+    const {logout} = useAuth()
+    const navigate = useNavigate();
 
     const token = localStorage.getItem("Token")
     const headers = {
@@ -61,13 +65,31 @@ export const AdminHome = () => {
         }
     };
 
+    const handleProductDetails = (productId: string) => {
+      navigate(`/admin/product/${productId}`)
+    }
+
+    const handleLogout = () => {
+      logout()
+      navigate('/')
+    }
 
   return (
     <div style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+      <div style={{display:'flex',justifyContent: 'flex-end',}}>
+        <button onClick={handleLogout} style={{background: '#e74c3c',color: 'white',border: 'none',padding: '10px 20px',borderRadius: '6px',fontSize: '1rem',fontWeight: '600',cursor: 'pointer',transition: 'background 0.3s',whiteSpace: 'nowrap'}}
+          onMouseOver={(e) => e.currentTarget.style.background = '#c0392b'}
+          onMouseOut={(e) => e.currentTarget.style.background = '#e74c3c'}
+        >
+          Logout
+        </button>
+      </div>
+
       <div style={{textAlign: 'center', marginBottom: '2rem'}}>
         <h1 style={{color: '#2c3e50', fontSize: '2.5rem', marginBottom: '0.5rem'}}>Admin Product Management </h1>
         <p style={{color: '#7f8c8d', fontSize: '1.1rem'}}>Manage your product inventory</p>
       </div>
+      
       
       <div style={{display: 'flex', justifyContent: 'center', marginBottom: '2rem'}}>
         <button style={{background: '#3498db', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '6px', fontSize: '1rem', fontWeight: '600', cursor: 'pointer',transition: 'background 0.3s'}}
@@ -91,6 +113,7 @@ export const AdminHome = () => {
             e.currentTarget.style.transform = 'translateY(0)';
             e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
           }}
+          onClick={() => handleProductDetails(product._id)}
           >
             <div style={{height: '200px', overflow: 'hidden'}}>
               <img src={product.images[0]} alt={product.title} style={{width: '100%', height: '100%', objectFit: 'cover', padding:'20px'}}/>
