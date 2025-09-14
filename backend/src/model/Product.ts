@@ -12,6 +12,7 @@ export interface ProductDocument {
   totalRatings?: string | null;
   totalReviews?: string | null;
   images: string[];
+  sizes?: string[] | null;
   highlights?: string[];
   otherSpecifications: {
     countryOfOrigin?: string;
@@ -48,6 +49,7 @@ const ProductSchema = new Schema<ProductDocument>(
     totalRatings: { type: String, default: null },
     totalReviews: { type: String, default: null },
     images: { type: [String], required: true },
+    sizes: {type: [String], default: null},
     highlights: { type: [String] },
     otherSpecifications: {
       countryOfOrigin: { type: String },
