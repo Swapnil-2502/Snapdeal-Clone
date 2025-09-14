@@ -1,12 +1,14 @@
 import express, { type Request, type Response } from "express"
 import dotenv from "dotenv"
 import cors from "cors"
+import bodyParser from "body-parser"
 import { ConnectDB } from "./config/db"
 import authRoutes from "./routes/authRoute"
 import productRoutes from "./routes/productRoute"
 import addressRoutes from "./routes/addressRoute"
 import paymentRoutes from "./routes/paymentRoutes"
-import bodyParser from "body-parser"
+
+import orderRoutes from "./routes/orderroutes"
 
 dotenv.config()
 
@@ -27,7 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth',authRoutes)
 app.use('/api/product',productRoutes)
 app.use('/api/user/addresses',addressRoutes)
+app.use('/api/order',orderRoutes)
 app.use('/api/payment',paymentRoutes)
+
 
 
 app.get("/",(req: Request,res: Response)=>{
