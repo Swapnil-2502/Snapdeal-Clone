@@ -1,6 +1,8 @@
 import mongoose, {Schema} from "mongoose";
 
-interface IUserAddress {
+export type UserRole = 'user' | 'admin'
+
+export interface IUserAddress {
     pincode: string,
     name: string,
     address: string,
@@ -10,7 +12,6 @@ interface IUserAddress {
     mobileNumber: string,
     alternateNumber?: string,
     addressType: "Home" | "Office",
-    default: boolean,
 }
 
 export interface IUser extends Document {
@@ -19,10 +20,11 @@ export interface IUser extends Document {
     name: string,
     dob: string,
     password: string,
+    role: UserRole,
     addresses: IUserAddress[]
 } 
 
-const AddressSchema: Schema = new Schema<IUserAddress>({
+export const AddressSchema: Schema = new Schema<IUserAddress>({
     pincode: { type: String, required: true },
     name: { type: String, required: true },
     address: { type: String, required: true },
@@ -32,7 +34,6 @@ const AddressSchema: Schema = new Schema<IUserAddress>({
     mobileNumber: { type: String, required: true },
     alternateNumber: { type: String },
     addressType: { type: String, enum: ["Home", "Office"], required: true },
-    default: {type: Boolean}
 })
 
 const UserSchema: Schema = new Schema<IUser>({
@@ -41,6 +42,7 @@ const UserSchema: Schema = new Schema<IUser>({
     name:{type: String, required: true},
     dob:{type: String, required: true},
     password:{type: String, required: true},
+    role: {type: String, enum: ['user','admin'], default: 'user'},
     addresses: [AddressSchema]
 },{timestamps:true})
 
