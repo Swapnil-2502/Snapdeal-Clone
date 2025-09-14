@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react"
 import { useAuth } from "../../contexts/AuthContext"
+import { useNavigate } from "react-router-dom";
 
 
 export const VerifyOtp = ({onClose}:{onClose: () => void}) => {
@@ -7,11 +8,19 @@ export const VerifyOtp = ({onClose}:{onClose: () => void}) => {
     const [error,setError] = useState(false);
     const [otp, setOtp] = useState("")
 
+    const navigate = useNavigate()
+
     const handleSubmit = async(e: FormEvent) => {
         try{
             setError(false)
             e.preventDefault()
-            await verifyOtp(userData.email,otp)
+            const result = await verifyOtp(userData.email,otp)
+            if(result.user.role === 'admin'){
+                navigate('/admin')
+            }
+            else{
+                navigate('/')
+            }
             onClose()
         }
         catch{
