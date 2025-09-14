@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { createProduct, deleteProduct, getProductById, getProducts, updateProduct } from "../controllers/productController";
+import { requireAdmin } from "../middleware/AuthMiddleware";
 
 const route = Router()
 
-route.post("/",createProduct)
+route.post("/",requireAdmin,createProduct)
 route.get("/",getProducts)
 route.get("/:id",getProductById)
-route.patch("/:id",updateProduct)
-route.delete("/:id",deleteProduct)
+route.patch("/:id",requireAdmin,updateProduct)
+route.delete("/:id",requireAdmin,deleteProduct)
 
 export default route
