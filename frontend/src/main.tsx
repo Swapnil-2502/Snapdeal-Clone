@@ -13,18 +13,25 @@ import '../public/clone-styles/style2.css'
 import '../public/clone-styles/style7.css'
 import '../public/clone-styles/style9.css'
 import '../public/clone-styles/style10.css'
+import '../public/clone-styles/style11savedAddress.css'
+import '../public/clone-styles/style13chechkout.css'
+import '../public/clone-styles/style14ordersummary.css'
+import '../public/clone-styles/style12myorders.css'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { CartProvider } from './contexts/CartContext.tsx'
+import { PaymentProvider } from './contexts/PaymentContext.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+    <PaymentProvider>
+    <CartProvider>
       <AuthProvider>
-        <CartProvider>
           <App />
-        </CartProvider>
       </AuthProvider>
+    </CartProvider>
+    </PaymentProvider>
     </BrowserRouter>
   </StrictMode>,
 )
