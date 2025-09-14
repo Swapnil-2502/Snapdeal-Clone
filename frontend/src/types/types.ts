@@ -14,11 +14,18 @@ export interface UserData {
     password: string;
 } 
 
+export interface VerifyOtpResponse {
+  message: string;
+  user :StoredUserData;
+  token: string
+}
+
 export interface StoredUserData {
     id: string;
     email:string;
     phone: string;
     name: string;
+    role: string;
 }
 
 export interface AuthData {
@@ -46,6 +53,7 @@ export interface ProductData {
   totalRatings?: string | null;
   totalReviews?: string | null;
   images: string[];
+  sizes: string[];
   highlights?: string[];
   otherSpecifications: {
     countryOfOrigin?: string;
@@ -68,12 +76,14 @@ export interface ProductData {
   } | null;
 }
 
+
 export interface CartItem {
   _id: string;
   title: string;
   price: number;
   quantity: number;
   imageURL: string;
+  size?: string;
 }
 
 export interface UserAddress {
