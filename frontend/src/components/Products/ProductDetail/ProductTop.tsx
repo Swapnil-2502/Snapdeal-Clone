@@ -3,6 +3,7 @@ import type { CartItem, ProductData } from "../../../types/types";
 import { useState } from "react";
 import { useCart } from "../../../contexts/CartContext";
 import { Link } from "react-router-dom";
+import { usePayment } from "../../../contexts/PaymentContext";
 
 
 interface ProductTopProps {
@@ -10,21 +11,32 @@ interface ProductTopProps {
 }
 
 export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
+    const {openPayment} = usePayment()
     const [activeIndex, setActiveIndex] = useState(0);
     const {addItem} = useCart()
 
-    const handleAddToCart = () => {
-        if(!product) return
-
-        const cartItem: CartItem = {
+    const createCartItem = (): CartItem | null => {
+        if (!product) return null
+        
+        return {
             _id: product._id,
             title: product.title,
             price: product.price,
             quantity: 1,
             imageURL: product.images[0]
         }
+    }
 
-        addItem(cartItem)
+    const handleAddToCart = () => {
+        const cartItem = createCartItem()
+
+        if(cartItem) addItem(cartItem)
+    }
+
+    const handleBuyNow = () => {
+        const cartItem = createCartItem()
+        if(cartItem) localStorage.setItem("BuyNowProduct", JSON.stringify(cartItem))
+        openPayment()
     }
 
     return (
@@ -195,10 +207,10 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                         <div className="col-xs-21">
                                             <div className="container-fluid buy-button-container reset-padding" id="pdp-buynow-rp">
                                                 <div className="row marL0">
-                                                <div className="col-xs-6 btn btn-xl rippleWhite buyLink buyNow marR15  " data-state="Buy Now">
+                                                <div className="col-xs-6 btn btn-xl rippleWhite buyLink buyNow marR15  " data-state="Buy Now" onClick={handleBuyNow}>
                                                     <span className="intialtext">buy now</span>
                                                 </div>
-                                                <Link to={`/cart/addTocart/${product?._id}`} className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" onClick={handleAddToCart}>
+                                                <Link to={`/cart/addTocart/${product?._id}`} className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" onClick={handleAddToCart} style={{borderColor: "rgb(51, 51, 51)",background: "rgb(51, 51, 51)"}}>
                                                     <span className="intialtext">add to cart</span>
                                                 </Link>
                                                 </div>
