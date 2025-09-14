@@ -56,9 +56,9 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     }
 
     const calculateSubTotal = () =>{
-        let Total = 0;
-        cartItems.map((item) => Total += item.price* item.quantity)
-        return Total
+        return cartItems.reduce((total,item) => {
+            return total + (item.price * item.quantity)
+        },0)
     }
 
     return (

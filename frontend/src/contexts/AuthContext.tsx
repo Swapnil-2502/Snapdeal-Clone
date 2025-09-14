@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { type StoredUserData, type checkEmailResult, type UserData } from "../types/types";
+import { type StoredUserData, type checkEmailResult, type UserData, type VerifyOtpResponse } from "../types/types";
 import axios from "../api/axios";
 import { useCart } from "./CartContext";
 
@@ -12,7 +12,7 @@ type AuthContextType = {
     updateUserData: (data: Partial<UserData>) => void
     checkEmail: (email: string) => Promise<checkEmailResult>
     register: () => Promise<void>
-    verifyOtp: (email: string, otp: string) => Promise<void>
+    verifyOtp: (email: string, otp: string) => Promise<VerifyOtpResponse>
     logout: () => void;
 }
 
@@ -52,7 +52,7 @@ export const AuthProvider = ({children}: { children: React.ReactNode }) => {
 
     const checkEmail = async (email: string): Promise<checkEmailResult> => {
         const res = await axios.post("/auth/check-email",{email})
-        console.log("check-email",res.data)
+       
         updateUserData({
             email: email
         })
@@ -61,11 +61,10 @@ export const AuthProvider = ({children}: { children: React.ReactNode }) => {
 
     const register = async (): Promise<void> => {
         const res = await axios.post("/auth/register",JSON.stringify(userData))
-
         return res.data
     }
 
-    const verifyOtp = async (email: string, otp: string): Promise<void> => {
+    const verifyOtp = async (email: string, otp: string): Promise<VerifyOtpResponse> =>  {
         try{
             const res = await axios.post("/auth/verifyotp",{email, otp})
             setToken(res.data.token)
