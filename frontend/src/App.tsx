@@ -1,29 +1,46 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
 import { ProductPage } from './pages/ProductPage'
 import { AddToCartPage } from './pages/AddToCartPage'
-
 import { MyAccount } from './pages/MyAccount'
 import { Orders } from './components/Account/Orders'
 import { SavedAddresses } from './components/Account/SavedAddresses'
 import { CartSection } from './components/Cart/CartSection'
+import { Payment } from './components/Payment/Payment'
+import { usePayment } from './contexts/PaymentContext'
+import { OrderPage } from './pages/OrderPage'
+import { AdminLayout } from './admin/AdminLayout'
+import { ProtectedAdminRoute } from './admin/auth/ProtectedAdminRoute'
 
 function App() {
+  const {isOpen} = usePayment()
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin')
   return (
     <>
+      {!isAdminRoute && 
       <div id='sdHeader' className='comp-header reset-padding'>
         <Header />
       </div>
+      }
+      {isOpen && <Payment />}
       <CartSection/>
+      
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/admin' element={
+          <ProtectedAdminRoute>
+            <AdminLayout />
+          </ProtectedAdminRoute>
+        } />
         <Route path='/product/:productTitle/:productId' element={<ProductPage />} />
         <Route path='/cart/addTocart/:productId' element={<AddToCartPage />} />
         <Route path='/myaccount/' element={<MyAccount />}>
             <Route path="myorders" element={<Orders />} />
             <Route path="savedAddresses" element={<SavedAddresses />} />
         </Route>
+        <Route path="/orderSummary/order/:orderId" element={<OrderPage />} />
 
       </Routes>
     </>
