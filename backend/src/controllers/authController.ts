@@ -105,12 +105,6 @@ export const verifyOTP = async (req: Request, res: Response) => {
 
         const {purpose, payload} = authSession 
 
-        // if (registedRecord.expiresAt < new Date()) {
-        //     await Register.deleteOne({ _id: registedRecord._id });
-        //     return res.status(410).json({ 
-        //         message: "OTP has expired. Please request a new one." 
-        //     });
-        // }
 
         const otpValid = await bcrypt.compare(otp,authSession.otp)
         if (!otpValid) {
@@ -129,7 +123,7 @@ export const verifyOTP = async (req: Request, res: Response) => {
                 name: payload?.name,
                 dob: payload?.dob,
                 password: payload?.password,
-                isVerified: true
+                role: 'user'
             })
 
             message = "Registration successful!";
@@ -150,7 +144,7 @@ export const verifyOTP = async (req: Request, res: Response) => {
             throw new Error("JWT_SECRET is not defined in environment variables");
         }
         const token = jwt.sign(
-            { id: user?._id, email: email, phone: user?.phone, name: user?.name },
+            { id: user?._id, email: email, phone: user?.phone, name: user?.name, role: user?.role },
             process.env.JWT_SECRET,
             { expiresIn: '2d' }
         );
@@ -164,6 +158,7 @@ export const verifyOTP = async (req: Request, res: Response) => {
                 email: user?.email,
                 name: user?.name,
                 phone: user?.phone,
+                role: user?.role
             },
             token
         })
