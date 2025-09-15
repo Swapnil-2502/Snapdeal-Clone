@@ -1,10 +1,12 @@
 import type { ProductData } from "../../../types/types"
+import { ReviewRatings } from "./ReviewRatings"
 
 interface ProductBottomProps {
     product: ProductData | null
 }
 
 export const ProductBottom: React.FC<ProductBottomProps> = ({product}) => {
+    
   return (
     <>
     
@@ -136,6 +138,8 @@ export const ProductBottom: React.FC<ProductBottomProps> = ({product}) => {
                     </ul>
                 </div>
             </section>
+
+            <ReviewRatings />
                                 
             <section className="pdp-section" data-nav-label="Seller Details" id="sellerBlk">
                 <div className="sellerInformationContainer comp comp-seller-info-widget" itemProp="seller">
