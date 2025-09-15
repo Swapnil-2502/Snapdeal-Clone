@@ -107,3 +107,18 @@ export interface OrderType{
   address: UserAddress,
   totalAmount: string
 } 
+
+export interface Review {
+  _id: string;
+  userId: string;
+  name: string;
+  rating: number;
+  comment?: string;
+}
+
+export interface ReviewDoc {
+  _id: string;
+  productId: string;
+  title: string;
+  ratingsAndReviews: Review[];
+}
