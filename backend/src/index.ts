@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoute"
 import productRoutes from "./routes/productRoute"
 import addressRoutes from "./routes/addressRoute"
 import paymentRoutes from "./routes/paymentRoutes"
+import reviewRoutes from "./routes/reviewRoute"
 
 import orderRoutes from "./routes/orderroutes"
 
@@ -31,6 +32,7 @@ app.use('/api/product',productRoutes)
 app.use('/api/user/addresses',addressRoutes)
 app.use('/api/order',orderRoutes)
 app.use('/api/payment',paymentRoutes)
+app.use('/api/review',reviewRoutes)
 
 
 
