@@ -12,6 +12,8 @@ import { usePayment } from './contexts/PaymentContext'
 import { OrderPage } from './pages/OrderPage'
 import { AdminLayout } from './admin/AdminLayout'
 import { ProtectedAdminRoute } from './admin/auth/ProtectedAdminRoute'
+import { AdminProductDetail } from './admin/pages/AdminProductDetail'
+import { ListProductsPage } from './pages/ListProductsPage'
 
 function App() {
   const {isOpen} = usePayment()
@@ -33,8 +35,14 @@ function App() {
           <ProtectedAdminRoute>
             <AdminLayout />
           </ProtectedAdminRoute>
-        } />
+        }/>
+        <Route path='/admin/product/:productId' element={
+          <ProtectedAdminRoute>
+            <AdminProductDetail />
+          </ProtectedAdminRoute>
+          } />
         <Route path='/product/:productTitle/:productId' element={<ProductPage />} />
+        <Route path='/products/:type' element={<ListProductsPage />} />
         <Route path='/cart/addTocart/:productId' element={<AddToCartPage />} />
         <Route path='/myaccount/' element={<MyAccount />}>
             <Route path="myorders" element={<Orders />} />
