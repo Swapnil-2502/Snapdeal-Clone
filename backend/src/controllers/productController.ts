@@ -22,7 +22,7 @@ export const createProduct = async (req: Request, res: Response) => {
 
 export const getProducts = async (req: Request, res: Response) => {
     try{
-        const { type, color, minPrice, maxPrice } = req.query;
+        const { type, color, minPrice, maxPrice, sortby, minStars } = req.query;
 
         const query: any = {};
 
@@ -39,8 +39,43 @@ export const getProducts = async (req: Request, res: Response) => {
             if (minPrice) query.price.$gte = Number(minPrice);
             if (maxPrice) query.price.$lte = Number(maxPrice);
         }
+
         
-        const products = await Product.find(query);
+        let products = await Product.find(query)
+
+        if(minStars) {
+            const min = Number(minStars);
+            if (min === 4) {
+                
+                products = products.filter(p => Number(p.stars) >= 4);
+            } else if (min === 3) {
+                
+                products = products.filter(p => Number(p.stars) >= 3 && Number(p.stars) < 4);
+            } else if (min === 2) {
+                
+                products = products.filter(p => Number(p.stars) >= 2 && Number(p.stars) < 3);
+            } else if (min === 1) {
+                
+                products = products.filter(p => Number(p.stars) >= 1 && Number(p.stars) < 2);
+            }
+        }
+
+        if(sortby === 'priceLowHigh'){
+            products = products.sort((a,b) => a.price - b.price)
+        }
+        else if(sortby === 'priceHighLow'){
+            products = products.sort((a,b) => b.price - a.price)
+        }
+        else if(sortby === 'discount'){
+            products = products.sort((a,b) => {
+                const discountA = ((a.mrp - a.price) / a.mrp) * 100
+                const discountB = ((b.mrp - b.price) / b.mrp) * 100
+
+                return discountB - discountA
+            })
+        }
+
+
         return res.status(201).json({ message: "Products", products: products });
     }
     catch(error){
