@@ -54,6 +54,7 @@ export interface ProductData {
   totalReviews?: string | null;
   images: string[];
   sizes: string[];
+  color?: string;
   highlights?: string[];
   otherSpecifications: {
     countryOfOrigin?: string;
@@ -122,3 +123,13 @@ export interface ReviewDoc {
   title: string;
   ratingsAndReviews: Review[];
 }
+
+export interface ProductFilter {
+  type: string,
+  color: string,
+  minPrice: number,
+  maxPrice: number,
+  sortby: string; 
+  minStars: string,
+}
+
