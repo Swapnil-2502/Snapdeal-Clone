@@ -12,7 +12,7 @@ export const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             const res = await axios.get("/product")
-            setProducts(res.data.products)
+            setProducts(res.data.products.slice(0,10))
         }
 
         fetchProducts()
