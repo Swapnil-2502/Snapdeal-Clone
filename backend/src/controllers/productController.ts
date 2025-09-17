@@ -22,8 +22,26 @@ export const createProduct = async (req: Request, res: Response) => {
 
 export const getProducts = async (req: Request, res: Response) => {
     try{
-        const products = await Product.find();
-        return res.status(201).json({ message: "All Products", products: products });
+        const { type, color, minPrice, maxPrice } = req.query;
+
+        const query: any = {};
+
+        if (type) {
+            query.type = type; 
+        }
+
+        if (color) {
+            query.color = color; 
+        }
+
+        if (minPrice || maxPrice) {
+            query.price = {};
+            if (minPrice) query.price.$gte = Number(minPrice);
+            if (maxPrice) query.price.$lte = Number(maxPrice);
+        }
+        
+        const products = await Product.find(query);
+        return res.status(201).json({ message: "Products", products: products });
     }
     catch(error){
         console.error("Error in getting products:", error);
