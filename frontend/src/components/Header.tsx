@@ -14,6 +14,9 @@ const Header = () => {
     const [keyword, setKeyword] = useState("")
     const [, setResults] = useState<ProductData[]>([])
 
+    const [showRecentSearches, setShowRecentSearches] = useState(false)
+    const [showSearches, setShowSearches] = useState<string[]>([])
+
     const navigate = useNavigate()
     
     useEffect(() => {
@@ -28,14 +31,31 @@ const Header = () => {
         )
     },[])
 
+    useEffect(() => {
+        const saved = localStorage.getItem('recentSearches')
+        if (saved) {
+            setShowSearches(JSON.parse(saved))
+        }
+    },[])
+
     const handleSearch = async (searchTerm: string) => {
         if(!searchTerm.trim()){
             setResults([])
             return;
         }
+
+        const newRecentSearches = [searchTerm, ...showSearches.filter(s => s!= searchTerm)].slice(0,5)
+        setShowSearches(newRecentSearches)
+        localStorage.setItem("RecentSearches",JSON.stringify(newRecentSearches))
+
         setSearchKeyword(keyword)
         navigate("/products/search")
 
+    }
+
+    const clearSearches = () => {
+        setShowSearches([])
+        localStorage.removeItem("RecentSearches")
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,6 +63,16 @@ const Header = () => {
         setFilters((prev) => ({...prev,type: ""}))
         handleSearch(keyword);
     };
+
+    const handleInputFocus = () => {
+        setShowRecentSearches(true)
+    }
+
+    const hanndleInputBlur = () => {
+        setTimeout(() => {
+            setShowRecentSearches(false)
+        }, 200)
+    }
 
   return (
     <>
@@ -79,102 +109,67 @@ const Header = () => {
 
         <div className="topBar  top-bar-homepage  top-freeze-reference-point">
             <div className="header_wrapper">
+                
                 <div className="logoWidth lfloat col-xs-3 reset-padding">
-                <a className="notIeLogoHeader" href="/" onClick={() => {
-                    setFilters({...filters, type:"", minStars:"", sortby: ""}); setSearchKeyword("")
-                    }}>
-                    <img title="Snapdeal" className="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" src="https://i3.sdlcdn.com/img/snapdeal/darwin/logo/sdLatestLogo.svg"/>
-                </a>
-                <a className="ieLogoHeader" href="/">
-                    <img title="Snapdeal" className="ieLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" />
-                </a>
-                <div className="menuIconBar hidden"><i className="sd-icon sd-icon-menu" style={{color: "rgb(255, 255, 255)"}}></i></div>
-            </div>
+                    <a className="notIeLogoHeader" href="/" onClick={() => {
+                        setFilters({...filters, type:"", minStars:"", sortby: ""}); setSearchKeyword("")
+                        }}>
+                        <img title="Snapdeal" className="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" src="https://i3.sdlcdn.com/img/snapdeal/darwin/logo/sdLatestLogo.svg"/>
+                    </a>
+                    <a className="ieLogoHeader" href="/">
+                        <img title="Snapdeal" className="ieLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" />
+                    </a>
+                    <div className="menuIconBar hidden"><i className="sd-icon sd-icon-menu" style={{color: "rgb(255, 255, 255)"}}></i></div>
+                </div>
 
-            <div className="col-xs-14 search-box-wrapper" style={{paddingLeft: "15px"}}>
-                <div className="overlap"></div>
-                <form onSubmit={handleSubmit}>
-                    <input autoComplete="off" name="keyword" type="text" className="col-xs-20 searchformInput keyword" id="inputValEnter" placeholder="Search products &amp; brands" value={keyword} onChange={(e) => setKeyword(e.target.value)}/>
-                    
-                    <button className="searchformButton col-xs-4 rippleGrey" >
-                        <span className="searchTextSpan" style={{display: 'inline-flex', alignItems:'center', gap:"10px"}}>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            Search
-                        </span>
-                    </button>
-                </form>
-                {/* <div id="topsearches" className="hidden">
-                    <div className="topSearch-container">
-                        <div className="topsearch-suggestionBox">
-                            <ul className="topSearchCont recentSearchContainer hidden">
-                                <div className="searchContainer recentSearches">
-                                    <i className="sd-icon sd-icon-clock"></i>
-                                    <span className="topsearches recentSearc">Recent Searches</span>
-                                    <span className="clearRecentSearches">CLEAR<i className="sd-icon sd-icon-delete-sign"></i></span>
+                <div className="col-xs-14 search-box-wrapper" style={{paddingLeft: "15px"}}>
+                    <div className="overlap"></div>
+                    <form onSubmit={handleSubmit}>
+                        <input autoComplete="off" name="keyword" type="text" className="col-xs-20 searchformInput keyword" id="inputValEnter" placeholder="Search products &amp; brands" onFocus={handleInputFocus} onBlur={hanndleInputBlur}  value={keyword} onChange={(e) => setKeyword(e.target.value)}/>
+                        
+                        <button className="searchformButton col-xs-4 rippleGrey" >
+                            <span className="searchTextSpan" style={{display: 'inline-flex', alignItems:'center', gap:"10px"}}>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                Search
+                            </span>
+                        </button>
+                        <div className="searchAutoSuggstn">
+                            {showRecentSearches && showSearches.length > 0 &&
+                            <div className="topSearch-container autoSuggestor-container-shadow">
+                                <div className="topsearch-suggestionBox">
+                                    <ul className="topSearchCont recentSearchContainer">
+                                        <div className="searchContainer recentSearches">
+                                            <span className="topsearches recentSearc">Recent Searches</span>
+                                            <span className="clearRecentSearches" onClick={clearSearches}>CLEAR<button style={{background: "none",border: "none",fontSize: "18px",color: "grey",cursor: "pointer", paddingLeft:'10px'}}>×</button></span>
+                                        </div>
+                                        {showSearches.map((search, index) => (
+                                            <li key={index} className="recentCont" data-index="1">
+                                                <div>
+                                                    <span className="firstRecntDiv">
+                                                        <a href="" className="subDefault recentLink">
+                                                            <span className="keywrdText">{search}</span>
+                                                            <span className="inText"></span>
+                                                            <span className="highlight-srch-txt"></span>
+                                                        </a>
+                                                    </span>
+                                                    <span className="secndRecntDiv hidden">
+                                                        <i className="sd-icon sd-icon-delete-sign recentDel"></i>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                            </ul>
-                            <ul className="topSearchCont trendingSearchContainer ">
-                                <div className="searchContainer">
-                                    <i className="sd-icon sd-icon-android-trending-up-512px iconTrend"></i>
-                                    <span className="topsearches">Trending Searches</span>
-                                </div>
-                                <li data-index="1">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=kitchen product&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                kitchen product</a>
-                                    </div>
-                                </li>
-                                <li data-index="2">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=shoes for men&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                shoes for men</a>
-                                    </div>
-                                </li>
-                                <li data-index="3">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=kurti set&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                kurti set</a>
-                                    </div>
-                                </li>
-                                <li data-index="4">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=sandal men&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                sandal men</a>
-                                    </div>
-                                </li>
-                                <li data-index="5">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=sport shoe men&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                sport shoe men</a>
-                                    </div>
-                                </li>
-                                <li data-index="6">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=saree&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                saree</a>
-                                    </div>
-                                </li>
-                                <li data-index="7">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=tshirt&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                tshirt</a>
-                                    </div>
-                                </li>
-                                <li data-index="8">
-                                    <div>
-                                        <a className="subDefault" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=wall stickers&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-                                                wall stickers</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            </div>
+                            }
                         </div>
-                    </div>
-                </div> */}
-                <div className="searchAutoSuggstn"></div>
-            </div>
+                    </form>
+                    
+                    <div className="searchAutoSuggstn"></div>
+                </div>
 
             <div className="col-xs-5 reset-padding header-right rfloat">
                 <div className="cartContainer col-xs-11 reset-padding">
