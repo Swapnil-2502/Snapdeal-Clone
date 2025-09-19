@@ -104,6 +104,80 @@ export const getProductById = async (req: Request, res: Response) => {
     
 }
 
+export const searchProducts = async (req: Request, res: Response) => {
+    try{
+        const {q, type, color, minPrice, maxPrice, sortby, minStars} = req.query
+
+        if(!q || typeof q !== "string") return res.status(400).json({ message: "Search query is required" });
+        
+        const words = q.trim().split(/\s+/);
+
+        const searchConditions = words.map((word) => {
+            const regex = new RegExp(word, "i");
+
+            return {
+                 $or: [
+                    { title: regex },
+                    { type: regex },
+                    { category: regex },
+                    { subcategory: regex }
+                ]
+            }
+        })
+
+        const query: any = { $or: searchConditions };
+
+        if (type) {
+            query.type = type;
+        }
+
+        if (color) {
+            query.color = color;
+        }
+
+        if (minPrice || maxPrice) {
+            query.price = {};
+            if (minPrice) query.price.$gte = Number(minPrice);
+            if (maxPrice) query.price.$lte = Number(maxPrice);
+        }
+
+        let products = await Product.find(query);
+
+         if (minStars) {
+            const min = Number(minStars);
+            if (min === 4) {
+                products = products.filter(p => Number(p.stars) >= 4);
+            } else if (min === 3) {
+                products = products.filter(p => Number(p.stars) >= 3 && Number(p.stars) < 4);
+            } else if (min === 2) {
+                products = products.filter(p => Number(p.stars) >= 2 && Number(p.stars) < 3);
+            } else if (min === 1) {
+                products = products.filter(p => Number(p.stars) >= 1 && Number(p.stars) < 2);
+            }
+        }
+
+        // Apply sorting
+        if (sortby === 'priceLowHigh') {
+            products = products.sort((a, b) => a.price - b.price);
+        } else if (sortby === 'priceHighLow') {
+            products = products.sort((a, b) => b.price - a.price);
+        } else if (sortby === 'discount') {
+            products = products.sort((a, b) => {
+                const discountA = ((a.mrp - a.price) / a.mrp) * 100;
+                const discountB = ((b.mrp - b.price) / b.mrp) * 100;
+                return discountB - discountA;
+            });
+        }
+
+        return res.status(200).json({message: "Search Results", count: products.length, products: products})
+
+    }
+    catch(error){
+        console.error("Error in searching product:", error);
+        return res.status(500).json({ message: "Server error", error: error});
+    }
+}
+
 export const updateProduct = async (req: Request, res: Response) => {
     try{
         const {id} = req.params;
