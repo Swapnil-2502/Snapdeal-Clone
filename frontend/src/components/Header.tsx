@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react"
 import { SignIn } from "./Header/SignIn";
 import { useCart } from "../contexts/CartContext";
+import { type ProductData } from "../types/types";
+import { useProductFilters } from "../contexts/ProductFilterContext";
+import { useNavigate } from "react-router-dom";
 
 
 const Header = () => {
     const {cartItems,openCartModal} = useCart()
     const [isSticky, setIsSticky] = useState(false);
+    const {setSearchKeyword,filters,setFilters} = useProductFilters()
 
+    const [keyword, setKeyword] = useState("")
+    const [, setResults] = useState<ProductData[]>([])
+
+    const navigate = useNavigate()
+    
     useEffect(() => {
         const handleScroll = () => {
             setIsSticky(window.scrollY > 1)
@@ -19,6 +28,22 @@ const Header = () => {
         )
     },[])
 
+    const handleSearch = async (searchTerm: string) => {
+        if(!searchTerm.trim()){
+            setResults([])
+            return;
+        }
+        setSearchKeyword(keyword)
+        navigate("/products/search")
+
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setFilters((prev) => ({...prev,type: ""}))
+        handleSearch(keyword);
+    };
+
   return (
     <>
     <div className={`headerBar reset-padding ${isSticky ? 'stickHeadNew' : '' }`}>
@@ -29,7 +54,7 @@ const Header = () => {
                     <span className="hook-section rfloat">
                     <span className="topHooks hooksContents dp-widget-link " data-index="1">					
                         <div className="top-hooks-icon"></div>
-                        <a href="http://blog.snapdeal.com/" className="dp-widget-link hookLink">Our Blog </a>
+                        <a href="" className="dp-widget-link hookLink">Our Blog </a>
                     </span>
                     <span className="topHooks hooksContents dp-widget-link helpCentrDiv" data-index="2">					
                             <div className="top-hooks-icon"></div>
@@ -37,7 +62,7 @@ const Header = () => {
                     </span>
                     <span className="topHooks hooksContents dp-widget-link " data-index="3">					
                         <div className="top-hooks-icon"></div>
-                        <a href="https://sellers.snapdeal.com/" className="dp-widget-link hookLink">Sell On Snapdeal</a>
+                        <a href="" className="dp-widget-link hookLink">Sell On Snapdeal</a>
                     </span>
                     <span className="topHooks hooksContents dp-widget-link " data-index="4">					
                         <div className="top-hooks-icon">
@@ -45,7 +70,7 @@ const Header = () => {
                                     <i className="customHeaderIcon"><img className="wooble" src="https://i4.sdlcdn.com/img/platinum09/downloadappicon2ndsep.png"/></i>
                             </span>
                         </div>
-                        <a href="http://www.snapdeal.com/offers/getsnapdealapp" className="dp-widget-link hookLink">Download App</a>
+                        <a href="" className="dp-widget-link hookLink">Download App</a>
                     </span>
                 </span>
                 <input type="hidden" className="dp-info-collect" value="[ {'k2': 'https://impactatsnapdeal.com/', 'k4': 'Impact@Snapdeal'},  {'k2': 'http://www.snapdeal.com/offers/sd-hdfc-card', 'k4': 'Help Center'},  {'k2': 'https://sellers.snapdeal.com/', 'k4': 'Sell On Snapdeal'},  {'k2': 'http://www.snapdeal.com/offers/getsnapdealapp', 'k4': 'Download App'},  {'k2': 'https://www.snapdeal.com/offers/helpageindia', 'k4': 'Donate for elderly'},  ]"/>
@@ -55,7 +80,9 @@ const Header = () => {
         <div className="topBar  top-bar-homepage  top-freeze-reference-point">
             <div className="header_wrapper">
                 <div className="logoWidth lfloat col-xs-3 reset-padding">
-                <a className="notIeLogoHeader" href="/">
+                <a className="notIeLogoHeader" href="/" onClick={() => {
+                    setFilters({...filters, type:"", minStars:"", sortby: ""}); setSearchKeyword("")
+                    }}>
                     <img title="Snapdeal" className="notIeLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" src="https://i3.sdlcdn.com/img/snapdeal/darwin/logo/sdLatestLogo.svg"/>
                 </a>
                 <a className="ieLogoHeader" href="/">
@@ -66,18 +93,20 @@ const Header = () => {
 
             <div className="col-xs-14 search-box-wrapper" style={{paddingLeft: "15px"}}>
                 <div className="overlap"></div>
-                <input autoComplete="off" name="keyword" type="text" className="col-xs-20 searchformInput keyword" id="inputValEnter" placeholder="Search products &amp; brands" value=""/>
-                <div className="inputValEntered hidden"></div>
-                <button className="searchformButton col-xs-4 rippleGrey">
-                    <span className="searchTextSpan" style={{display: 'inline-flex', alignItems:'center', gap:"10px"}}>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                        Search
-                    </span>
-                </button>
-                <div id="topsearches" className="hidden">
+                <form onSubmit={handleSubmit}>
+                    <input autoComplete="off" name="keyword" type="text" className="col-xs-20 searchformInput keyword" id="inputValEnter" placeholder="Search products &amp; brands" value={keyword} onChange={(e) => setKeyword(e.target.value)}/>
+                    
+                    <button className="searchformButton col-xs-4 rippleGrey" >
+                        <span className="searchTextSpan" style={{display: 'inline-flex', alignItems:'center', gap:"10px"}}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            Search
+                        </span>
+                    </button>
+                </form>
+                {/* <div id="topsearches" className="hidden">
                     <div className="topSearch-container">
                         <div className="topsearch-suggestionBox">
                             <ul className="topSearchCont recentSearchContainer hidden">
@@ -143,7 +172,7 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="searchAutoSuggstn"></div>
             </div>
 
