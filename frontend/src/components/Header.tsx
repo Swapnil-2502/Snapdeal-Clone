@@ -32,7 +32,7 @@ const Header = () => {
     },[])
 
     useEffect(() => {
-        const saved = localStorage.getItem('recentSearches')
+        const saved = localStorage.getItem('RecentSearches')
         if (saved) {
             setShowSearches(JSON.parse(saved))
         }
@@ -73,7 +73,7 @@ const Header = () => {
             setShowRecentSearches(false)
         }, 200)
     }
-
+    console.log(showRecentSearches,showSearches.length)
   return (
     <>
     <div className={`headerBar reset-padding ${isSticky ? 'stickHeadNew' : '' }`}>
