@@ -7,7 +7,7 @@ export const createProduct = async (req: Request, res: Response) => {
         const productData = req.body
 
         if(!productData.title || !productData.type 
-            || !productData.price || !productData.mrp || !productData.images){
+            || !productData.price || !productData.mrp || !productData.images || !productData.stockAvailable){
                 return res.status(401).json({message: "Missing required fields" })
         }
 
@@ -182,7 +182,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     try{
         const {id} = req.params;
         const updateData = req.body;
-
+        
         if(!id) return res.status(400).json({ message: "Product ID is required" });
 
         const updatedProduct = await Product.findByIdAndUpdate(id,updateData,{ new: true })
