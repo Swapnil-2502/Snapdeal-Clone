@@ -1,4 +1,5 @@
-import { AdminHome } from "./pages/AdminHome"
+import AdminHome from "./pages/AdminHome"
+
 
 
 export const AdminLayout = () => {
