@@ -5,6 +5,7 @@ export interface ProductDocument {
   type: string;
   category?: string;
   subcategory?: string;
+  stockAvailable: number;
   price: number;
   mrp: number;
   stars?: string | null;
@@ -43,6 +44,7 @@ const ProductSchema = new Schema<ProductDocument>(
     type: { type: String, required: true },
     category: { type: String },
     subcategory: { type: String},
+    stockAvailable: {type: Number, required: true},
     price: { type: Number, required: true },
     mrp: { type: Number, required: true },
     stars: { type: String, default: null },
