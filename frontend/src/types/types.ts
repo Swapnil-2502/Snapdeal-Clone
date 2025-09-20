@@ -46,6 +46,7 @@ export interface ProductData {
   type: string;
   category?: string;
   subcategory?: string;
+  stockAvailable: number;
   price: number;
   mrp: number;
   stars?: string | null;
@@ -85,6 +86,7 @@ export interface CartItem {
   quantity: number;
   imageURL: string;
   size?: string;
+  color?: string;
 }
 
 export interface UserAddress {
