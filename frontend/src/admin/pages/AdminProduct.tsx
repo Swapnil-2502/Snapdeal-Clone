@@ -279,8 +279,13 @@ export const AdminProduct = () => {
               e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
             }}
           >
-            <div style={{height: '220px', overflow: 'hidden',cursor: 'pointer'}} onClick={() => handleProductDetails(product._id)}>
+            <div style={{position: 'relative',height: '220px', overflow: 'hidden',cursor: 'pointer'}} onClick={() => handleProductDetails(product._id)}>
               <img src={product.images[0]} alt={product.title} style={{width: '100%', height: '100%', objectFit: 'cover',padding: '20px', filter: product.stockAvailable === 0 ? 'grayscale(100%)': 'none'}}/>
+              {product.stockAvailable === 0 && (
+                  <div style={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',backgroundColor: 'rgba(0, 0, 0, 0.7)',color: 'white',padding: '8px 16px',fontSize: '1.2rem',fontWeight: 'bold',letterSpacing: '2px',borderRadius: '4px',zIndex: 10,}}>
+                    OUT OF STOCK
+                  </div>
+                )}
             </div>
             <div style={{padding: '1.5rem'}} onClick={() => handleProductDetails(product._id)}>
               <h3 style={{fontSize: '1.2rem', color: '#2c3e50', marginBottom: '1rem', lineHeight: '1.4', height: '3em', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2,  WebkitBoxOrient: 'vertical',fontWeight: '600'}}>
