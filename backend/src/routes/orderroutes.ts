@@ -1,13 +1,14 @@
-import { RequestHandler, Router } from "express";
+import { Router } from "express";
 import { authMiddleware } from "../middleware/AuthMiddleware";
-import { createUserOrder, getUserOrderById, getUserOrders } from "../controllers/orderController";
+import { createUserOrder, getAllOrders, getOrderById, getUserOrderById, getUserOrders, updateOrderDetails } from "../controllers/orderController";
 
 const router = Router()
 
-router.use(authMiddleware as RequestHandler)
-
-router.post('/', createUserOrder)
-router.get('/', getUserOrders)
-router.get('/:orderId', getUserOrderById)
+router.get('/allorders',getAllOrders)
+router.get('/orderbyId/:orderId',getOrderById)
+router.post('/', authMiddleware,createUserOrder)
+router.patch('/:orderId',updateOrderDetails)
+router.get('/', authMiddleware,getUserOrders)
+router.get('/:orderId', authMiddleware,getUserOrderById)
 
 export default router
