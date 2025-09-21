@@ -14,6 +14,9 @@ import { AdminLayout } from './admin/AdminLayout'
 import { ProtectedAdminRoute } from './admin/auth/ProtectedAdminRoute'
 import { AdminProductDetail } from './admin/pages/AdminProductDetail'
 import { ListProductsPage } from './pages/ListProductsPage'
+import { AdminProduct } from './admin/pages/AdminProduct'
+import { AdminOrder } from './admin/pages/AdminOrder'
+import { AdminOrderDetails } from './admin/pages/AdminOrderDetail'
 
 function App() {
   const {isOpen} = usePayment()
@@ -36,13 +39,29 @@ function App() {
             <AdminLayout />
           </ProtectedAdminRoute>
         }/>
-        <Route path='/admin/product/:productId' element={
+        <Route path='/admin/product' element={
+          <ProtectedAdminRoute>
+            <AdminProduct />
+          </ProtectedAdminRoute>
+        }/>
+        <Route path='/admin/productdetail/:productId' element={
           <ProtectedAdminRoute>
             <AdminProductDetail />
           </ProtectedAdminRoute>
           } />
+        <Route path='/admin/order' element={
+          <ProtectedAdminRoute>
+            <AdminOrder />
+          </ProtectedAdminRoute>
+        }/>
+        <Route path='/admin/orderdetail/:orderId' element={
+          <ProtectedAdminRoute>
+            <AdminOrderDetails />
+          </ProtectedAdminRoute>
+        }/>
         <Route path='/product/:productTitle/:productId' element={<ProductPage />} />
         <Route path='/products/:type' element={<ListProductsPage />} />
+        <Route path='/products/search' element={<ListProductsPage />} />
         <Route path='/cart/addTocart/:productId' element={<AddToCartPage />} />
         <Route path='/myaccount/' element={<MyAccount />}>
             <Route path="myorders" element={<Orders />} />
