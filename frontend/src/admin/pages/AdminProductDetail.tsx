@@ -81,6 +81,9 @@ export const AdminProductDetail = () => {
                     <h1 style={{fontSize: '2rem',color: '#2c3e50',marginBottom: '1rem',fontWeight: '600'}}>
                         {product.title}
                     </h1>
+                    <h3 style={{paddingBottom: '1rem'}}>
+                        Stock Available: {product.stockAvailable}
+                    </h3>
                     
                     {product.stars && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem',marginBottom: '1rem'}}>
