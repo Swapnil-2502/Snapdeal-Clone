@@ -26,6 +26,12 @@ export interface OrderDocument extends Document {
     items: OrderItem[];
     address: IUserAddress;
     totalAmount: number;
+    status: string;
+    trackingHistory: {
+        status: string,
+        timestamp: Date,
+        note?: string
+    }
 }
 
 const OrderSchema = new Schema<OrderDocument>({
@@ -33,6 +39,16 @@ const OrderSchema = new Schema<OrderDocument>({
     items: [OrderItem],
     address: AddressSchema,
     totalAmount: { type: Number, required: true },
+    status: {
+        type: String,
+        enum: ['pending','placed', 'packed', 'shipped', 'out for delivery', 'delivered', 'cancelled'],
+        default: 'pending'
+    },
+    trackingHistory: [{
+        status: { type: String, required: true },
+        timestamp: { type: Date, default: Date.now },
+        note: { type: String }
+    }]
 },{ timestamps: true })
 
 export default mongoose.model<OrderDocument>("Order",OrderSchema)
