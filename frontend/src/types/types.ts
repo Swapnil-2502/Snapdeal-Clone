@@ -108,8 +108,18 @@ export interface OrderType{
   user:string,
   items: CartItem[],
   address: UserAddress,
-  totalAmount: string
+  totalAmount: string,
+  status: 'pending' | 'placed' | 'packed' | 'shipped' | 'out for delivery' | 'delivered' | 'cancelled',
+  trackingHistory?: {
+    status: string,
+    timestamp: Date,
+    note?: string,
+  }[],
+  createdAt?: Date,
+  updatedAt?: Date,
 } 
+
+export type OrderStatus = 'pending' | 'placed' | 'packed' | 'shipped' | 'out for delivery' | 'delivered' | 'cancelled';
 
 export interface Review {
   _id: string;
