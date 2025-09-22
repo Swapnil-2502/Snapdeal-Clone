@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { TopBar } from "./Comps/TopBar"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from '../../api/axios';
 import type { OrderType } from "../../types/types";
 import FooterTop from "../footer/FooterTop";
@@ -73,6 +73,10 @@ export const OrderCancel = () => {
         });
     };
 
+    const generateSlug = (title: string) => {
+		return title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').substring(0, 60); 
+	}
+
   return (
     <>
       <TopBar />
@@ -82,22 +86,27 @@ export const OrderCancel = () => {
             <div id="userOrderHeaderContainer">
               <span className="accountOrder">CANCEL<span className="blackText">&nbsp; IN 1 EASY STEP</span></span>
               <div className="subOrderDetailContainer">
-                {order?.items.map((item) => (
+                {order?.items.map((item) => {
+
+                    const slug = generateSlug(item.title)
+
+                    return (
+
                     <div style={{display:'flex', flexDirection:'column'}}>
                         <div style={{display:'flex'}}>
-                            <a href="" target="_blank">
+                            <Link to={`/product/${slug}/${item._id}`}  className="subOrderImage">
                                 <img height="132" src={item.imageURL}/>
-                            </a>
+                            </Link>
                             <div className="subOrderInfo">
-                                <a href="" target="_blank">
+                                <Link to={`/product/${slug}/${item._id}`}  className="subOrderImage">
                                     <h3 className="subOrderTitle">{item.title}</h3>
-                                </a>
+                                </Link>
                                 <div><span className="greyLabel">Suborder ID:</span> {item._id}</div>
                                 <div><span className="greyLabel">Order Placed on:</span> {order.createdAt ? formatDate(order.createdAt.toString()) : 'N/A'}</div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    </div>)
+                })}
                 
               </div>
             </div>
