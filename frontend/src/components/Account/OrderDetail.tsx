@@ -2,11 +2,15 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import axios from "../../api/axios"
 import type { OrderType } from "../../types/types"
+import { TrackOrder } from "./Comps/TrackOrder"
+import { useCart } from "../../contexts/CartContext"
 
 
 export const OrderDetail = () => {
 	const {orderId} = useParams()
+	const {trackOrder, setTrackOrder} = useCart()
 	const [orderDetails, setOrderDetails] = useState<OrderType>()
+	const [trackingOrderId, setTrackingOrderId] = useState<string | null>(null);
 	
 	const UserData = JSON.parse(localStorage.getItem("UserData") || "{}")
 	const token = localStorage.getItem("Token")
@@ -18,6 +22,7 @@ export const OrderDetail = () => {
 		const fetchOrders = async () => {
 			const orders = await axios.get(`/order/${orderId}`,{headers})
 			setOrderDetails(orders.data.order)
+			setTrackingOrderId(orders.data.order._id)
 		}
 		fetchOrders()
 	},[])
@@ -25,7 +30,6 @@ export const OrderDetail = () => {
 	const generateSlug = (title: string) => {
 		return title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').substring(0, 60); 
 	}
-
 
   return (
     <>
@@ -85,17 +89,23 @@ export const OrderDetail = () => {
 							
 						</div>					
 						
-						<div className="subOrdTimeLine">
-								<span className="statusCircle statusCir4 greenStatusCircle"></span>
-							<span className="statusLine statusLine4"></span> 
-								<span className="statusCircle statusCir4"></span>
-							<span className="statusLine statusLine4"></span> 
-								<span className="statusCircle statusCir4"></span>
-							<span className="statusLine statusLine4"></span> 
-								<span className="statusCircle statusCir4"></span>
-							<span className="statusLine statusLine4"></span> 
-								<span className="statusCircle statusCir4"></span>
-						</div>
+						<div className="subOrdTimeLine">  
+                          
+                          <span className="statusCircle greenStatusCircle circleVal4"></span>
+                          {[ 'packed', 'shipped', 'out for delivery', 'delivered'].map((status) => {
+                            const isCompleted = orderDetails.trackingHistory?.some(item => item.status === status);
+                            
+                            return (
+                             
+                              <>
+                                <span className={`statusLine statusLine4 ${isCompleted ? 'greenStatusLine' : ''} `}></span>
+                                <span className={`statusCircle circleVal4 ${isCompleted ? 'greenStatusCircle' : ''}`}></span>
+                              </>
+                              
+                            )
+                          })}
+                                    
+                        </div>
 
 						<div className="timeLineText">
 							<span className="timelineStatusText  timelineText5">Placed</span>
@@ -108,7 +118,11 @@ export const OrderDetail = () => {
 													
 						
 										   		
-						<div className="treak-btn js-real-track-timeline btn btn-theme-secondary btn-line">TRACK</div>
+						<div className="treak-btn js-real-track-timeline btn btn-theme-secondary btn-line" 
+							onClick={() => {
+								setTrackOrder(true)
+								setTrackingOrderId(orderDetails._id)
+							}}>TRACK</div>
                         <div className="promotionalBtn "></div>
                         <div className="deliverySellerDetails">
                             <span className="deliveryDet">
@@ -123,7 +137,9 @@ export const OrderDetail = () => {
 					</div>
 				</div>)
 				})}
+				{trackingOrderId === orderDetails?._id && trackOrder && <TrackOrder orderId={orderDetails?._id} onClose={() => setTrackingOrderId(null)}/>}
 	    </div>
+		
     </>
   )
 }
