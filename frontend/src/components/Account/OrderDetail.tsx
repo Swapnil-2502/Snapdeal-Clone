@@ -89,31 +89,53 @@ export const OrderDetail = () => {
 							
 						</div>					
 						
-						<div className="subOrdTimeLine">  
+						 <div className="subOrdTimeLine">  
                           
-                          <span className="statusCircle greenStatusCircle circleVal4"></span>
-                          {[ 'packed', 'shipped', 'out for delivery', 'delivered'].map((status) => {
-                            const isCompleted = orderDetails.trackingHistory?.some(item => item.status === status);
-                            
-                            return (
-                             
-                              <>
-                                <span className={`statusLine statusLine4 ${isCompleted ? 'greenStatusLine' : ''} `}></span>
-                                <span className={`statusCircle circleVal4 ${isCompleted ? 'greenStatusCircle' : ''}`}></span>
-                              </>
-                              
-                            )
-                          })}
-                                    
+                          {orderDetails.status === 'cancelled' ? (
+                            <>
+                              <span className="statusCircle statusCir1 greenStatusCircle"></span>
+                              <span className="statusLine statusLine1 greenStatusLine"></span>
+                              <span className="statusCircle statusCir1 greenStatusCircle"></span>
+                            </>
+                          ):(
+                            <>
+                              <span className="statusCircle greenStatusCircle circleVal4"></span>
+                              {[ 'packed', 'shipped', 'out for delivery', 'delivered'].map((status) => {
+                                const isCompleted = orderDetails.trackingHistory?.some(item => item.status === status);
+                                
+                                return (
+                                
+                                  <>
+                                    <span className={`statusLine statusLine4 ${isCompleted ? 'greenStatusLine' : ''} `}></span>
+                                    <span className={`statusCircle circleVal4 ${isCompleted ? 'greenStatusCircle' : ''}`}></span>
+                                  </>
+                                  
+                                )
+                              })}
+                            </>
+                          )}
+        
                         </div>
 
 						<div className="timeLineText">
-							<span className="timelineStatusText  timelineText5">Placed</span>
-							<span className="timelineStatusText  timelineText5">Packed</span>
-							<span className="timelineStatusText  timelineText5">Shipped</span>
-							<span className="timelineStatusText  timelineText5">Out for delivery</span>
-							<span className="timelineStatusText  timelineText5">Delivered</span>
-						</div>
+                          
+                          {orderDetails.status === 'cancelled' ? (
+                            <>
+                              <span className="timelineStatusText  timelineText2">Placed</span>
+                              <span className="timelineStatusText  timelineText2">Cancelled</span>
+                            </>
+                          )
+                          
+                           : (
+                            <>
+                              <span className="timelineStatusText  timelineText5">Placed</span>
+                              <span className="timelineStatusText  timelineText5">Packed</span>
+                              <span className="timelineStatusText  timelineText5">Shipped</span>
+                              <span className="timelineStatusText  timelineText5">Out for delivery</span>
+                              <span className="timelineStatusText  timelineText5">Delivered</span>
+                            </>
+                           )}
+                        </div>
 				
 													
 						
