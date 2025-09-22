@@ -125,19 +125,44 @@ export const Orders = () => {
                           <div className="orderItemNo">Item {index+1}</div>
                           <Link to={`/product/${slug}/${item._id}`} className="subOrdName"><div>{item.title.length > 90 ? item.title.substring(0,90) + "..." : item.title}</div></Link>
                           <span className="subOrdContent">
-                            <div className="actionButtons " data-step="1" data-tour-content="Replace/Return/Cancel, and other actions">
-                              <input type="hidden" value="" className="userMobileNumber exchangeReceipt"/>
-                            </div>  
-                            <a href="/helpcenter?subOrderId=66671792640&amp;orderId=58921214420&amp;pageNumber=1" className="needMoreHelp clear"><span className=""></span>Need help?</a>
+                            {data.status !== 'cancelled' && 
+                              <div className="actionButtons " style={{marginRight:'10px'}}>
+                                <span className="primaryActionBttns actionBttnPosition ">	
+
+                                  <Link to={`/myaccount/myorders/cancelorder/${data._id}`}>
+                                    <span className="statusButtons btn btn-theme-secondary btn-line"> Cancel</span>
+                                  </Link>
+
+                                </span>
+
+                              </div> 
+                            }
+
+                            <a href="" className="needMoreHelp clear">
+                              <span className="" style={{paddingRight:'5px'}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+                                  <circle cx="6" cy="6" r="6" fill="black"/>
+                                  <text x="6" y="6.6" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="white">?</text>
+                                </svg>
+                              </span>Need help?
+                            </a>
                           </span>
                         </span>
 
                         <div data-step="3" data-tour-content="Check latest status and important dates" className=" sd-tour trackingDetails   bottomBorderTrack">
                           <span className="subOrdStatus">Status: <span className="subOrdStatusText">{data.status.charAt(0).toUpperCase() + data.status.slice(1)}</span></span>
-                          <span className="expectDel ">{data.status === 'delivered' ? "Delivered at: ": "Est. Delivery:"}  <span className="subOrdStatusText">{data.status === 'delivered' ? data.updatedAt ? formatDate(data.updatedAt.toString()) : 'N/A' : "2-3 Days"} </span></span>
+                          <div className="lastUpdatedText clearfix" style={{paddingTop: '5px'}}>Last Updated at {data.updatedAt ? formatDate(data.updatedAt.toString()) : 'N/A'}</div>
+
+                            { (data.status === 'cancelled' || data.status === 'delivered') ? 
+                              <span className="expectDel ">{data.status === 'cancelled' ? "Cancelled: ": "Delivered: "}  <span className="subOrdStatusText">{ data.updatedAt ? formatDate(data.updatedAt.toString()) : 'N/A'} </span></span>
+                              :  <span className="expectDel ">Est. Delivery: <span className="subOrdStatusText">2-3 Days</span></span>
+                            }
+
+                          {/* <span className="expectDel ">{data.status === 'cancelled' ? "Cancelled: ": "Est. Delivery:"}  <span className="subOrdStatusText">{data.status === 'delivered' ? data.updatedAt ? formatDate(data.updatedAt.toString()) : 'N/A' : "2-3 Days"} </span></span>
+                          <span className="expectDel ">{data.status === 'delivered' ? "Delivered at: ": "Est. Delivery:"}  <span className="subOrdStatusText">{data.status === 'delivered' ? data.updatedAt ? formatDate(data.updatedAt.toString()) : 'N/A' : "2-3 Days"} </span></span> */}
                           
                         </div>
-                        {/* greenStatusCircle greenStatusLine */}
+                        
                         <div className="subOrdTimeLine">  
                           
                           
