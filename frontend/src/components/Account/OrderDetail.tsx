@@ -31,6 +31,18 @@ export const OrderDetail = () => {
 		return title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').substring(0, 60); 
 	}
 
+	const formatDate = (timestamp: string) => {
+        const date = new Date(timestamp);
+        return date.toLocaleString('en-IN', {
+            hour: '2-digit',
+            minute: '2-digit',
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour12: true
+        });
+    };
+
   return (
     <>
         <div className="ordersummarybox">
@@ -69,12 +81,23 @@ export const OrderDetail = () => {
 									<img alt={item.title} title={item.title} className="gridViewImage" data-border={0} src={item.imageURL}/>
 								</Link>
 							</span>
+									
 								    <span className="subOrdSumAction ">
 										<div className="subOrderItemNo">Item {index+1}</div>
 								   		<Link to={`/product/${slug}/${item._id}`} className="subOrdName subOrdSumaryName"   ><div style={{paddingTop: "10px"}}>{item.title}</div></Link>
 										<div className="subOrderItemNo" style={{paddingTop: "20px"}}>Quantity: {item.quantity}</div>
 										<div className="subOrderItemNo" style={{paddingTop: "20px"}}>Unit Price: ₹ {item.price}</div>
-					
+										
+										{orderDetails.status !== 'cancelled' && 
+											<div className="actionButtons " style={{marginTop:'10px'}}>
+												<span className="primaryActionBttns actionBttnPosition ">		
+												<Link to={`/myaccount/myorders/cancelorder/${orderDetails._id}`}>
+													<span className="statusButtons btn btn-theme-secondary btn-line"> Cancel</span>
+												</Link>
+												</span>
+											</div> 
+										}
+
 									</span>
 									<span className="subOrdPriceDetails">
 										<div className="totalAmntOuter"><span className="amountDetails totalAmountDetails"  style={{fontSize:"18px"}}>₹</span><span className="amntClt" style={{fontSize:"18px"}}>{item.price * item.quantity}</span><span className="signCircle "></span></div>
@@ -83,8 +106,11 @@ export const OrderDetail = () => {
 						</div>
 														   
 						<div className="trackingDetails  bottomBorderTrack">									        					 
-							<span className="subOrdStatus">Status: <span className="subOrdStatusText">ORDER CONFIRMED</span></span>
-							<span className="expectDel ">Est. Delivery: <span className="subOrdStatusText  "> 2-3 Days</span></span>					            
+							<span className="subOrdStatus">Status: <span className="subOrdStatusText">{orderDetails.status.charAt(0).toUpperCase() + orderDetails.status.slice(1)}</span></span>
+							{ (orderDetails.status === 'cancelled' || orderDetails.status === 'delivered') ? 
+                              <span className="expectDel ">{orderDetails.status === 'cancelled' ? "Cancelled: ": "Delivered: "}  <span className="subOrdStatusText">{ orderDetails.updatedAt ? formatDate(orderDetails.updatedAt.toString()) : 'N/A'} </span></span>
+                              :  <span className="expectDel ">Est. Delivery: <span className="subOrdStatusText">2-3 Days</span></span>
+                            }					            
 						            		
 							
 						</div>					
