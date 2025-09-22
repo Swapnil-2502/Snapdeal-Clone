@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import  { useEffect, useState } from "react"
 import {type OrderType } from "../../types/types"
 import axios from "../../api/axios"
 import { Link } from "react-router-dom"
