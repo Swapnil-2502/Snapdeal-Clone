@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import {type OrderType } from "../../types/types"
 import axios from "../../api/axios"
 import { Link } from "react-router-dom"
+import { TrackOrder } from "./Comps/TrackOrder"
 
 
 
 export const Orders = () => {
   const [orderDetails, setOrderDetails] = useState<OrderType[]>()
+  const [trackingOrderId, setTrackingOrderId] = useState<string | null>(null);
  
   const token = localStorage.getItem("Token")
   const headers = {
@@ -24,6 +26,56 @@ export const Orders = () => {
   const generateSlug = (title: string) => {
      return title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').substring(0, 60); 
   }
+  
+  const formatDate = (timestamp: string) => {
+        const date = new Date(timestamp);
+        return date.toLocaleString('en-IN', {
+            hour: '2-digit',
+            minute: '2-digit',
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour12: true
+        });
+    };
+
+  // const getStatusClasses = (currentStatus: string) => {
+  //     const statusOrder = ['placed', 'packed', 'shipped', 'out for delivery', 'delivered'];
+  //     const currentIndex = statusOrder.indexOf(currentStatus);
+
+  //     const circles = [];
+  //     const lines = [];
+
+  //     for (let i = 0; i < statusOrder.length; i++) {
+  //       if (i <= currentIndex) {
+          
+  //         circles.push('greenStatusCircle');
+  //         if (i < statusOrder.length - 1) {
+  //           lines.push('greenStatusLine');
+  //         }
+  //       } else {
+          
+  //         circles.push('circleVal4'); 
+  //         if (i < statusOrder.length - 1) {
+  //           lines.push('statusLine4'); 
+  //         }
+  //       }
+  //     }
+    
+  //   return { circles, lines };
+
+  // }
+
+    const updatedStatus = []
+
+    const createStatusArray= (order: OrderType) => {
+        order.trackingHistory?.map((pastStatus) => {
+          updatedStatus.push(pastStatus.status)
+        })
+
+    }
+
+    
 
   return (
     <>
@@ -39,6 +91,8 @@ export const Orders = () => {
         }
         
         {orderDetails &&  orderDetails.map((data,index) => (
+          
+          <>
           <div key={index} className="myOrderDetails">
             <div className="orderData">
 
@@ -55,7 +109,7 @@ export const Orders = () => {
 
                   {data.items.map((item,index) => {
                     const slug = generateSlug(item.title)
-
+                    createStatusArray(data)
                     return (
                       <>
                     <div key={index} className="subOrderDetails borderSubOrder">
@@ -79,22 +133,27 @@ export const Orders = () => {
                         </span>
 
                         <div data-step="3" data-tour-content="Check latest status and important dates" className=" sd-tour trackingDetails   bottomBorderTrack">
-                          <span className="subOrdStatus">Status: <span className="subOrdStatusText">Paid</span></span>
-                          <span className="expectDel ">Est. Delivery: <span className="subOrdStatusText"> 2-3 Days</span></span>
+                          <span className="subOrdStatus">Status: <span className="subOrdStatusText">{data.status.charAt(0).toUpperCase() + data.status.slice(1)}</span></span>
+                          <span className="expectDel ">{data.status === 'delivered' ? "Delivered at: ": "Est. Delivery:"}  <span className="subOrdStatusText">{data.status === 'delivered' ? data.updatedAt ? formatDate(data.updatedAt.toString()) : 'N/A' : "2-3 Days"} </span></span>
                           
                         </div>
-
-                        <div className="subOrdTimeLine">
-                                    
+                        {/* greenStatusCircle greenStatusLine */}
+                        <div className="subOrdTimeLine">  
+                          
                           <span className="statusCircle greenStatusCircle circleVal4"></span>
-                          <span className="statusLine statusLine4"></span>
-                            <span className="statusCircle circleVal4"></span>
-                          <span className="statusLine statusLine4"></span>
-                            <span className="statusCircle circleVal4"></span>
-                          <span className="statusLine statusLine4"></span>
-                            <span className="statusCircle circleVal4"></span>
-                          <span className="statusLine statusLine4"></span>
-                            <span className="statusCircle circleVal4"></span>
+                          {[ 'packed', 'shipped', 'out for delivery', 'delivered'].map((status) => {
+                            const isCompleted = data.trackingHistory?.some(item => item.status === status);
+                            
+                            return (
+                             
+                              <>
+                                <span className={`statusLine statusLine4 ${isCompleted ? 'greenStatusLine' : ''} `}></span>
+                                <span className={`statusCircle circleVal4 ${isCompleted ? 'greenStatusCircle' : ''}`}></span>
+                              </>
+                              
+                            )
+                          })}
+                                    
                         </div>
                                   
                         <div className="timeLineText">
@@ -106,15 +165,18 @@ export const Orders = () => {
                         </div>
 
                         
-                        <div className="treak-btn js-real-track-timeline btn btn-theme-secondary btn-line" style={{marginLeft:"20px"}}>TRACK</div>
+                        <div className="treak-btn js-real-track-timeline btn btn-theme-secondary btn-line" style={{marginLeft:"20px"}} onClick={() => setTrackingOrderId(data._id)}>TRACK</div>
                                     
                       </div>
                     </div>
+                    
                     </>)
                   })}
               </div>
             </div>
           </div>
+          {trackingOrderId === data._id && <TrackOrder orderId={trackingOrderId} onClose={() => setTrackingOrderId(null)} />}
+          </>
         ))}
     </div>
     
