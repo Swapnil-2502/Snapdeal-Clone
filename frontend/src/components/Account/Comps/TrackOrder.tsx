@@ -78,7 +78,7 @@ export const TrackOrder = ({orderId,onClose}: TrackOrderProps) => {
 									<div className="educativeInfoId">
 										<span className="educativeStageId blackLabel">{history.status}</span>
 									</div>
-									<span className="educativeStageDt">10:42 PM, 12 Sep, 2025</span>
+									<span className="educativeStageDt">{history.timestamp ? formatDate(history.timestamp.toString()) : 'N/A'}</span>
 									
 								</div>
 									<ul className="stageSteps  noBullets">
