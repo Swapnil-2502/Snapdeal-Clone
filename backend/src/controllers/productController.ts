@@ -196,6 +196,30 @@ export const updateProduct = async (req: Request, res: Response) => {
     }
 }
 
+export const validateStock = async (req: Request, res: Response) => {
+    const {cartItems} = req.body
+
+    const results = []
+
+    for(let item of cartItems) {
+        const product = await Product.findById(item._id)
+        if (!product) {
+            results.push({ _id: item._id,title: item.title, status: "not_found" });
+        }
+        else if(product.stockAvailable === 0){
+            results.push({ _id: item._id, title: item.title, status: "out_of_stock", stock: product.stockAvailable });
+        }
+        else if(product.stockAvailable < item.quantity){
+            results.push({ _id: item._id, title: item.title, status: "less_stock_available", stock: product.stockAvailable });
+        }
+        else{
+            results.push({ _id: item._id, status: "ok" });
+        }
+    }
+
+    return res.json({ results });
+}
+
 export const deleteProduct = async (req: Request, res: Response) => {
     try{
         const { id } = req.params;
