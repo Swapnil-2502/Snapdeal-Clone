@@ -5,10 +5,9 @@ import { EmptyCartSection } from "./EmptyCartSection";
 import { usePayment } from "../../contexts/PaymentContext";
 
 export const CartSection= () => {
-    const {openCart,closeCartModal, removeItem, updateQuantity} = useCart()
+    const {openCart,closeCartModal, removeItem, updateQuantity,cartItems, calculateSubTotal} = useCart()
     const {openPayment} = usePayment()
-    const {cartItems, calculateSubTotal} = useCart()
-
+   
     useEffect(() => {
         if(openCart) {
             document.body.style.overflow = "hidden";
@@ -99,6 +98,18 @@ export const CartSection= () => {
                                                     <div className="item-name-wrapper">
                                                         <Link to={`/product/${TitleSlug}/${product._id}`} title={product.title} className="item-name">{product.title}</Link>
                                                     </div>
+                                                    <p className="item-extra-feature">
+                                                        {product.size && 
+                                                            <>
+                                                                <span> | </span>
+                                                                    <span>Size: {product.size}</span>
+                                                            </>}
+                                                        {product.color?.length === 1 && 
+                                                            <>
+                                                                <span> | </span>
+                                                                    <span>Color: {product.color[0]}</span>
+                                                            </>}
+                                                    </p>
                                                 </div>
                                                 <div className="item-offers "></div>
                                             </div>
@@ -106,7 +117,11 @@ export const CartSection= () => {
                                             <div className="col-xs-2 unit-price-block "><span className="item-price">₹ {product.price}</span></div>
                                             
                                             <div className="col-xs-4 cart-item-quantity ">
-                                                <input type="text" min={1} value={product.quantity} onChange={(e) => updateQuantity(product._id, parseInt(e.target.value) || 1)} style={{marginLeft:"70px", textAlign: "center" ,width:"30px",height:"30px", outline:"none", border: "1px solid #ccc"}}/>
+                                                <select  value={product.quantity} onChange={(e) => updateQuantity(product._id, parseInt(e.target.value) || 1)} style={{marginLeft:"70px", textAlign: "center" ,width:"35px",height:"35px", outline:"none", border: "1px solid #ccc"}}>
+                                                        {[...Array(Math.min(3,product.stockAvailable))].map((_,i) => (
+                                                            <option key={i+1} value={i+1}>{i+1}</option>
+                                                        ))}
+                                                </select>
                                             </div>
                             
                                             <div className="col-xs-6 delivery-container">
