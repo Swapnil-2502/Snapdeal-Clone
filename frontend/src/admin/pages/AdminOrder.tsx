@@ -421,6 +421,12 @@ export const AdminOrder = () => {
                     </div>
                 ))}
             </div>
+            {(orders?.length === 0 || searchTerm) && 
+                <div style={{textAlign:'center', padding: '3rem', color: 'white'}}>
+                    <h3 style={{fontSize: '1.5rem', marginBottom: '0.5rem'}}>No products found</h3>
+                    <p style={{opacity: 0.8}}>Try adjusting your search terms or filters</p>
+                </div>
+            }
         </div>
     );
 };
