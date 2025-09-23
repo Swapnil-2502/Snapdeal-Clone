@@ -3,9 +3,17 @@ import { useCart } from "../../contexts/CartContext"
 import { useEffect } from "react";
 import { EmptyCartSection } from "./EmptyCartSection";
 import { usePayment } from "../../contexts/PaymentContext";
+import axios from "../../api/axios";
+
+interface CartValidationResult {
+  _id: string;
+  title: string;
+  status: "not_found" | "out_of_stock" | "less_stock_available" | "ok";
+  stock?: number; 
+}
 
 export const CartSection= () => {
-    const {openCart,closeCartModal, removeItem, updateQuantity,cartItems, calculateSubTotal} = useCart()
+    const {openCart,closeCartModal, removeItem, updateQuantity,cartItems, calculateSubTotal,setCartItems} = useCart()
     const {openPayment} = usePayment()
    
     useEffect(() => {
@@ -26,6 +34,48 @@ export const CartSection= () => {
     }
 
     const TotalBill = calculateSubTotal()
+
+    const handlePayment = async () => {
+        const cartProducts = JSON.parse(localStorage.getItem('CartItems') || "{}")
+
+        try{
+            const res = await axios.post("/product/validateStock", { cartItems: cartProducts });
+            const { results } = res.data;
+
+            setCartItems((prev) => 
+                prev.map((item) => {
+                    const serverItem = results.find((r: any) => r._id === item._id);
+                    return serverItem
+                        ? { ...item, stockAvailable: serverItem.stock ?? item.stockAvailable }
+                        : item;
+                })
+            )
+
+            const invalidItems = results.filter((r: CartValidationResult) => r.status !== "ok")
+
+            if(invalidItems.length > 0){
+                invalidItems.forEach((item: CartValidationResult) => {
+                    if (item.status === "out_of_stock"){
+                        alert(`"${item.title}" is out of stock`);
+                    }
+                    else if (item.status === "less_stock_available"){
+                        alert(`"${item.title}" has less stocks and only ${item.stock} stocks are left`);
+                    }
+                    else if (item.status === "not_found") {
+                        alert(`"${item.title}" is no longer available`);
+                    }
+                })
+                return;
+            }
+
+            openPayment();
+        }
+        catch(error){
+            console.error(error);
+            alert("Something went wrong while validating stock.");
+        }
+
+    }
 
   return (
     <>
@@ -59,18 +109,10 @@ export const CartSection= () => {
                                 </div>
                                 <div className="col-xs-4 cart-list-heading text-center">Quantity</div>
                                 <div className="col-xs-6 cart-list-heading pincode-block">
-                                    {/* <div className="pincode-check-enable disp-none">
-                                        <span className="lfloat">Delivery with Charges</span> 
-                                        <input type="text" id="pincode-value"  maxLength={6} placeholder="Pincode" data-id="pincode-error-tooltip" style={{borderColor: "rgb(213, 213, 213)"}}/> 
-                                        <a id="send-pincode" data-omniturename="checkZipcart" className="col-xs-5 btn btn-small btn-theme-secondary rippleWhite pincode-button">Check</a>
-                                        <div id="pincode-error-tooltip" className="hidden">
-                                        <p className="pincode-error-text">Please enter a valid pincode.</p>
-                                        </div>
-                                    </div> */}
+                                    
                                     <div className="pincode-check-disable ">
                                         <span className="lfloat">Showing Availability</span> 
-                                        {/* <span className="cart-pincode">440027</span>  */}
-                                        {/* <a className="cart-pin-change" data-omniturename="changeZipcart"><i className="sd-icon sd-icon-edit"></i></a> */}
+                                       
                                     </div>
                                 </div>
                                 <div className="col-xs-4 cart-list-heading cart-list-heading-subtotal">
@@ -90,8 +132,11 @@ export const CartSection= () => {
                                             <div className="broder-top-line-cart"></div>
                                             <div className="col-xs-3 img-field  pad-3px-top">
                                                 <Link to={`/product/${TitleSlug}/${product._id}`}>
-                                                    <img className="item-image" width="60" alt={product.title} src={product.imageURL}/>
+                                                    <img className="item-image" width="60" alt={product.title} src={product.imageURL} style={{filter:  product.stockAvailable === 0 ? "grayscale(100%)" : "none"}}/>
                                                 </Link>
+                                                {product.stockAvailable === 0 && (
+                                                    <span style={{position:'absolute', top: "5px",  left: "5px",background: "red",color: "white",  padding: "2px 6px",fontSize: "12px",borderRadius: "4px"}}>No Stock</span>
+                                                )}
                                             </div>
                                             <div className="cart-minh col-xs-5 ">
                                                 <div className="item-description">
@@ -117,7 +162,7 @@ export const CartSection= () => {
                                             <div className="col-xs-2 unit-price-block "><span className="item-price">₹ {product.price}</span></div>
                                             
                                             <div className="col-xs-4 cart-item-quantity ">
-                                                <select  value={product.quantity} onChange={(e) => updateQuantity(product._id, parseInt(e.target.value) || 1)} style={{marginLeft:"70px", textAlign: "center" ,width:"35px",height:"35px", outline:"none", border: "1px solid #ccc"}}>
+                                                <select  value={product.quantity} onChange={(e) => updateQuantity(product._id, parseInt(e.target.value) || 1)} style={{marginLeft:"70px", textAlign: "center" ,width:"40px",height:"35px", outline:"none", border: "1px solid #ccc"}}>
                                                         {[...Array(Math.min(3,product.stockAvailable))].map((_,i) => (
                                                             <option key={i+1} value={i+1}>{i+1}</option>
                                                         ))}
@@ -153,7 +198,20 @@ export const CartSection= () => {
                                                         <button style={{background: "none",border: "none",fontSize: "18px",color: "black",cursor: "pointer", paddingBottom:"28px", paddingRight:"10px"}} >×</button>
                                                         REMOVE
                                                 </span>
+                                                <br/>
+                                                {product.stockAvailable === 0 && (
+                                                    <p style={{ color: "red", fontSize: "13px", marginTop: "8px" }}>
+                                                        This product just went out of stock, remove it to proceed
+                                                    </p>
+                                                )}
+                                                {product.stockAvailable !==0 && product.stockAvailable < product.quantity && (
+                                                <p style={{ color: "red", fontSize: "13px", marginTop: "8px" }}>
+                                                    This product now has less quantity, only {product.stockAvailable} stocks are left
+                                                </p>
+                                            )}
                                             </div>
+                                            
+                                            
                                             </div>
                                         </li>)
                                 })}
@@ -187,7 +245,7 @@ export const CartSection= () => {
                         </div>
                         <div className="col-xs-7 cart-bill-summary ">
                             <div className="cart-bill-wrapper rfloat" >
-                                <button type="button" className="btn btn-xl rippleWhite cart-button" id="rzp-cart-button"  value={TotalBill} style={{lineHeight: "0", width:"100%"}} onClick={openPayment}>PROCEED TO PAY  ₹{TotalBill}</button>
+                                <button type="button" className="btn btn-xl rippleWhite cart-button" id="rzp-cart-button"  value={TotalBill} style={{lineHeight: "0", width:"100%"}} onClick={handlePayment}>PROCEED TO PAY  ₹{TotalBill}</button>
                             </div>
                         </div>
                     </div>
