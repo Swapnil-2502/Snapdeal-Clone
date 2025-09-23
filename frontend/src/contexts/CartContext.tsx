@@ -5,6 +5,9 @@ import type { CartItem } from "../types/types"
 type CartContextType = {
     cartItems: CartItem[];
     openCart: boolean;
+    trackOrder: boolean;
+    setTrackOrder: React.Dispatch<React.SetStateAction<boolean>>;
+    closeTrackOrder: () => void;
     openCartModal: () => void;
     closeCartModal: () => void;
     addItem: (item: CartItem) => void;
@@ -17,6 +20,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({children}: {children: React.ReactNode}) => {
+    const [trackOrder, setTrackOrder] = useState(false)
     const [openCart, setOpenCart] = useState(false)
     const openCartModal = () => setOpenCart(true)
     const closeCartModal = () => setOpenCart(false)
@@ -29,17 +33,21 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
         localStorage.setItem("CartItems", JSON.stringify(cartItems))
     },[cartItems])
 
+    const closeTrackOrder = () => {
+        setTrackOrder(false)
+    }
+
     const addItem = (item: CartItem) => {
         setCartItems((prev) => {
             const existingItem = prev.find((i) => i._id === item._id)
             if(existingItem){
                 return prev.map((i) => 
                     i._id === item._id
-                    ? {...i, quantity: (i.quantity + item.quantity)}
+                    ? {...i, quantity: Math.min(i.quantity + item.quantity, i.stockAvailable)}
                     : i
                 )
             }
-            return [...prev,item]
+            return [...prev,{ ...item, quantity: Math.min(item.quantity, item.stockAvailable) }]
         })
     }
 
@@ -48,7 +56,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     }
 
     const updateQuantity = (id: string, quantity: number) => {
-        setCartItems((prev) => prev.map((i) => i._id === id ? {...i,quantity} : i ))
+        setCartItems((prev) => prev.map((i) => i._id === id ? {...i,quantity: Math.min(quantity,i.stockAvailable)}:i ))
     }
 
     const clearCart = () => {
@@ -62,7 +70,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     }
 
     return (
-        <CartContext.Provider value={{cartItems, addItem, removeItem, updateQuantity, clearCart, calculateSubTotal,openCart,openCartModal,closeCartModal}}>
+        <CartContext.Provider value={{cartItems, addItem, removeItem, updateQuantity, clearCart, calculateSubTotal,openCart,openCartModal,closeCartModal, trackOrder, setTrackOrder, closeTrackOrder}}>
             {children}
         </CartContext.Provider>
     )
