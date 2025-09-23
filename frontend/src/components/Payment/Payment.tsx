@@ -78,11 +78,17 @@ export const Payment = () => {
                         razorpay_signature: response.razorpay_signature
                     })
 
-                    const product = await axios.post("/order",{items:products,address: DefaultAddress,totalAmount:TotalBill},{headers})
-                    console.log("Hello->",product)
+                    products.map(async (product) => {
+                        const currProduct = await axios.get(`/product/${product._id}`)
+                        const currAvailableStock = currProduct.data.product.stockAvailable
+                        await axios.patch(`/product/${product._id}`,{"stockAvailable": `${currAvailableStock - product.quantity}`})
+                    })
+
+                    await axios.post("/order",{items:products,address: DefaultAddress,totalAmount:TotalBill},{headers})
+                    
 
                     const data = verifyPayment.data
-                    console.log("aobve if->",data)
+                  
                     if (data.status === "ok") {
                         window.location.href = "/";
                     } else {
