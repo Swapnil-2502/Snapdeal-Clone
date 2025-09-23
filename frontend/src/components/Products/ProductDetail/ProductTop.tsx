@@ -2,7 +2,7 @@ import type React from "react";
 import type { CartItem, ProductData } from "../../../types/types";
 import { useState } from "react";
 import { useCart } from "../../../contexts/CartContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { usePayment } from "../../../contexts/PaymentContext";
 
 
@@ -14,26 +14,32 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
     const {openPayment} = usePayment()
     const [activeIndex, setActiveIndex] = useState(0);
     const [actionError, setActionError] = useState('');
+    const [selectedSize, setSelectedSize] = useState('');
     const {addItem} = useCart()
+    const navigate = useNavigate()
 
     const isOutOfStock = (product?.stockAvailable === 0)
 
     const createCartItem = (): CartItem | null => {
         if (!product) return null
-        
+        if (!selectedSize && product.sizes?.length) return null;
         return {
             _id: product._id,
             title: product.title,
             price: product.price,
             quantity: 1,
-            imageURL: product.images[0]
+            imageURL: product.images[0],
+            color: product.color,
+            size: selectedSize || '',
+            stockAvailable: product.stockAvailable
         }
     }
 
     const handleAddToCart = () => {
         if (isOutOfStock) { setActionError('Cannot buy: no stock is available'); return; }
+        if (product?.sizes?.length && !selectedSize) { setActionError('Please select a size'); return; }
         setActionError('')
-        
+        navigate(`/cart/addTocart/${product?._id}`)
         const cartItem = createCartItem()
         if(cartItem) addItem(cartItem)
         
@@ -41,6 +47,7 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
 
     const handleBuyNow = () => {
         if (isOutOfStock) { setActionError('Cannot buy: no stock is available'); return; }
+        if (product?.sizes?.length && !selectedSize) { setActionError('Please select a size'); return; }
         setActionError('')
 
         const cartItem = createCartItem()
@@ -194,6 +201,10 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                             </div>
 
                             <div className="grey-contnr clearfix ">
+                                {product?.stockAvailable && product?.stockAvailable <= 5 && 
+                                <div className="row">
+                                    <div className="col-xs-21 inventory-single fnt-12 padL4per">Only {product?.stockAvailable} Items Left</div>
+                                </div>}
                                                 
                                 <div className="prod-attr-cont clearfix" id="product-attr-options">
                                     
@@ -224,8 +235,11 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                                 <div className="attr-value-cont sqt-attr-val">
                                                     {product?.sizes.map((size, index) => (
                                                     <div key={index} className="pull-left">
-                                                        <div className="attr-squared attr-prod-cls pdpAttr  prod-attr" >
-                                                            <div className="attr-val">{size}</div>
+                                                        <div className="">
+                                                            <button type="button" onClick={() => {setSelectedSize(size);setActionError('')}} style={{margin: '5px',border: selectedSize===size ? '2px solid #333' : '1px solid #ccc',  background: selectedSize === size ? '#f2f2f2' : '#fff',cursor:'pointer',padding: '12px', borderRadius: 4}}>
+                                                                <div className="attr-val">{size}</div>
+                                                            </button>
+                                                            
                                                         </div>
                                                     </div>
                                                     ))}
@@ -245,9 +259,17 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                                 <div className="col-xs-6 btn btn-xl rippleWhite buyLink buyNow marR15  " data-state="Buy Now" onClick={handleBuyNow}>
                                                     <span className="intialtext">buy now</span>
                                                 </div>
-                                                <Link to={isOutOfStock ? '#' : `/cart/addTocart/${product?._id}`} className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" onClick={handleAddToCart} style={{borderColor: "rgb(51, 51, 51)",background: "rgb(51, 51, 51)"}}>
+                                                <span className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" 
+                                                    onClick={(e) => {
+                                                        if(isOutOfStock || !!actionError){
+                                                            e.preventDefault();
+                                                            return
+                                                        }
+                                                        handleAddToCart()
+                                                    } }
+                                                    style={{borderColor: "rgb(51, 51, 51)",background: "rgb(51, 51, 51)"}}>
                                                     <span className="intialtext">add to cart</span>
-                                                </Link>
+                                                </span>
                                                 </div>
                                             </div>
                                             {actionError && 
