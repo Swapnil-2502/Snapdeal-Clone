@@ -138,6 +138,7 @@ export const ReviewRatings = () => {
                     </div>
                 </div>
 
+                {reviews.length > 0 && 
                 <div className="message-alert alert-error review-alert-error" style={{display: error ? "block": "none"}}>
                         
                         <div className="alert-text-wrapper" style={{display: 'flex', justifyContent: "space-between", alignItems: 'flex-start',width: "100%" }}>
@@ -146,6 +147,7 @@ export const ReviewRatings = () => {
                         </div>
                         
                 </div>
+                }
                 
                 <div id="ReviewHeader" className="customer_review">
                     <div className="whitebx">
