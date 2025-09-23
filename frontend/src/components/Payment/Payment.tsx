@@ -85,7 +85,7 @@ export const Payment = () => {
                     })
 
                     await axios.post("/order",{items:products,address: DefaultAddress,totalAmount:TotalBill},{headers})
-                    
+                    localStorage.removeItem("CartItems")
 
                     const data = verifyPayment.data
                   
