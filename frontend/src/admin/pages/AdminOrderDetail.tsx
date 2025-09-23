@@ -194,8 +194,16 @@ export const AdminOrderDetails = () => {
                                     {item.title}
                                 </h4>
                                 {item.size && (
-                                    <p style={{margin: '0 0 0.5rem 0',color: '#7f8c8d',fontSize: '0.9rem'}}>Size: {item.size}</p>
+                                    <span style={{margin: '0 0 0.5rem 0',color: '#7f8c8d',fontSize: '0.9rem'}}>Size: {item.size}</span>
                                 )}
+                                { item.color && (
+                                    <>
+                                        <span style={{margin: '0 0.5rem 0.5rem 0.5rem',color: '#7f8c8d',fontSize: '0.9rem'}}> | </span>
+                                        <span style={{margin: '0 0 0.5rem 0',color: '#7f8c8d',fontSize: '0.9rem'}}>Color: {item.color[0]}</span>
+                                    </>
+                                )
+
+                                }
                                 <div style={{display: 'flex',gap: '2rem',alignItems: 'center'}}>
                                     <span style={{color: '#7f8c8d',fontSize: '0.9rem'}}>
                                         Quantity: <strong>{item.quantity}</strong>
