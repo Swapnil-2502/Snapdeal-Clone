@@ -6,6 +6,7 @@ type CartContextType = {
     cartItems: CartItem[];
     openCart: boolean;
     trackOrder: boolean;
+    setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
     setTrackOrder: React.Dispatch<React.SetStateAction<boolean>>;
     closeTrackOrder: () => void;
     openCartModal: () => void;
@@ -70,7 +71,7 @@ export const CartProvider = ({children}: {children: React.ReactNode}) => {
     }
 
     return (
-        <CartContext.Provider value={{cartItems, addItem, removeItem, updateQuantity, clearCart, calculateSubTotal,openCart,openCartModal,closeCartModal, trackOrder, setTrackOrder, closeTrackOrder}}>
+        <CartContext.Provider value={{cartItems, addItem, removeItem, updateQuantity, clearCart, calculateSubTotal,openCart,openCartModal,closeCartModal, trackOrder, setTrackOrder, closeTrackOrder,setCartItems}}>
             {children}
         </CartContext.Provider>
     )
