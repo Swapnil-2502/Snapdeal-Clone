@@ -8,7 +8,8 @@ interface OrderItem {
     price: number;
     quantity: number;
     imageURL: string;
-    size?: string
+    color?: string[];
+    size?: string;
 }
 
 const OrderItem: Schema = new Schema<OrderItem>({
@@ -17,6 +18,7 @@ const OrderItem: Schema = new Schema<OrderItem>({
     price: { type: Number, required: true },
     quantity: { type: Number, required: true },
     imageURL: { type: String, required: true },
+    color: { type: [String] },
     size: { type: String }
 })  
 
