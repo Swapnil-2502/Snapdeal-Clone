@@ -182,6 +182,20 @@ export const LeftFilters = () => {
                                             <a className="filter-name "> Orange</a>
                                         </label>
                                     </div>
+                                    <div className="sdCheckbox filters-list ">
+                                        <input id="Color_s-Gold" type="checkbox" checked={filters.color === 'Gold'} onChange={(e) => e.target.checked ? setFilters({...filters,color: "Gold"}) :   setFilters({...filters,color: ""})} className="filter-value visible-filter" value="Gold"/>
+                                        <label htmlFor="Color_s-Gold">
+                                            <span className="filter-color-tile Gold " style={{background:"Gold",  marginLeft:'20px'}}></span> 
+                                            <a className="filter-name"> Gold</a>
+                                        </label>
+                                    </div>
+                                    <div className="sdCheckbox filters-list ">
+                                        <input id="Color_s-Assorted" type="checkbox" checked={filters.color === 'Assorted'} onChange={(e) => e.target.checked ? setFilters({...filters,color: "Assorted"}) :   setFilters({...filters,color: ""})} className="filter-value visible-filter" value="Assorted"/>
+                                        <label htmlFor="Color_s-Assorted">
+                                            <span className="filter-color-tile Assorted " style={{background:"Assorted",  marginLeft:'20px'}}></span> 
+                                            <a className="filter-name"> Assorted</a>
+                                        </label>
+                                    </div>
                                     
                                 </div>
                             </div>
