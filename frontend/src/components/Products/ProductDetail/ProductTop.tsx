@@ -13,7 +13,10 @@ interface ProductTopProps {
 export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
     const {openPayment} = usePayment()
     const [activeIndex, setActiveIndex] = useState(0);
+    const [actionError, setActionError] = useState('');
     const {addItem} = useCart()
+
+    const isOutOfStock = (product?.stockAvailable === 0)
 
     const createCartItem = (): CartItem | null => {
         if (!product) return null
@@ -28,12 +31,18 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
     }
 
     const handleAddToCart = () => {
+        if (isOutOfStock) { setActionError('Cannot buy: no stock is available'); return; }
+        setActionError('')
+        
         const cartItem = createCartItem()
-
         if(cartItem) addItem(cartItem)
+        
     }
 
     const handleBuyNow = () => {
+        if (isOutOfStock) { setActionError('Cannot buy: no stock is available'); return; }
+        setActionError('')
+
         const cartItem = createCartItem()
         if(cartItem) localStorage.setItem("BuyNowProduct", JSON.stringify(cartItem))
         openPayment()
@@ -93,7 +102,7 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                     <div id="bx-pager-left-image-panel" style={{ width: "auto", position: "relative", transitionDuration: "0s", transform: "translate3d(0px, 0px, 0px)" }}>
                                         {product?.images.map((image,index) => (
                                             <a key = {index} onMouseEnter={() => setActiveIndex(index)} data-slide-index="0" href="" className="active" style={{ float: "none", listStyle: "none", position: "relative", width: "72.9531px", marginBottom: "8px", cursor: "pointer", border: index === activeIndex ? "2px solid black" : "2px solid transparent"  }}>
-                                                <img title={product.title} alt={product.title} src={image}/>
+                                                <img title={product.title} alt={product.title} src={image} style={{filter: isOutOfStock ? 'grayscale(100%)' : 'none',opacity: isOutOfStock ? 0.6 : 1}}/>
                                             </a>
                                         ))}
                 
@@ -108,7 +117,11 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                     <ul id="bx-slider-left-image-panel" className="clearfix  height-inherit" style={{width: "auto", position: "relative"}}>
                                         {product?.images.map((image,index)=>(
                                             <li key={index} className="" style={{ float: "none", listStyle: "none", position: "absolute", width: "552.688px", zIndex: index === activeIndex ? 50 : 0 , display: index === activeIndex ? "block": "none" }}>
-                                                <img title={product.title} data-slidenum="0" className="cloudzoom" data-bigsrc="https://g.sdlcdn.com/imgs/j/u/h/Portronics-POR-1219-10000-mAh-SDL607276947-1-9ecb6.jpg" src={image} data-cloudzoom="zoomImage: 'https://g.sdlcdn.com/imgs/j/u/h/Portronics-POR-1219-10000-mAh-SDL607276947-1-9ecb6.jpg',zoomPosition: 3, zoomSizeMode: 'image'" style={{userSelect: "none"}}/>
+                                                <img title={product.title} data-slidenum="0" className="cloudzoom" data-bigsrc="https://g.sdlcdn.com/imgs/j/u/h/Portronics-POR-1219-10000-mAh-SDL607276947-1-9ecb6.jpg" src={image} data-cloudzoom="zoomImage: 'https://g.sdlcdn.com/imgs/j/u/h/Portronics-POR-1219-10000-mAh-SDL607276947-1-9ecb6.jpg',zoomPosition: 3, zoomSizeMode: 'image'" style={{userSelect: "none",filter: isOutOfStock ? 'grayscale(100%)' : 'none',opacity: isOutOfStock ? 0.6 : 1}}/>
+                                                {isOutOfStock && 
+                                                <div style={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',backgroundColor: 'rgba(0, 0, 0, 0.7)',color: 'white',padding: '8px 16px',fontSize: '2rem',fontWeight: 'bold',letterSpacing: '1px',borderRadius: '4px',zIndex: 10,}}>
+                                                    OUT OF STOCK
+                                                </div>}
                                             </li>
                                         ))}
                                     </ul>
@@ -183,6 +196,7 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                             <div className="grey-contnr clearfix ">
                                                 
                                 <div className="prod-attr-cont clearfix" id="product-attr-options">
+                                    
                                     <div className="row prod-attr-tile clearfix reset-margin" data-level="0" id="attribute-select-0">
                                         <div className="p-tile-head col-xs-3 product-attr-head">Color</div>
                                         <div className="col-xs-21">
@@ -191,7 +205,7 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                                     <div className="pull-left">
                                                         <div className="attr-thumbnail attr-prod-cls  attr-selected  prod-attr"  data-modal="" data-sold="false" data-attr-type="thumbnail" data-index="0" data-supc="SDL607276947">
                                                             <div className="attr-img">
-                                                            <img className="" src={product?.images[0]}/>
+                                                            <img className="" src={product?.images[0]} style={{filter: isOutOfStock ? 'grayscale(100%)' : 'none',opacity: isOutOfStock ? 0.6 : 1}}/>
                                                             </div>
                                                             {/* <div className="attr-val ellipses-cls">Black</div> */}
                                                         </div>
@@ -200,6 +214,27 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    {product?.sizes && product.sizes.length > 0 && 
+                                    <div className="row prod-attr-tile clearfix reset-margin  clsSizeAttr ">
+                                        <div className="p-tile-head col-xs-3 product-attr-head"> Size</div>
+                                        
+                                        <div className="col-xs-21">
+                                            <div className="squared-attr-value">
+                                                <div className="attr-value-cont sqt-attr-val">
+                                                    {product?.sizes.map((size, index) => (
+                                                    <div key={index} className="pull-left">
+                                                        <div className="attr-squared attr-prod-cls pdpAttr  prod-attr" >
+                                                            <div className="attr-val">{size}</div>
+                                                        </div>
+                                                    </div>
+                                                    ))}
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>}
                                 </div>
 
                                 <div className="pdp-comp ">
@@ -210,11 +245,16 @@ export const ProductTop: React.FC<ProductTopProps> = ({product}) => {
                                                 <div className="col-xs-6 btn btn-xl rippleWhite buyLink buyNow marR15  " data-state="Buy Now" onClick={handleBuyNow}>
                                                     <span className="intialtext">buy now</span>
                                                 </div>
-                                                <Link to={`/cart/addTocart/${product?._id}`} className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" onClick={handleAddToCart} style={{borderColor: "rgb(51, 51, 51)",background: "rgb(51, 51, 51)"}}>
+                                                <Link to={isOutOfStock ? '#' : `/cart/addTocart/${product?._id}`} className="mmm col-xs-6 btn btn-xl btn-theme-secondary rippleWhite buyLink" onClick={handleAddToCart} style={{borderColor: "rgb(51, 51, 51)",background: "rgb(51, 51, 51)"}}>
                                                     <span className="intialtext">add to cart</span>
                                                 </Link>
                                                 </div>
                                             </div>
+                                            {actionError && 
+                                                <div style={{ marginTop: 10, color: '#e74c3c', fontWeight: 600 }}>
+                                                    {actionError}
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>

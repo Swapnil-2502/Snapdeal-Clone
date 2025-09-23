@@ -15,6 +15,7 @@ export const RightProducts: React.FC<ProductsProps> = ({products}) => {
   const options = ['priceLowHigh', 'priceHighLow', 'discount'];
   const Useroptions = ['Price Low to High', 'Price High to Low', 'Discount'];
 
+
   const handleSelect = (value: string, index: number) => {
     setFilters((prev) => ({...prev,sortby:value}))
     setSelectedSort(Useroptions[index])
@@ -32,7 +33,7 @@ export const RightProducts: React.FC<ProductsProps> = ({products}) => {
         
 
 				<div className="category-name-wrapper clearfix ">
-					<h1 className="category-name">Shirts For Men</h1>
+					<h1 className="category-name">{products[0]?.type}</h1>
           <span className="category-name category-count">({products.length} Items)</span>
           
           <div className="sorting-sec animBounce">
@@ -46,7 +47,6 @@ export const RightProducts: React.FC<ProductsProps> = ({products}) => {
                   <path d="M6 9l6 6 6-6"/>
                 </svg>
               </i>
-              
             </div>
             
             <ul className={`sort-value ${showDropDown ? " " : "hidden"}`} style={{zIndex: "17"}}>
@@ -76,15 +76,15 @@ export const RightProducts: React.FC<ProductsProps> = ({products}) => {
             </div>
             }
 
-            {filters.minPrice!== 100 && filters.maxPrice!==10000 && 
+            {(filters.minPrice!== 100 || filters.maxPrice!==10000) && 
             <div className="navFiltersPill" onClick={() => setFilters({...filters,minPrice:100,maxPrice:10000})}>Price: 
               <a data-key="Price|Price" data-value="9" className="clear-filter-pill">Rs. {filters.minPrice} - Rs. {filters.maxPrice}<span className="sd-icon sd-icon-delete-signs marL5"></span></a>
             </div>
             }
 
           </div>
-          
-          {filters.color && filters.minStars && filters.minPrice !== 100 && filters.maxPrice !== 10000 && 
+        
+          {(filters.color || filters.minStars || filters.minPrice !== 100 || filters.maxPrice !== 10000) && 
           <div className=" clr-btn-Advfilters " onClick={() => setFilters({...filters,color:"",minStars:"",minPrice:100,maxPrice:10000})}>
             <button className="clear-all-filters  btn-theme-secondary btn-line btn">Clear All </button>
           </div>
@@ -96,55 +96,64 @@ export const RightProducts: React.FC<ProductsProps> = ({products}) => {
 
    
             <section className="js-section clearfix dp-widget dp-fired">
-                {products.map((product,index)=>(
-                <div key={index} className="col-xs-6  favDp product-tuple-listing js-tuple ">
-                  
-                  <div className="product-tuple-image ">
+                {products.map((product,index)=> {
+                  const isOutOfStock = (product?.stockAvailable === 0)
+
+                  return (
+
+                  <div key={index} className="col-xs-6  favDp product-tuple-listing js-tuple ">
                     
-                    <Link to={`/product/${product.title}/${product._id}`} className="dp-widget-link hashAdded" >
-                          
-                        <picture className="picture-elem">
-                            
-                            <img className="product-image wooble" title={product.title} src={product.images[0]}/>
-
-                        </picture>
-                            
-                    </Link>
-                  
-                  </div>
-
-                  <div className="product-tuple-description ">
-        
-                      <div className="product-desc-rating ">
-
-                          <Link to={`/product/${product.title}/${product._id}`} className="dp-widget-link noUdLine hashAdded" >
-                            
-                            <p className="product-title" title={product.title}>{product.title}</p>
-                            <div className="product-price-row clearfix">
-                                <div className="lfloat marR10">
-                                  <span className="lfloat product-desc-price strike ">Rs. {product.mrp}</span>
-                                  <span className="lfloat product-price">Rs.  {product.price}</span>
-                                </div>
-                              <div className="product-discount">
-                                  <span>{Math.round( ((product.mrp - product.price) / product.mrp) * 100 )}% Off</span>
-                              </div>
-                            </div>
-                            
-                            <div className="clearfix rating av-rating">
-                                <div className="rating-stars ">
-                                  <div className="grey-stars">
-                                    <span className="filled-stars" style={{width:`${(Number(product?.avgRating) / 5)*100}%`}}></span>
-                                  </div>
-                                </div>
-                                <p className="product-rating-count">({product.totalRatings})</p>
-                            </div>
-                          </Link>
-                      </div>
-          
-                              
+                    <div className="product-tuple-image ">
                       
-                  </div>
-                </div>))}
+                      <Link to={`/product/${product.title}/${product._id}`} className="dp-widget-link hashAdded" >
+                            
+                          <picture className="picture-elem">
+                              
+                              <img className="product-image wooble" title={product.title} src={product.images[0]} style={{filter: isOutOfStock ? 'grayscale(100%)' : 'none',opacity: isOutOfStock ? 0.6 : 1, position:'relative'}}/>
+                              {isOutOfStock && 
+                              <div style={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',backgroundColor: 'rgba(0, 0, 0, 0.7)',color: 'white',padding: '8px 16px',fontSize: '1rem',fontWeight: 'bold',letterSpacing: '1px',borderRadius: '4px',zIndex: 10,}}>
+                                OUT OF STOCK
+                              </div>}
+                          </picture>
+                              
+                      </Link>
+                    
+                    </div>
+
+                    <div className="product-tuple-description ">
+          
+                        <div className="product-desc-rating ">
+
+                            <Link to={`/product/${product.title}/${product._id}`} className="dp-widget-link noUdLine hashAdded" >
+                              
+                              <p className="product-title" title={product.title}>{product.title}</p>
+                              <div className="product-price-row clearfix">
+                                  <div className="lfloat marR10">
+                                    <span className="lfloat product-desc-price strike ">Rs. {product.mrp}</span>
+                                    <span className="lfloat product-price">Rs.  {product.price}</span>
+                                  </div>
+                                <div className="product-discount">
+                                    <span>{Math.round( ((product.mrp - product.price) / product.mrp) * 100 )}% Off</span>
+                                </div>
+                              </div>
+                              
+                              <div className="clearfix rating av-rating">
+                                  <div className="rating-stars ">
+                                    <div className="grey-stars">
+                                      <span className="filled-stars" style={{width:`${(Number(product?.avgRating) / 5)*100}%`}}></span>
+                                    </div>
+                                  </div>
+                                  <p className="product-rating-count">({product.totalRatings})</p>
+                              </div>
+                            </Link>
+                        </div>
+            
+                                
+                        
+                    </div>
+                  </div>)
+              
+                })}
             </section>
         </div>
 
