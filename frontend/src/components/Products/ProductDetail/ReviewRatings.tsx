@@ -53,7 +53,7 @@ export const ReviewRatings = () => {
     const fetchReviews = async () => {
         try {
             const res = await axios.get(`/review/${productId}`);
-            setReviews(res.data.reviewDoc.ratingsAndReviews || []);
+            setReviews(res.data.reviewDoc?.ratingsAndReviews || []);
         } catch (err) {
             setError(true)
             setErrorMessage("Error fetching reviews")
