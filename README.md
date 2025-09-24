@@ -57,6 +57,50 @@ Here’s the flow of the **Register & Login** form:
   
 ---
 
+## 🔗 API Endpoints
+
+All endpoints start with `/api`
+
+### **Auth**
+- `POST /auth/check-email`
+- `POST /auth/register`
+- `POST /auth/verify-otp`
+
+### **Product**
+- `POST /product`
+- `POST /validateStock`
+- `GET /product`
+- `GET /product/search`
+- `GET /product/:id`
+- `PATCH /product/:id`
+- `DELETE /product/:id`
+
+### **Addresses**
+- `POST /user/addresses`
+- `GET  /user/addresses`
+- `PUT  /user/addresses/:addressId`
+- `DELETE /user/addresses/:addressId`
+
+### **Payment**
+- `POST /create-order`
+- `POST /verify-payment`
+
+### **Order**
+- `GET /order/allorders`
+- `GET /order/orderbyId/:orderId`
+- `POST /order`
+- `PATCH /order/:orderId`
+- `GET /order`
+- `GET /order/:orderId`
+
+### **Review**
+- `GET /review/:productId`
+- `POST /review/:productId`
+- `PATCH /review/:productId/:reviewId`
+- `DELETE /review/:productId/:reviewId`
+
+---
+
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the repo
