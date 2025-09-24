@@ -87,6 +87,7 @@ export interface CartItem {
   imageURL: string;
   size?: string;
   color?: string;
+  stockAvailable: number
 }
 
 export interface UserAddress {
