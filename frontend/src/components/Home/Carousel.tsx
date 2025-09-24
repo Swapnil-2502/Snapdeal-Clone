@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Pincode } from "./Pincode"
 
 
 export const Carousel = () => {
@@ -47,7 +48,7 @@ export const Carousel = () => {
     <>
     <section className="home-page-right-section animScroll"> 
 		<section className="home-page-right-card dp-click-widgets">
-			<div className="main-banner-wrapper adtechBannerHomePage dp-widget posRelative dp-fired" style={{maxWidth: "1140px"}}>
+			<div className="main-banner-wrapper adtechBannerHomePage dp-widget posRelative dp-fired" style={{maxWidth: "864px"}}>
 				<button className="carousel-btn prev" onClick={handlePrev}>‹</button>
                 <button className="carousel-btn next" onClick={handleNext}>›</button>
 				<div className="banner-area top-banner-area" id="top-banner" style={{transition: "transform 1s ease", transform: `translateX(-${currIndex * 1140}px)`, width: "8640px"}}>
@@ -63,6 +64,7 @@ export const Carousel = () => {
                     ))}
                 </div>
             </div>
+            <Pincode />
 		</section>
 	</section>
     </>
