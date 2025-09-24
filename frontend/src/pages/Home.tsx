@@ -1,5 +1,6 @@
 import { FooterBottom } from "../components/footer/FooterBottom"
 import FooterTop from "../components/footer/FooterTop"
+import { Barcode } from "../components/Home/Barcode"
 import { Carousel } from "../components/Home/Carousel"
 import { LeftSideNavbar } from "../components/Home/LeftSideNavbar"
 import { Poster } from "../components/Home/Poster"
@@ -17,8 +18,8 @@ const Home = () => {
         <Products />
         <TrendingProducts />
         <Poster />
+        <Barcode />
       </div>
-    
       <div className="mt-96">
         <div id="sdFooter">
           <FooterTop />
