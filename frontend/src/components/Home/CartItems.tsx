@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
 
 interface CartItemsProps {
@@ -24,6 +25,9 @@ export const CartItems = ({index,currentIndex,onNext}:CartItemsProps) => {
       margin: isActive ? "0px" : "14px 0px 0px 12px",
     } as React.CSSProperties
 
+    const generateSlug = (title: string) => {
+        return title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-').substring(0, 60); 
+    }
 
   return (
     <>
@@ -35,24 +39,27 @@ export const CartItems = ({index,currentIndex,onNext}:CartItemsProps) => {
                 <span className="cartCount">{cartItems.length}</span>  
                 <span className="itemsVal"> items</span> in your cart
             </div>
-            {cartItems.slice(0,2).map((item, index) => (
+            {cartItems.slice(0,2).map((item, index) => {
+                const slug = generateSlug(item.title)
+                return (
                 <div key={index} className="shortListImgDiv clearfix cartItemDiv">
                     <div className="shortListImg">
-                        <a href="">
-                            <img className="wooble" src={item.imageURL}/></a>
+                        <Link to={`/product/${slug}/${item._id}`}>
+                            <img className="wooble" src={item.imageURL}/>
+                        </Link>
                     </div>
                     <div className="shortListName">
-                        <a className="nameField" href="">
+                        <Link to={`/product/${slug}/${item._id}`}>
                             <span className="nameDiv">{item.title}</span>
-                        </a>
+                        </Link>
                         <div className="prodPrice">Rs {item.price}</div> 
                         {/* <div className="ordLink  nbaBuyNow padT10">
                             <span className="nbaBuyLink" >BUY NOW</span> 
                         
                         </div> */}
                     </div>
-                </div>
-            ))}
+                </div>)
+                })}
            
             <div className="controls nextBestActionControls padT10 col-xs-24">
                 <button className="btn viewAllCartBtn button--reject btn-theme-secondary col-xs-16 nextBestActionTrack" data-stack="stack_yuda" onClick={() => openCartModal()}>
