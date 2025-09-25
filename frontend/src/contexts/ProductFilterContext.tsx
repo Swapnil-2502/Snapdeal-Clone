@@ -27,16 +27,14 @@ export const ProductFilterProvider = ({children}: {children: React.ReactNode}) =
     })
 
     const [searchKeyword, setSearchKeyword] = useState(() => {
-        const saved = localStorage.getItem("SearhKeyword")
+        const saved = localStorage.getItem("SearchKeyword")
         return saved ? 
             JSON.parse(saved) : ""
     })
 
-    console.log("SearchKeyword->",searchKeyword)
-
     useEffect(() => {
         localStorage.setItem("Productfilters",JSON.stringify(filters))
-        localStorage.setItem("SearhKeyword",JSON.stringify(searchKeyword))
+        localStorage.setItem("SearchKeyword",JSON.stringify(searchKeyword))
     },[filters,searchKeyword])
 
     return (
