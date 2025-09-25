@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { LoginRegister } from "../AuthForm/LoginRegister";
 import { SignUp } from "../AuthForm/SignUp";
 import { VerifyOtp } from "../AuthForm/VerifyOtp";
@@ -13,6 +13,19 @@ export const SignIn = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [showLoginRegister, setShowLoginRegister] = useState(false);
     const [currentStep , setCurrentStep] = useState<AuthStep>('login-register')
+
+    useEffect(() => {
+            if(showLoginRegister) {
+                document.body.style.overflow = "hidden";
+            }
+            else{
+                document.body.style.overflow = "";
+            }
+    
+            return () => {
+                document.body.style.overflow = "";
+            };
+        },[showLoginRegister])
 
     const handleOpenLoginRegister = () => {
         setShowLoginRegister(true);
@@ -59,8 +72,8 @@ export const SignIn = () => {
                         <div className="dropdownAccountNonLoggedIn">
                             <div className="accountList">
                                 <ul>
-                                    <li><a href="https://www.snapdeal.com/myorders"><i className="account-icon footerIconsImg"></i>Your Account</a></li>
-                                    <li><a href="https://www.snapdeal.com/myorders"><i className="order-icon footerIconsImg"></i>Your Orders</a></li>
+                                    <li><a href=""><i className="account-icon footerIconsImg"></i>Your Account</a></li>
+                                    <li><a href=""><i className="order-icon footerIconsImg"></i>Your Orders</a></li>
                                     {/* <li><a href="https://www.snapdeal.com/mysdcash"  className="sd-information"><i className="sd-cash-icon footerIconsImg"></i>SD Cash</a></li> */}
                                 </ul>
                             </div>
@@ -77,27 +90,42 @@ export const SignIn = () => {
             </div>
         </div>
         <div id="signin_box" className="iframeSignin">
-            <div id="login-register-modal" className="userAuthIcons">
+           
                 {showLoginRegister && 
-                    <div className="userAuth-card" style={{marginTop: "300px"}}>
-                        {currentStep === 'login-register' && 
-                            <LoginRegister 
-                                onClose = {handleCloseLoginRegister}
-                                onNext = {(nextStep:AuthStep) => handleNextStep(nextStep)} 
-                            />
-                        }
-                        {currentStep === 'signup' &&
-                            <SignUp 
-                                onClose = {handleCloseLoginRegister} 
-                                onNext= {(nextStep: AuthStep) => handleNextStep(nextStep)}
-                            />
-                        }
-                        {currentStep === 'verify-otp' && 
-                            <VerifyOtp onClose={handleCloseLoginRegister} />
-                        }
+                    <div id="login-register-modal" className="userAuthIcons">
+                        <ul className="listAuthModal">
+                            <li className="mngorder">
+                            <i className="userAuthIcons"></i>
+                            <h4>MANAGE YOUR ORDERS</h4>
+                            <p>Track orders, manage cancellations &amp; returns.</p>
+                            </li>
+                            <li className="offrupdate">
+                            <i className="userAuthIcons"></i>
+                            <h4>AWESOME OFFERS UPDATES FOR YOU</h4>
+                            <p>Be first to know about great offers and save.</p>
+                            </li>
+                        </ul>                    
+                    
+                        <div className="userAuth-card" style={{marginTop: "300px"}}>
+                            {currentStep === 'login-register' && 
+                                <LoginRegister 
+                                    onClose = {handleCloseLoginRegister}
+                                    onNext = {(nextStep:AuthStep) => handleNextStep(nextStep)} 
+                                />
+                            }
+                            {currentStep === 'signup' &&
+                                <SignUp 
+                                    onClose = {handleCloseLoginRegister} 
+                                    onNext= {(nextStep: AuthStep) => handleNextStep(nextStep)}
+                                />
+                            }
+                            {currentStep === 'verify-otp' && 
+                                <VerifyOtp onClose={handleCloseLoginRegister} />
+                            }
+                        </div>
                     </div>
                 }
-            </div>
+            
         </div>
     </>
   )
