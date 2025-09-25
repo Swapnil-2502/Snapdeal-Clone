@@ -1,0 +1,663 @@
+.comp-left-wrapper {
+    backface-visibility: hidden;
+}
+
+.left-wrapper {
+    background: #fff;
+    font-family: "font-regular";
+    padding: 17px;
+    margin-right: 2px;
+    overflow: hidden;
+}
+
+.comp-left-filter, .comp-adv-filter {
+    font-family: "font-regular";
+    position: relative;
+}
+
+.comp-left-filter .filter-section .filter-name-section, .comp-adv-filter .filter-section .filter-name-section {
+    margin-top: 20px;
+    padding: 10px 0 2px;
+}
+
+.comp-left-filter .filter-section .filter-name-section .filter-type-name, .comp-adv-filter .filter-section .filter-name-section .filter-type-name {
+    font: 14px "font-bold";
+    max-width: 85%;
+    margin-bottom: 0;
+    color: #5a5a59;
+}
+
+.filter-dot {
+    width: 4px;
+    height: 4px;
+    display: inline-block;
+    background: #e40046;
+    border-radius: 50%;
+    vertical-align: 3px;
+    margin-right: 0px;
+    margin-left: -8px;
+}
+
+.comp-left-filter .filter-clear, .comp-adv-filter .filter-clear {
+    font-size: 11px;
+    padding: 0 6px;
+    color: #e40046;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.filter-accordian {
+    float: right;
+    font-size: 20px;
+    line-height: 12px;
+    color: #dbdbdb;
+    cursor: pointer;
+    margin-top: 1px;
+}
+
+.comp-left-filter .filter-section .filter-content, .comp-adv-filter .filter-section .filter-content {
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease;
+    -moz-transition: height 0.3s ease;
+    -ms-transition: height 0.3s ease;
+    -o-transition: height 0.3s ease;
+    transition: height 0.3s ease;
+}
+
+.comp-left-filter .filter-section .filter-content .filter-inner[data-name^="Price"], .comp-adv-filter .filter-section .filter-content .filter-inner[data-name^="Price"] {
+    padding-top: 6px !important;
+}
+
+.comp-left-filter .filter-section .filter-content .filter-inner, .comp-adv-filter .filter-section .filter-content .filter-inner {
+    padding-top: 15px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.comp-left-filter .filter-price-slider .price-slider-scroll, .comp-adv-filter .filter-price-slider .price-slider-scroll {
+    width: 13px;
+    height: 13px;
+    background: #333;
+    border-radius: 50%;
+    transition: all 0.2s ease-out;
+    top: -6px;
+    margin-left: 0px;
+    border: medium none;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    outline: none;
+}
+
+.comp-left-filter .filter-price-slider .price-slider-scroll, .comp-adv-filter .filter-price-slider .price-slider-scroll {
+    width: 13px;
+    height: 13px;
+    background: #333;
+    border-radius: 50%;
+    transition: all 0.2s ease-out;
+    top: -6px;
+    margin-left: 0px;
+    border: medium none;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    outline: none;
+}
+
+.comp-left-filter .filter-price-slider .ui-widget-header, .comp-adv-filter .filter-price-slider .ui-widget-header {
+    background: #333;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.clearfix, .clear {
+    clear: both;
+}
+
+
+.comp-left-filter .from-price-text, .comp-adv-filter .from-price-text {
+    font: 12px "font-regular";
+    text-align: left;
+}
+
+.comp-left-filter .to-price-text, .comp-adv-filter .to-price-text {
+    font: 12px "font-regular";
+    text-align: right;
+    float: right;
+}
+
+@media only screen and (min-width: 1154px) {
+    .comp-left-filter .price-input {
+        width: 34%;
+    }
+}
+
+.comp-left-filter .price-input, .comp-adv-filter .price-input {
+    width: 38%;
+    float: left;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.comp-left-filter .price-input .price-text-box, .comp-adv-filter .price-input .price-text-box {
+    position: relative;
+}
+
+.comp-left-filter .price-input .price-text-box .input-filter, .comp-adv-filter .price-input .price-text-box .input-filter {
+    padding-left: 27px;
+    line-height: 16px;
+    margin-bottom: 5px;
+}
+
+.comp-left-filter .input-filter, .comp-adv-filter .input-filter {
+    border: 1px solid #dbdbdb;
+    width: 100%;
+    padding: 10px 1px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-input-placeholder: #b2b2b2;
+    -o-input-placeholder: #b2b2b2;
+    -moz-input-placeholder: #b2b2b2;
+    -ms-input-placeholder: #b2b2b2;
+    input-placeholder: #b2b2b2;
+    font: 12px / 20px "font-regular";
+    margin-bottom: 10px;
+}
+
+.comp-left-filter .price-input .price-text-box .rsText, .comp-adv-filter .price-input .price-text-box .rsText {
+    position: absolute;
+    top: 12px;
+    left: 5px;
+    font-size: 13px;
+    color: #9e9e9e;
+    margin-right: 3px;
+    padding-left: 3px;
+}
+
+
+.comp-left-filter .dash, .comp-adv-filter .dash {
+    float: left;
+    margin-top: 24px;
+    color: #999;
+    margin: 24px 2%;
+}
+
+.comp-left-filter .price-go-arrow, .comp-adv-filter .price-go-arrow {
+    font-size: 15px;
+    float: right;
+    padding: 1px 8px;
+    color: #333;
+    margin-top: 9px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.comp-left-filter .filter-color-tile, .comp-adv-filter .filter-color-tile {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: -9px;
+    border: 1px solid #f7f7f7;
+}
+
+.custom-elem, .sdRadio label:before, .sdCheckbox label:before {
+    background: #fff;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #e5e5e5;
+    display: inline-block;
+    content: " ";
+    margin-right: 5px;
+}
+
+.sdCheckbox label {
+    transition-duration: 0.2s;
+    display: block;
+    cursor: pointer;
+}
+
+.comp-left-filter .sdRadio, .comp-left-filter .sdCheckbox, .comp-adv-filter .sdRadio, .comp-adv-filter .sdCheckbox {
+    padding: 6px 10px;
+    margin: -6px -10px 6px;
+}
+
+.comp-right-wrapper {
+    padding: 15px 0 30px;
+    margin-bottom: 30px;
+    position: relative;
+    top: -1px;
+}
+
+.comp {
+    background: #fff;
+    padding: 20px;
+}
+
+.category-name-wrapper {
+    padding: 0 15px 10px;
+    clear: both;
+    font-size: 22px;
+}
+
+.category-name-wrapper .category-name {
+    color: #5a5a59;
+    float: left;
+    margin-top: 10px;
+    font-size: 23px;
+    max-width: 46%;
+}
+
+.comp-right-wrapper .product-row {
+    font-family: "font-regular";
+    color: #212121;
+    clear: both;
+    padding: 10px 22px 0;
+}
+
+.comp-right-wrapper .product-row section {
+    clear: both;
+    margin-bottom: 30px;
+}
+
+.product-tuple, .comp-right-wrapper .product-row section .product-tuple-listing, .product-tuple-listing {
+    padding: 10px 0 0;
+    margin-bottom: 15px;
+    height: auto;
+    z-index: 14;
+}
+
+@media only screen and (min-width: 1439px) and (max-width: 1598px) {
+    .product-tuple-image {
+        min-height: 280px;
+    }
+}
+
+.product-tuple-image {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-tuple-image a {
+    display: block;
+    min-height: 220px;
+    padding: 3px 10px;
+}
+
+@media only screen and (min-width: 1439px) and (max-width: 1598px) {
+    .product-tuple-image .picture-elem {
+        display: block;
+        max-height: 273px;
+        overflow: hidden;
+    }
+}
+
+.product-tuple-image .picture-elem {
+    display: block;
+    max-height: 251px;
+    overflow: hidden;
+}
+
+.product-tuple-image .product-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-tuple-image .row-disc {
+    padding: 5px 0;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    height: 41px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.product-tuple-description {
+    padding: 10px 10px 0;
+    z-index: 1;
+    position: relative;
+    font-family: "font-regular";
+}
+
+a.noUdLine {
+    text-decoration: none;
+}
+
+.product-title {
+    color: #666;
+    font: 13px "font-regular";
+    margin-bottom: 11px;
+    max-height: 53px;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-height: 18px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.product-price-row {
+    line-height: 21px;
+}
+
+.product-desc-price {
+    color: #ccc;
+    font-size: 12.5px;
+    margin-right: 6px;
+    position: relative;
+}
+
+.product-price {
+    font-size: 14px;
+    line-height: 19px;
+    color: #333;
+    font-family: "font-bold";
+    height: 20px;
+}
+
+.product-discount {
+    font: 11px "font-regular";
+    z-index: 1;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    color: #999;
+    padding: 2px 5px 1px;
+    float: left;
+    margin-top: -1px;
+}
+
+.rating-stars {
+    position: relative;
+    vertical-align: baseline;
+    display: inline-block;
+    color: #e9e9e9;
+    overflow: hidden;
+    height: 14px;
+    float: left;
+    line-height: 10px;
+}
+
+.product-rating-count {
+    float: left;
+    font-size: 12px;
+    margin-left: 10px;
+    color: #ccc;
+    margin-top: 3px;
+}
+
+.product-hover-state a {
+    color: #9e9e9e;
+}
+
+a.noUdLine {
+    text-decoration: none;
+}
+
+.tuple-subattribute {
+    margin-top: 10px;
+}
+
+.product-tuple-attribute, .tuple-subattribute {
+    font-size: 12px;
+    color: #b2b2b2;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-hover-state .line {
+    margin: 6px -10px 10px;
+}
+
+.line {
+    border-top: 1px solid #eee;
+    margin: 8px -10px;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+.marT5 {
+    margin-top: 5px;
+}
+
+.tuple-subattribute span {
+    color: #999;
+    vertical-align: baseline;
+    margin-left: 8px;
+}
+
+.marL0 {
+    margin-left: 0 !important;
+}
+
+.marR10 {
+    margin-right: 10px;
+}
+
+.tuple-subattribute span {
+    color: #999;
+    vertical-align: baseline;
+    margin-left: 8px;
+}
+
+.comp-left-filter .filter-section .filter-content .filters-list, .comp-adv-filter .filter-section .filter-content .filters-list {
+    cursor: pointer;
+}
+
+.sdCheckbox label {
+    transition-duration: 0.2s;
+    display: block;
+    cursor: pointer;
+}
+
+
+.filter-value[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #333;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.filter-value[type="checkbox"]:checked {
+  background-color: #000;
+  border-color: #000;
+}
+
+.filter-value[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 14px;
+  color: white;
+}
+
+.filters-list {
+  display: flex;
+  align-items: center;  /* vertically align */
+  gap: 8px;             /* spacing between checkbox and color */
+}
+
+.filter-color-tile {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.sorting-sec {
+    width: 226px;
+    float: right;
+    margin-top: 2px;
+}
+
+.sort-drop {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 225px;
+    border: 1px solid #e8e8e8;
+    padding: 12px 12px 12px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.sort-drop .sort-label {
+    color: #999;
+    font-size: 13px;
+    float: left;
+    margin-right: 8px;
+    padding-left: 4px;
+}
+
+.sort-drop .sort-selected {
+    font-size: 13px;
+    float: left;
+    width: 63%;
+}
+
+.sort-value {
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    box-shadow: 0 1px 6px 1px rgba(0,0,0,0.1);
+    margin-top: 3px;
+    width: 166px;
+    color: #999;
+    position: absolute;
+    z-index: 17;
+    background: #fff;
+    right: 1.5%;
+    border: 1px solid #e8e8e8
+}
+
+.sort-value li {
+    padding: 13px 15px
+}
+
+
+
+.sort-value li:active {
+    background: #333;
+    color: #fff
+}
+
+.search-li.sort-active {
+    background: #333;
+    color: #fff;
+}
+
+.sort-drop .sort-arrow {
+    color: #999;
+    font-size: 13px;
+    float: right;
+    margin-top: -1px;
+}
+
+
+
+.sort-arrow svg {
+  display: block; 
+}
+
+
+.tip, .promoStripTop .offer-tip .arrow, .sort-value .arrow {
+    position: absolute;
+    top: -23px;
+    right: 6px;
+}
+
+.comp-left-filter .filter-name, .comp-adv-filter .filter-name {
+    font-size: 12px;
+    color: #333;
+    max-width: 70%;
+    text-decoration: none;
+    display: inline-block;
+    word-wrap: break-word;
+    pointer-events: none;
+    line-height: 14px;
+}
+
+.sdRadio label a {
+    vertical-align: text-top;
+}
+
+
+
+.comp-left-filter .filter-prod-count, .comp-adv-filter .filter-prod-count {
+    font-size: 12px;
+    color: #b2b2b2;
+    float: right;
+    margin-top: 7px;
+}
+
+.filters-top-selected {
+    max-height: 69px;
+    position: relative;
+    margin: 14px 0px 10px;
+    padding: 0px 19px;
+}
+
+.filters-top-selected .filters {
+    width: auto;
+    float: left;
+    height: auto;
+    max-width: 87.5%;
+}
+
+.navFiltersPill {
+    border-right: none;
+    color: #999;
+    font-weight: normal;
+    font-size: 12px;
+    display: inline;
+    margin-right: 12px;
+}
+
+.navFiltersPill a {
+    color: #5a5a59;
+    display: inline-block;
+    cursor: pointer;
+    padding: 9px 15px 7px;
+    border: 1px solid #e5e5e5;
+    margin: 0 6px 8px 5px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.filters-top-selected .clear-all-filters {
+    font-size: 12px;
+    height: 29px;
+    line-height: 25px;
+    padding: 2px 12px;
+    float: right;
+}
+
+.sd-icon-delete-signs:before {
+   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,1283 @@
+/* .SDOrderCancel {
+    position: relative;
+    padding-bottom: 80px;
+}
+
+#userOrderHeaderContainer .accountOrder {
+    width: 100%;
+}
+
+.myOrdersRevamp .accountOrder {
+    font-size: 18px;
+    padding: 0;
+    color: #ce1f24;
+    border-bottom: 1px solid #d0d0d0;
+    width: 755px;
+}
+
+#userOrderHeaderContainer .subOrderDetailContainer {
+    height: 163px;
+    display: table;
+    padding-top: 30px;
+    width: 980px;
+    margin-left: 10px;
+}
+
+#userOrderHeaderContainer .subOrderInfo {
+    float: left;
+    width: 537px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#userOrderHeaderContainer .subOrderInfo .greyLabel {
+    color: #989898;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    color: #212121;
+    cursor: pointer;
+    display: block;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 44px;
+    padding: 13px 0;
+    position: relative;
+    margin-top: 20px;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2+.accordionMenuContent {
+    border-top: 1px solid #f0f0f0;
+}
+
+.SDOrderCancel .accordionMenuContent {
+    padding: 0 30px 30px;
+    border: 1px solid #e1e1e1;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.noStatus {
+    display: none;
+}
+
+.SDOrderCancel .cancelOrderSprites {
+    background-image: url("https://i1.sdlcdn.com/img/snapdeal/sprite/Order-icon-sprite.png");
+    background-repeat: no-repeat;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.status, .SDOrderCancel .accordion-menu-wrapper h2 span.action {
+    display: inline-block;
+    float: left;
+    height: 44px;
+    overflow: hidden;
+    text-indent: -999px;
+    width: 44px;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2+.accordionMenuContent {
+    border-top: 1px solid #f0f0f0;
+}
+
+.SDOrderCancel .accordionMenuContent {
+    padding: 0 30px 30px;
+    border: 1px solid #e1e1e1;
+}
+
+.SDOrderCancelWrapper {
+    width: 100%;
+    font-size: 14px;
+    color: #757575;
+}
+
+.SDOrderCancelWrapper li label {
+    display: block;
+    font-size: 18px;
+    line-height: 2em;
+    cursor: text;
+}
+
+#userOrderHeaderContainer .blackText {
+    color: black;
+}
+
+#userOrderHeaderContainer .subOrderDetailContainer img {
+    width: 113px;
+    float: left;
+    height: 132px;
+}
+
+#userOrderHeaderContainer .subOrderTitle {
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.reasonForCancel {
+    background-position: -5px -6px;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.action {
+    margin: 0 13px;
+}
+
+#cancellationReasonsNonCOD.sdDropDownOuter {
+    width: 248px !important;
+}
+
+.SDOrderCancelWrapper li .sdDropDownOuter {
+    margin: 0;
+}
+
+
+.sdDropDownHead {
+    background-position: 225px 6px !important;
+    border-left: 1px solid #d4d3d3 !important;
+    padding-right: 4px;
+    text-transform: none !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 20px;
+}
+
+.sdDropDownHead {
+    font-size: 15px;
+    cursor: pointer;
+    color: #606060;
+    text-transform: uppercase;
+    padding: 4px 30px 4px 6px;
+    background: url("https://i4.sdlcdn.com/img/arrows/down_red_arrow.png") no-repeat 165px 6px;
+    border: 1px solid #c7c7c7;
+    border-left: 3px solid #d4d3d3;
+}
+
+.SDOrderCancelWrapper .orderCancelTextarea {
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 375px;
+    min-height: 100px;
+    padding: 6px;
+    width: 375px;
+}
+
+
+.SDOrderCancelWrapper .button37x97 {
+    display: block;
+    width: 97px;
+    height: 37px;
+}
+
+.SDOrderCancelWrapper .button37x97 a {
+    padding-top: 0px;
+    margin-top: 2px;
+}
+
+.SDOrderCancelWrapper li {
+    clear: both;
+    display: block;
+    list-style: none;
+    padding: 20px 0 0;
+}
+
+.sdDropDownContent {
+    border-left: 2px solid transparent !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    width: 207px;
+}
+
+.sdDropDownContent {
+    background-color: #ffffff;
+    font-size: 12px;
+    padding: 0px 2px 4px 13px;
+    border-bottom: 1px solid #eeeee0;
+    height: auto;
+}
+
+.sdDropDownContent a {
+    color: #292929;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.SDOrderCancelWrapper .sdDropDownPopup {
+    height: 130px;
+    overflow-y: scroll;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.replaceSuccess {
+    background-position: -5px -371px;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.status {
+    height: 43px;
+    width: 43px;
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive .headerSubText {
+    color: #212121;
+    letter-spacing: 0.2px;
+} */
+
+.sdDropDownHead {
+    font-size: 15px;
+    cursor: pointer;
+    color: #606060;
+    text-transform: uppercase;
+    padding: 4px 30px 4px 6px;
+    background: url('https://i4.sdlcdn.com/img/arrows/down_red_arrow.png') no-repeat 165px 6px;
+    border: 1px solid #c7c7c7;
+    border-left: 3px solid #d4d3d3;
+}
+
+
+
+.SDOrderCancel {
+    position: relative;
+    padding-bottom: 80px
+}
+
+.SDOrderCancel .textheadings h2 {
+    font-size: 20px;
+    line-height: 2em;
+    padding-top: 1em
+}
+
+.submitLoader {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    z-index: 1002;
+    font-size: 12px
+}
+
+.SDOrderCancel .cancelOrderSprites {
+    background-image: url("https://i1.sdlcdn.com/img/snapdeal/sprite/Order-icon-sprite.png");
+    background-repeat: no-repeat
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    color: #212121;
+    cursor: pointer;
+    display: block;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 44px;
+    padding: 13px 0;
+    position: relative;
+    margin-top: 20px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive {
+    background: #f7f7f7;
+    border: 1px solid #f0f0f0;
+    color: #757575;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 43px;
+    padding: 0 10px 0 0
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive .headerSubText {
+    color: #212121;
+    letter-spacing: 0.2px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.status,.SDOrderCancel .accordion-menu-wrapper h2 span.action {
+    display: inline-block;
+    float: left;
+    height: 44px;
+    overflow: hidden;
+    text-indent: -999px;
+    width: 44px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.action {
+    margin: 0 13px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.action {
+    margin: 0
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.status {
+    height: 43px;
+    width: 43px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.action {
+    height: 43px;
+    width: 47px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 .secondaryAction {
+    display: none
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive .secondaryAction,.hideContent {
+    display: inline-block;
+    color: #004c92;
+    font-size: 12px;
+    font-weight: normal;
+    float: right;
+    line-height: 43px;
+    margin-right: 10px
+}
+
+.hideContent {
+    color: #004c92;
+    font-size: 12px;
+    font-weight: normal;
+    float: right;
+    line-height: 43px;
+    margin-right: 20px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.reasonForCancel {
+    background-position: -5px -6px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.modeOfRefund {
+    background-position: -5px -58px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2 span.noStatus {
+    display: none
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.reasonForCancel {
+    background-position: -5px -162px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.modeOfRefund {
+    background-position: -5px -214px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.pickUpAddress {
+    background-position: -5px -264px
+}
+
+.SDOrderCancel .requestProcessWrapper span.requestInitiated {
+    background-position: 0px -314px
+}
+
+.SDOrderCancel .requestProcessWrapper span.requestSuccessful {
+    background-position: 0px -418px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.replaceSuccess {
+    background-position: -5px -371px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.detailsPending {
+    background-position: -5px -473px
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2.inactive span.noStatus {
+    display: none
+}
+
+.SDOrderCancel .accordionMenuContent {
+    padding: 0 30px 30px;
+    border: 1px solid #e1e1e1
+}
+
+.SDOrderCancelWrapper {
+    width: 100%;
+    font-size: 14px;
+    color: #757575
+}
+
+.SDOrderCancel .accordion-menu-wrapper h2+.accordionMenuContent {
+    border-top: 1px solid #f0f0f0
+}
+
+.SDOrderCancelWrapper li {
+    clear: both;
+    display: block;
+    list-style: none;
+    padding: 20px 0 0
+}
+
+ul.refundmode-option li {
+    display: inline-block;
+    margin-right: 30px
+}
+
+.SDOrderCancelWrapper li .sdDropDownOuter {
+    margin: 0
+}
+
+.SDOrderCancelWrapper li label {
+    display: block;
+    font-size: 18px;
+    line-height: 2em;
+    cursor: text
+}
+
+.SDOrderCancelWrapper li .error {
+    display: none;
+    font-size: 13px
+}
+
+#cancelSubmitCommentError,#nextNonCODCommentError,#cancelCommentError {
+    color: #b41100;
+    loat: left;
+    clear: both;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    padding: 5px 3px 5px 3px
+}
+
+.SDOrderCancelWrapper .orderCancelTextarea {
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 375px;
+    min-height: 100px;
+    padding: 6px;
+    width: 375px
+}
+
+.SDOrderCancelWrapper .button37x97 {
+    display: block;
+    width: 97px;
+    height: 37px
+}
+
+.SDOrderCancelWrapper .button37x97 a {
+    padding-top: 0px;
+    margin-top: 2px
+}
+
+.buyBlueButton .semiRightArrow:after {
+    border-left-color: #333
+}
+
+.SDOrderCancelWrapper .returnAmount {
+    color: #b70000
+}
+
+.SDOrderCancel .requestProcessWrapper {
+    position: relative;
+    display: table;
+    margin: 20px 0;
+    width: 998px
+}
+
+.SDOrderCancel .requestProcessWrapper .requestProcessText {
+    float: left;
+    overflow: hidden
+}
+
+.SDOrderCancel .requestProcessText h2 {
+    border: transparent;
+    color: #4caf50;
+    display: block;
+    font-size: 25px;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 0;
+    line-height: 1em;
+    margin: 0
+}
+
+.SDOrderCancel span.requestSuccessful,.SDOrderCancel span.requestInitiated {
+    margin-right: 13px;
+    display: block;
+    float: left;
+    overflow: hidden;
+    text-indent: -999px;
+    height: 52px;
+    width: 52px
+}
+
+.SDOrderCancel .requestProcessWrapper .SDOrderCancelWrapper {
+    margin-left: 52px
+}
+
+.SDOrderCancel .requestProcessWrapper h3,.SDOrderCancel .requestProcessWrapper ul {
+    display: none
+}
+
+.SDOrderCancel .requestProcessWrapper ul {
+    padding: 0 0 30px 67px
+}
+
+.SDOrderCancel .requestProcessWrapper ul li {
+    font-size: 14px;
+    line-height: 1.5em
+}
+
+.SDOrderCancel .requestProcessWrapper ul li {
+    list-style-type: disc;
+    margin-left: 15px;
+    line-height: 2.1em
+}
+
+.SDOrderCancel .requestProcessWrapper ul li:first-child {
+    list-style: none;
+    margin-left: 0px
+}
+
+.SDOrderCancel .requestProcessWrapper #thankYouNote {
+    margin-bottom: 30px;
+    font-weight: normal;
+    display: none
+}
+
+.SDOrderCancel .requestProcessWrapper .buyBlueButton {
+    float: left
+}
+
+.sdDropDownContent {
+    border-left: 2px solid transparent !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    width: 207px
+}
+
+.sdDropDownContent:hover {
+    border-left: 2px solid #e43434 !important;
+    background: #fffbfb
+}
+
+.sdDropDownContent a {
+    color: #292929;
+    cursor: pointer;
+    font-size: 14px
+}
+
+.sdDropDownHead {
+    background-position: 225px 6px !important;
+    border-left: 1px solid #d4d3d3 !important;
+    padding-right: 4px;
+    text-transform: none !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 20px
+}
+
+.sdDropDownOuter {
+    width: 210px !important
+}
+
+.sdDropDownPopup {
+    width: auto !important;
+    padding-top: 0px !important
+}
+
+#cancellationReasonsNonCOD.sdDropDownOuter {
+    width: 248px !important
+}
+
+#cancellationReasonsNonCOD .sdDropDownPopup {
+    width: 210px
+}
+
+.SDOrderCancel #ErrorMessage {
+    display: none;
+    border: 1px solid #e7adad;
+    color: #b41100;
+    padding: 7px 3px 9px 32px;
+    margin: 10px 0;
+    float: left;
+    clear: both;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    background: url("/img/snapdeal/cart_error1.png") no-repeat 7px center transparent
+}
+
+.myOrdersRevamp .replaceOrderSprites {
+    background-image: url("/img/snapdeal/sprite/Order-icon-sprite2.png");
+    background-repeat: no-repeat
+}
+
+.myOrdersRevamp .backToMyOrders {
+    display: none;
+    padding: 11px 0px;
+    color: #fff;
+    background: #333;
+    border-bottom: 0px solid #134baa;
+    cursor: pointer;
+    font: bold 16px/1;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0;
+    position: relative;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    width: 205px;
+    position: relative;
+    float: left;
+    clear: both
+}
+
+.bank-message {
+    font-size: 14px;
+    color: #9b9b9b;
+    margin-top: 20px
+}
+
+#enterLinkOTP .link-acc-text {
+    color: #000;
+    margin-top: 10px
+}
+
+.requestProcessWrapper .semi-left-arrow,.requestProcessWrapper .semi-left-arrow:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #fff;
+    left: 10px
+}
+
+.requestProcessWrapper .semi-left-arrow:after {
+    content: " ";
+    left: 3px;
+    border-right: 6px solid #333
+}
+
+.requestProcessWrapper .backToMyOrders .semi-left-arrow {
+    left: 16px
+}
+
+.orderRvmpDisabledButton {
+    opacity: 0.5;
+    filter: alpha(opacity=50)
+}
+
+.SDOrderCancelWrapper .sdDropDownPopup {
+    height: 130px;
+    overflow-y: scroll
+}
+
+.bank-icon {
+    background-position: 0 -988px;
+    height: 20px;
+    width: 61px
+}
+
+.disable-partial {
+    color: #b3b3b3 !important;
+    cursor: default
+}
+
+/* #nextNonCOD,#submitCancellationCOD,#commentsForCancellationWrapper,#cancellationAdvise {
+    display: none
+} */
+
+.cancel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000
+}
+
+.cancel-overlay .cancel-modal {
+    width: 400px;
+    height: auto;
+    background: #fff;
+    color: #212121;
+    margin: auto;
+    position: relative;
+    top: 35%;
+    padding: 20px
+}
+
+.cancel-overlay .cancel-modal h3 {
+    font-size: 18px;
+    padding: 0;
+    display: block
+}
+
+.cancel-overlay .cancel-modal h3 .cancel-head {
+    float: left
+}
+
+.cancel-overlay .cancel-modal h3 .cancel-close {
+    float: right;
+    cursor: pointer
+}
+
+.cancel-overlay .cancel-modal h3:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.cancel-overlay .cancel-modal .cancel-status-foot {
+    font-size: 13px;
+    color: #999;
+    margin: 10px 0 10px 0
+}
+
+.cancel-overlay .cancel-modal ol {
+    padding-left: 15px
+}
+
+.cancel-overlay .cancel-modal ol li {
+    padding-left: 0
+}
+
+.cancel-overlay .cancel-modal ol:after {
+    content: '';
+    clear: both;
+    display: block
+}
+
+.cancel-overlay .cancel-modal .cancel-btn-outer {
+    margin-top: 20px
+}
+
+.cancel-overlay .cancel-modal .cancel-button {
+    padding: 5px 15px;
+    background: #ff8831;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px
+}
+
+.refundMessages {
+    margin-bottom: 90px
+}
+
+.refundMessages .refundMessage {
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #999999
+}
+
+.sd-icon-wallet-icon {
+    font-size: 25px;
+    display: inline-block;
+    width: 4%;
+    position: absolute;
+    top: 18%;
+    float: left
+}
+
+.sd-icon-info {
+    font-size: 20px;
+    margin-left: 10px
+}
+
+.sd-icon-courier-partner {
+    font-size: 25px;
+    display: inline-block;
+    width: 4%;
+    position: absolute;
+    top: 18%;
+    float: left
+}
+
+.messageDiv {
+    display: inline-block;
+    float: right;
+    width: 96%
+}
+
+.greyedMessage {
+    color: #fff;
+    background-color: #d0d3d0;
+    height: 62px;
+    padding: 0;
+    line-height: 62px;
+    font-size: 15px;
+    margin-left: -30px;
+    width: 996px
+}
+
+.greyedMessage .infoIcon {
+    border: solid #fff;
+    border-width: 2px;
+    border-radius: 50%;
+    color: #fff;
+    height: 15px;
+    width: 14px;
+    line-height: 14px;
+    text-indent: 5px;
+    margin: 16px
+}
+
+.greyedMessage .crossIcon {
+    color: black;
+    float: right;
+    margin: 0 16px;
+    cursor: pointer
+}
+
+.comp-breadcrumb .bread-crumb {
+    padding-top: 20px
+}
+
+.amountDetailsGreen {
+    color: #2AC6AB;
+    padding-right: 3px;
+    font-size: 14px;
+    float: left;
+    box-sizing: border-box
+}
+
+.greenVal {
+    color: #2AC6AB
+}
+
+.SDOrderCancel .goGreenWrapper {
+    display: table;
+    background-color: #f7fcf6;
+    width: 92%;
+    border-radius: 10px;
+    border: 1px solid #e0ebe5;
+    padding: 40px
+}
+
+.SDOrderCancel .goGreenMessage {
+    color: #959595;
+    font-size: 15px;
+    margin-left: 65px
+}
+
+.SDOrderCancel .goGreenHR {
+    border-bottom: 1px solid #959595;
+    margin-bottom: 20px
+}
+
+.SDOrderCancel .tcell {
+    display: table-cell
+}
+
+.SDOrderCancel .sd-icon-gogreen {
+    color: #4caf50;
+    font-size: 120px;
+    padding: 0 0 0 20px
+}
+
+.myOrdersRevamp .accountOrder {
+    font-size: 18px;
+    padding: 0;
+    color: #ce1f24;
+    border-bottom: 1px solid #d0d0d0;
+    width: 755px
+}
+
+.myOrdersRevamp .accountOrder:after {
+    width: 91px;
+    height: 0px;
+    background: #d0d0d0;
+    content: "";
+    display: block;
+    margin-top: 6px
+}
+
+#userOrderHeaderContainer .subOrderDetailContainer {
+    height: 163px;
+    display: table;
+    padding-top: 30px;
+    width: 980px;
+    margin-left: 10px
+}
+
+#userOrderHeaderContainer .subOrderDetailContainer img {
+    width: 113px;
+    float: left;
+    height: 132px
+}
+
+#userOrderHeaderContainer .subOrderInfo {
+    float: left;
+    width: 537px;
+    margin-left: 10px;
+    font-size: 14px
+}
+
+#userOrderHeaderContainer .subOrderInfo .greyLabel {
+    color: #989898
+}
+
+.subOrderPriceBox {
+    float: left;
+    width: 264px;
+    background: #F4F4F4;
+    padding: 13px;
+    position: relative;
+    border: 1px solid #e1e1e1;
+    margin-left: 10px
+}
+
+.subOrderPriceBox span {
+    float: left;
+    width: 50%;
+    font-size: 12px;
+    padding-bottom: 2px
+}
+
+.subOrderPriceBox .subOrderPriceBoxHeading {
+    font-weight: bold
+}
+
+.subOrderPriceBox .subOrderTotalPrice {
+    color: #B70000;
+    font-weight: 700
+}
+
+#userOrderHeaderContainer .blackText {
+    color: black
+}
+
+#userOrderHeaderContainer .accountOrder {
+    width: 100%
+}
+
+#userOrderHeaderContainer .accountOrder:after {
+    width: 81px
+}
+
+#userOrderHeaderContainer .subOrderTitle {
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    color: black
+}
+
+.subOrderPriceBox .subOrderPriceDividerLine {
+    width: 100%;
+    border-bottom: 1px solid #898989;
+    margin: 3px 0
+}
+
+.myOrdersPageHeading {
+    font-size: 18px;
+    padding: 0;
+    color: #ce1f24;
+    border-bottom: 1px solid #d0d0d0;
+    width: 755px;
+    margin-left: 20px
+}
+
+.myOrdersPageHeading:after {
+    width: 91px;
+    height: 3px;
+    background: #d0d0d0;
+    content: "";
+    display: block;
+    margin-top: 6px
+}
+
+.myOrdersRevamp .refunModeContainer strong,.myOrdersRevamp .refunModeContainer input,.myOrdersRevamp .refunModeContainer label {
+    float: left
+}
+
+.myOrdersRevamp .refunModeContainer input {
+    margin: 4px 6px 0 0
+}
+
+.myOrdersRevamp .refunModeContainer label {
+    float: left;
+    display: initial;
+    font-size: 16px;
+    line-height: inherit;
+    cursor: default
+}
+
+.myOrdersRevamp .myOrdersAccordionSubContainer {
+    width: 67%;
+    float: left
+}
+
+.myOrdersAccordionSubContainer .refunModeContainer .refundNote {
+    font-size: 14px;
+    margin-top: 16px
+}
+
+.myOrdersAccordionSubContainer .refunModeContainer .refundNote span {
+    color: #b80404
+}
+
+.myOrdersRevamp .myOrdersTipContainer {
+    float: right;
+    background: #fdf8e4;
+    border: 1px solid #f5ead6;
+    font-size: 13px;
+    width: 243px;
+    padding: 12px 15px 15px 14px;
+    margin-top: 30px;
+    color: #757575;
+    line-height: 15px
+}
+
+.myOrdersRevamp .myOrdersTipContainer p {
+    margin-top: 12px
+}
+
+.myOrdersRevamp .myOrdersTipContainer ul {
+    margin-left: 14px
+}
+
+.myOrdersRevamp .myOrdersTipContainer li {
+    margin-top: 10px;
+    list-style-type: decimal
+}
+
+.myOrdersRevamp .myOrdersPickupTip {
+    margin-top: 0
+}
+
+.myOrdersRevamp .halfWidthColumn {
+    width: 50%;
+    float: left
+}
+
+.myOrdersRevamp .myOrdersRefundBankAccountDetailsChoice,.myOrdersRevamp .myOrdersRefundBankAccountDetails {
+    display: none
+}
+
+.myOrdersRevamp li.myOrdersRefundBankAccountDetails,.myOrdersRevamp ul.myOrdersAccountDetailsContainer {
+    overflow: hidden
+}
+
+.myOrdersRevamp .myOrdersAccountDetailsContainer {
+    border-top: 1px dashed #c7c7c7;
+    border-bottom: 1px dashed #c7c7c7
+}
+
+.myOrdersRevamp .myOrdersAccountDetailsContainer {
+    padding: 10px 0 0 0
+}
+
+.myOrdersRevamp .myOrdersAccountDetailsContainer input {
+    width: 80%;
+    height: 28px
+}
+
+.myOrdersRevamp .myOrdersAccountDetailsContainer #showIfscCodeList {
+    float: left;
+    font-size: 13px;
+    color: #004C92;
+    cursor: pointer
+}
+
+.myOrdersRevamp .myOrdersAccountDetailsContainer .firRowTopPadding {
+    padding: 0
+}
+
+.myOrdersRevamp #bankDetailsUpdateButton {
+    display: none
+}
+
+.myOrdersRevamp #orderReturnRefundMessage {
+    width: 585px;
+    float: left;
+    margin-top: 16px
+}
+
+.myOrdersRevamp .orderReturnStep1 .returnTip {
+    position: absolute;
+    top: 360px;
+    left: 660px
+}
+
+.myOrdersRevamp .orderReturnStep1 .imageTip {
+    float: right !important
+}
+
+.myOrdersRevamp .returnStepComplete {
+    background-position: -5px -371px
+}
+
+.myOrdersRevamp .orderReturnComments {
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 470px;
+    min-height: 100px;
+    padding: 6px;
+    width: 458px
+}
+
+#ticketId {
+    display: inline !important;
+    font-weight: bold !important
+}
+
+.call-centre-icon {
+    background-position: -12px -904px;
+    height: 73px;
+    width: 75px
+}
+
+.myOrdersRevamp .thankYouNote {
+    margin-bottom: 30px;
+    font-weight: 500
+}
+
+.myOrdersRevamp .orderRvmpDisabledButton {
+    background-color: #ccc;
+    border: 1px solid #ccc
+}
+
+.myOrdersRevamp .defCursor {
+    cursor: default !important
+}
+
+.myOrdersRevamp ul.userSavedBankAccountDetails {
+    display: none;
+    width: 585px;
+    margin-top: 20px;
+    padding: 10px 0 0 0;
+    border-top: 1px dashed #c7c7c7;
+    border-bottom: 1px dashed #c7c7c7;
+    background: #FCFCFC;
+    font-size: 16px
+}
+
+.myOrdersRevamp ul.userSavedBankAccountDetails li {
+    padding: 0 0 19px 0
+}
+
+.myOrdersRevamp ul.userSavedBankAccountDetails li span {
+    font-size: 14px;
+    font-weight: bold
+}
+
+#create-wallet {
+    width: 255px;
+    display: inline-block;
+    padding: 7px 0
+}
+
+.upgrade-form {
+    width: 575px
+}
+
+.upgrade-form .heading {
+    font-size: 16px
+}
+
+.upgrade-form .alert-text {
+    line-height: 20px
+}
+
+.upgrade-form .resetErrorBlock {
+    background-color: #f0605d!important
+}
+
+.upgrade-form .form-input {
+    width: 242px;
+    margin: 15px 0
+}
+
+.upgrade-form .form-input input[type="text"] {
+    width: 216px;
+    border: 1px solid #959595;
+    border-radius: 2px;
+    padding: 6px 12px;
+    font-size: 14px
+}
+
+.upgrade-form .form-input input[type="text"]:focus {
+    border: 1px solid #ff8d32;
+    outline: none
+}
+
+.upgrade-form .form-input .form-error {
+    border-color: #ef6767 !important
+}
+
+.upgrade-form .form-input .form-error-text {
+    color: #ef6767 !important;
+    font-size: 13px;
+    display: inline-block
+}
+
+.upgrade-form .form-input #resend-login-OTP {
+    position: absolute;
+    top: 6px;
+    right: 0
+}
+
+.upgrade-form #login-enter-otp {
+    width: 330px;
+    position: relative
+}
+
+.reset-sd-icon-error {
+    color: #f0605d;
+    font-size: 22px;
+    margin: 3px;
+    display: inline-block
+}
+
+#upgrade-otp label,#link-otp label {
+    display: none;
+    font-size: 14px;
+    line-height: 12px
+}
+
+.mobilenumber-user {
+    font-size: 15px;
+    margin: 0 0 20px 0
+}
+
+.mobileoremailcolor {
+    font-family: 'font-bold';
+    font-size: 14px;
+    margin: 0 10px
+}
+
+#backToSendOTP {
+    font-size: 14px
+}
+
+.otp-container {
+    margin: 12px 0 30px 0
+}
+
+input.otp-box {
+    border: 1px solid #959595
+}
+
+.otp-container .disc-loader-svg {
+    width: 45px;
+    margin: 0 auto;
+    height: 20px
+}
+
+#enterLinkOTP {
+    margin-bottom: 20px
+}
+
+.icon-black-freecharge {
+    vertical-align: top!important
+}
+
+.wallet-message {
+    margin-top: 30px
+}
+
+.wallet-message .head {
+    font-size: 18px
+}
+
+.wallet-message .message {
+    font-size: 14px;
+    color: #7f7f7f;
+    margin: 5px 0 10px
+}
+
+.wCBMessage {
+    clear: both
+}

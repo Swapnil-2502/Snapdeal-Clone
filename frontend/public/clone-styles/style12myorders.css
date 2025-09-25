@@ -1,0 +1,727 @@
+.btn-theme-secondary.btn-line {
+    border-color: #333;
+    color: #333;
+    background: none;
+}
+
+.OrdDetails {
+    font-size: 16px;
+    padding-right: 9px;
+    float: right;
+}
+
+.subOrdDivider {
+    width: 753px;
+    border-top: 3px solid #959595;
+    padding-bottom: 9px;
+}
+
+span {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+}
+
+.outerOrderDetails {
+    width: 753px;
+    border: 1px solid #e3e3e3;
+    margin-top: 18px
+}
+
+.outerOrderDetails .orderId {
+    font-size: 14px;
+    color: #212121;
+    padding: 11px 0px 0px 12px;
+    line-height: 16px
+}
+
+.outerOrderDetails .ordDate {
+    font-size: 15px;
+    color: #757575;
+    padding: 0px 2px 2px 12px
+}
+
+.outerOrderDetails .pinnacle-user-notification {
+    padding: 10px 0 10px 10px;
+    background: #fbc341;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    color: #40403f
+}
+
+.outerOrderDetails .pinnacle-user-notification .pinn-notify-icon {
+    font-size: 30px;
+    margin-right: 10px
+}
+
+.subOrderDetails {
+    padding-bottom: 18px;
+    min-height: 270px
+}
+
+.subOrderDetails.borderSubOrder {
+    border-top: 1px solid #e3e3e3;
+    margin-top: 8px
+}
+
+.subOrderDetails .trackingDetails {
+    width: 713px;
+    margin-left: 20px;
+    padding: 6px 0 6px 0
+}
+
+.ordContent .promotionalBtn .promotionalActionBttns {
+    padding-left: 17px;
+    padding-right: 0px
+}
+
+.ordContent .promotionalBtn {
+    margin-left: 0px
+}
+
+.ordContent {
+    padding-top: 25px;
+    position: relative
+}
+
+.ordContent .subOrdImage {
+    width: 19%;
+    float: left;
+    margin-left: 15px
+}
+
+.ordContent .subOrdImage a {
+    height: 115px;
+    width: 115px
+}
+
+.ordContent .subOrdImage a img {
+    height: 115px;
+    width: 115px;
+    opacity: 1!important
+}
+
+.ordContent .subOrdName {
+    font-size: 18px;
+    color: #212121;
+    cursor: pointer
+}
+
+.ordContent .subOrdName div {
+    width: 425px;
+    max-height: 50px;
+    overflow: hidden
+}
+
+.ordContent .subOrdContent {
+    margin-top: 18px;
+    min-width: 502px;
+    min-height: 100px
+}
+
+.ordContent .subOrdContent .needMoreHelp,.ordContent .subOrdContent .forMoreHelp {
+    margin-top: 10px;
+    font-size: 13px;
+    padding: 0;
+    cursor: pointer;
+    color: #3f3f3f !important;
+    display: inline-block;
+    margin-left: 0px
+}
+
+.ordContent .subOrdContent .needMoreHelp .sd-icon-nhelpfilled,.ordContent .subOrdContent .forMoreHelp .sd-icon-nhelpfilled {
+    color: #9C9B9B;
+    font-size: 20px;
+    margin-right: 5px;
+    top: 4px;
+    position: relative
+}
+
+.ordContent .subOrdContent .actionButtons {
+    max-width: 460px;
+    float: left;
+    margin-bottom: 10px
+}
+
+.ordContent-vip {
+    padding-top: 7px
+}
+
+.ordContent-vip .icon-vip-strip {
+    margin: 0 15px 7px;
+    width: 96px;
+    height: 24px;
+    background-image: url("/img/vipStrip.svg");
+    background-repeat: no-repeat
+}
+
+.ordContentForAuto {
+    height: 210px
+}
+
+.pendingSubOrders .ordContent {
+    padding: 15px 0 20px !important
+}
+
+.softBundleParent {
+    width: 62%
+}
+
+.subOrderItemNo {
+    font-size: 12px;
+    color: #757575
+}
+
+.orderItemNo {
+    font-size: 12px;
+    color: #8a8a8a
+}
+
+.pinnacle-product-attrs span {
+    display: inline-block
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr {
+    margin-right: 15px;
+    margin-left: 15px
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr:first-child {
+    margin-left: 0
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-key {
+    color: #000
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-key::first-letter {
+    text-transform: UPPERCASE
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-value {
+    color: #999
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-value::first-letter {
+    text-transform: UPPERCASE
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-value::first-letter {
+    text-transform: UPPERCASE
+}
+
+.pinnacle-product-attrs {
+    margin: 15px 0;
+    font-size: 13px
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-value {
+    color: #9C9B9B
+}
+
+.pinnacle-product-attrs .dividerPipe {
+    margin: 0 10px
+}
+
+.ordContent .subOrdContent .needMoreHelp .sd-icon-nhelpfilled,.ordContent .subOrdContent .forMoreHelp .sd-icon-nhelpfilled {
+    color: #9C9B9B;
+    font-size: 20px;
+    margin-right: 5px;
+    top: 4px;
+    position: relative
+}
+
+
+.autoTrackingDetails {
+    padding-bottom: 0px
+}
+
+.trackingDetails.bottomBorderTrack {
+    border-bottom: 1px dashed #dbdbdb;
+    margin-bottom: 10px
+}
+
+.trackingDetails .refreshTrackIcon {
+    color: #117eb1;
+    display: inline-block;
+    margin: 0px 8px
+}
+
+.trackingDetails .lastUpdatedText {
+    color: #999999;
+    font-size: 12px
+}
+
+.trackingDetails:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.trackHistory.bottomBorderTrack {
+    border-bottom: 1px dashed #dbdbdb;
+    padding-bottom: 10px
+}
+
+.trackHistory .bottomBorderTrack {
+    padding-bottom: 10px
+}
+
+.subOrdStatus {
+    float: left;
+    font-size: 16px;
+    color: #757575
+}
+
+.subOrdStatusText {
+    color: #4caf50
+}
+
+.subOrdStatusCancelText {
+    color: #ff0000;
+    font-size: 16px
+}
+
+.subOrdStatusText {
+    color: #4caf50
+}
+
+.expectDel {
+    float: right;
+    font-size: 14px;
+    color: #757575;
+    clear: right
+}
+
+.subOrdStatusText {
+    color: #4caf50;
+}
+
+.subOrdTimeLine .circleVal1 {
+    top: -8px
+}
+
+.subOrdTimeLine {
+    width: 725px;
+    margin-top: 15px;
+    margin-left: 18px;
+    position: relative
+}
+
+
+.subOrdTimeLine .subOrdlabelDiv {
+    margin-bottom: 11px
+}
+
+.subOrdTimeLine .subOrdlabelDiv .stageLabel {
+    display: block;
+    position: absolute;
+    padding-top: 22px;
+    margin-left: -20px
+}
+
+.subOrdTimeLine .subOrdlabelDiv .stageLabel:nth-child(1) {
+    margin-left: 0px
+}
+
+.subOrdTimeLine .statusLine {
+    width: 321px;
+    border-top: 3px solid #e3e3e3;
+    vertical-align: middle;
+    margin-left: 23px;
+    margin-bottom: 3px;
+    margin-right: 5px
+}
+
+.subOrdTimeLine .statusLine.statusLine3 {
+    width: 204px
+}
+
+.subOrdTimeLine .statusLine.redStatusLine {
+    border-top: 3px solid red
+}
+
+.subOrdTimeLine .statusLine.greenStatusLine {
+    border-top: 3px solid #61c26e
+}
+
+.subOrdTimeLine .statusLine.statusLine4 {
+    width: 145px
+}
+
+.subOrdTimeLine .statusLine.statusLine1 {
+    width: 671px;
+    margin-top: -14px
+}
+
+.subOrdTimeLine .statusCircle {
+    width: 12px;
+    height: 12px;
+    border: 3px solid #e3e3e3;
+    border-radius: 50px;
+    position: absolute;
+    padding-top: 0px
+}
+
+.subOrdTimeLine .statusCircle.greenStatusCircle {
+    background-color: #61c26e;
+    border: 3px solid #61c26e
+}
+
+.subOrdTimeLine .statusCircle.hollowStatusCircle {
+    border: 3px solid #4caf50
+}
+
+.subOrdTimeLine .statusCircle.redStatusCircle {
+    background-color: #ff0000;
+    border: 3px solid red
+}
+
+.subOrdTimeLine .statusLine6 {
+    width: 88px
+}
+
+.subOrdTimeLine .statusLine7 {
+    width: 69px
+}
+
+.subOrdTimeLine .statusLine8 {
+    width: 57px
+}
+
+.subOrdTimeLine .statusLine5 {
+    width: 110px
+}
+
+.timeLineText {
+    padding-bottom: 15px;
+    margin-left: 18px;
+    width: 725px
+}
+
+.timeLineText .timelineStatusText {
+    width: 238px;
+    font-size: 14px;
+    padding-top: 2px;
+    text-transform: capitalize;
+    text-align: center;
+    vertical-align: text-top
+}
+
+.timeLineText .timelineStatusText:first-child {
+    text-align: left
+}
+
+.timeLineText .timelineStatusText:last-child {
+    text-align: right
+}
+
+.timeLineText .timelineStatusText.timelineText4 {
+    width: 178px
+}
+
+.timeLineText .timelineStatusText.timelineText4:nth-child(2) {
+    width: 142px
+}
+
+.timeLineText .timelineStatusText.timelineText4:nth-child(3) {
+    padding-left: 84px;
+    width: 132px
+}
+
+.timeLineText .timelineStatusText.timelineText5 {
+    width: 130px
+}
+
+.timeLineText .timelineStatusText.timelineText5:nth-child(3) {
+    width: 186px
+}
+
+.timeLineText .timelineStatusText.timelineText5:nth-child(4) {
+    padding-left: 16px
+}
+
+.timeLineText .timelineStatusText.timelineText5:nth-child(5) {
+    width: 114px
+}
+
+.timeLineText .timelineStatusText.timelineText8 {
+    width: 78px
+}
+
+.timeLineText .timelineStatusText.timelineText9 {
+    width: 76px
+}
+
+.timeLineText .timelineStatusText.timelineText7 {
+    width: 93px
+}
+
+.timeLineText .timelineStatusText.timelineText6 {
+    width: 111px
+}
+
+.timeLineText .shipText {
+    padding-left: 125px
+}
+
+.timeLineText .cancelText {
+    float: right;
+    width: 70px
+}
+
+.timeLineText .processText {
+    padding-left: 18px
+}
+
+.timeLineText .deliverText {
+    padding-left: 12px;
+    float: right;
+    width: 71px
+}
+
+.timeLineText .timelineStatusText {
+    width: 238px;
+    font-size: 14px;
+    padding-top: 2px;
+    text-transform: capitalize;
+    text-align: center;
+    vertical-align: text-top
+}
+
+.timelineStatusText.timelineText3 {
+    width: 238px
+}
+
+.timelineStatusText.timelineText3:nth-child(2) {
+    text-align: center
+}
+
+.timelineStatusText.timelineText3:nth-child(3) {
+    text-align: right
+}
+
+.timelineStatusText.timelineText6:nth-child(2) {
+    text-align: left
+}
+
+.timelineStatusText.timelineText6:nth-child(3) {
+    padding-left: 13px
+}
+
+.timelineStatusText.timelineText6:nth-child(4) {
+    padding-left: 21px
+}
+
+.timelineStatusText.timelineText6:nth-child(5) {
+    padding-left: 19px
+}
+
+.timelineStatusText.timelineText6:nth-child(6) {
+    width: 99px;
+    text-align: right
+}
+
+.timelineStatusText.timelineText7:nth-child(3) {
+    padding-left: 15px
+}
+
+.timelineStatusText.timelineText7:nth-child(4) {
+    padding-left: 21px
+}
+
+.timelineStatusText.timelineText7:nth-child(5) {
+    padding-left: 24px
+}
+
+.timelineStatusText.timelineText7:nth-child(6) {
+    padding-left: 14px
+}
+
+.timelineStatusText.timelineText7:nth-child(7) {
+    width: 74px;
+    text-align: right
+}
+
+.timelineStatusText.timelineText9:nth-child(1) {
+    padding-left: 18px;
+    width: 69px
+}
+
+.timelineStatusText.timelineText9:nth-child(3) {
+    padding-left: 12px
+}
+
+.timelineStatusText.timelineText9:nth-child(4) {
+    padding-left: 20px
+}
+
+.timelineStatusText.timelineText9:nth-child(6) {
+    padding-left: 10px
+}
+
+.timelineStatusText.timelineText9:nth-child(7) {
+    padding-left: 5px;
+    width: 76px
+}
+
+.timelineStatusText.timelineText9:nth-child(8) {
+    width: 53px
+}
+
+.timelineStatusText.timelineText9:nth-child(9) {
+    padding-left: 19px;
+    width: 63px
+}
+
+.timelineStatusText.timelineText8:nth-child(1) {
+    padding-left: 18px;
+    width: 78px
+}
+
+.timelineStatusText.timelineText8:nth-child(3) {
+    padding-left: 12px
+}
+
+.timelineStatusText.timelineText8:nth-child(4) {
+    padding-left: 20px
+}
+
+.timelineStatusText.timelineText8:nth-child(6) {
+    padding-left: 10px
+}
+
+.timelineStatusText.timelineText8:nth-child(7) {
+    padding-left: 5px;
+    width: 76px
+}
+
+.timelineStatusText.timelineText8:nth-child(8) {
+    width: 53px
+}
+
+.timelineStatusText.timelineText2 {
+    width: 357px;
+    padding-top: 7px
+}
+
+.timelineStatusText.timelineText2:nth-child(2) {
+    text-align: right
+}
+
+.timelineStatusText.timelineTextOther2 {
+    width: 352px;
+    margin-left: 17px
+}
+
+.timelineStatusText.timelineTextOther2:nth-child(2) {
+    text-align: right
+}
+
+.realtrackTimeline {
+    padding-top: 12px;
+}
+
+.detailedTimelineSection .realtrackTimeline {
+    padding-left: 20px;
+}
+
+.educativeInfo {
+    padding-bottom: 5px;
+}
+.educativeInfoId
+{
+    padding: 5px 0px 5px 7px;
+    width: 96%;
+}
+
+.educativeStageDt {
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #979797;
+    font-style: italic;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.detailedTimelineSection .sidebarin-heading {
+    margin-left: 24px;
+    width: 85%;
+}
+
+.detailedTimelineSection .sidebarin-heading h3 {
+    font-weight: normal;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 24px;
+    line-height: 23px;
+}
+
+.detailedTimelineSection {
+    width: 30% !important;
+}
+
+.detailedTimelineSection .sidebarin-content {
+    height: 90%;
+}
+
+/* #content_wrapper {
+    font-size: 14px;
+}
+
+#content_wrapper {
+    width: 998px;
+    margin: 0 auto 15px auto !important;
+    overflow: hidden;
+}
+
+#content_wrapper {
+    width: 1019px;
+}
+
+#content_wrapper {
+    font-size: 14px;
+} */
+
+.noBullets {
+    list-style-type: none;
+}
+
+.stageSteps {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.stageSteps .educativeDetailedSteps {
+    padding-bottom: 12px;
+}
+
+.educativeInfo .educativeDetailedSteps {
+    color: #999999;
+    padding-bottom: 5px;
+    margin-left: 21px;
+    font-size: 14px;
+    width: 70%;
+    padding-left: 5px;
+}
+
+.educativeInfo .educativeDetailedSteps .educativeDates {
+    font-style: italic;
+    display: block;
+    font-size: 12px;
+    padding-top: 3px;
+}
+
+.stageSteps .educativeDetailedSteps {
+    padding-bottom: 12px;
+}
+
+.educativeInfo .educativeDetailedSteps {
+    color: #999999;
+    padding-bottom: 5px;
+    margin-left: 21px;
+    font-size: 14px;
+    width: 70%;
+    padding-left: 5px;
+}
+

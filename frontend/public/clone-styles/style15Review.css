@@ -1,0 +1,383 @@
+.showGreyCont {
+    opacity: 0;
+    transform: translate(0, 100px);
+    transition: all 0.4s ease-in;
+}
+
+.pdp-section {
+    padding: 0px 0px 15px 0px;
+}
+
+.animScroll {
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+}
+
+.comp-customer-review {
+    padding: 33px !important;
+}
+
+.comp {
+    background: #fff;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    padding: 20px;
+    box-shadow: 0 0 3px #f0f0f0;
+}
+
+.section-head {
+    color: #333;
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.message-alert.alert-success {
+    color: rgb(255, 255, 255);
+    background: rgb(25, 188, 156);
+}
+
+.message-alert {
+    color: rgb(153, 153, 153);
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 3px;
+}
+
+.message-alert.alert-error {
+    color: rgb(255, 255, 255);
+    background: rgb(240, 96, 93);
+}
+
+.message-alert {
+    color: rgb(153, 153, 153);
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 3px;
+}
+
+.whitebx {
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.product_review .first {
+    width: 30%;
+    padding-top: 40px;
+    border-right: solid 1px #e8e8e8;
+}
+
+li.first, li.second, li.third {
+    text-align: center;
+    margin: 0;
+}
+
+.product_review li {
+    float: none;
+    display: table-cell;
+    padding: 40px;
+}
+
+.product_review .second {
+    width: 40%;
+    border-right: solid 1px #e8e8e8;
+}
+
+i.first, li.second, li.third {
+    text-align: center;
+    margin: 0;
+}
+
+.product_review li {
+    float: none;
+    display: table-cell;
+    padding: 40px;
+}
+
+.product_review .third {
+    width: 30%;
+    padding-top: 35px;
+}
+
+li.first, li.second, li.third {
+    text-align: center;
+    margin: 0;
+}
+
+.product_review li {
+    float: none;
+    display: table-cell;
+    padding: 40px;
+}
+
+.product_review .first .text {
+    text-align: left;
+}
+
+.product_review li .text {
+    position: relative;
+}
+
+.customer_review .rating-middle-section {
+    text-align: center;
+}
+
+.clearfix, .clear {
+    clear: both;
+}
+
+.customer_review .rating-middle-section .rating-text {
+    font-size: 15px;
+    padding-top: 2px;
+    margin-bottom: 4px;
+    color: #666;
+}
+
+.customer_review .rating-middle-section .rating-text .rating {
+    font-size: 45px;
+    color: #333;
+}
+
+.product_review .rating-stars {
+    float: none;
+}
+
+.rating-stars {
+    position: relative;
+    vertical-align: baseline;
+    display: inline-block;
+    color: rgb(233, 233, 233);
+    height: 14px;
+    float: left;
+    line-height: 10px;
+    overflow: hidden;
+}
+
+.grey-stars {
+    height: 100%;
+}
+
+.filled-stars {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    color: rgb(255, 195, 21);
+    overflow: hidden;
+}
+
+.customer_review .rating-middle-section .total-review-txt {
+    font-size: 14px;
+    color: #999999;
+}
+
+.product_review p {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 10px;
+    padding: 8px 0;
+    padding-bottom: 10px;
+}
+
+.product_review .second {
+    width: 40%;
+    border-right: solid 1px #e8e8e8;
+}
+
+li.first, li.second, li.third {
+    text-align: center;
+    margin: 0;
+}
+
+.product_review li {
+    float: none;
+    display: table-cell;
+    padding: 40px;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.recom-text {
+    font-size: 20px;
+    color: #ccc;
+    padding-top: 2px;
+    margin-bottom: 10px;
+}
+
+.product_review .third {
+    width: 30%;
+    padding-top: 35px;
+}
+
+li.first, li.second, li.third {
+    text-align: center;
+    margin: 0;
+}
+
+.product_review li {
+    float: none;
+    display: table-cell;
+    padding: 40px;
+}
+
+.product_review .third #rev-text {
+    margin: auto;
+    padding: 14px 0 8px;
+}
+
+.product_review p {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 10px;
+    padding: 8px 0;
+    padding-bottom: 10px;
+}
+
+.product_review .btn {
+    overflow: visible;
+    margin: 30px 5px 0;
+    padding: 0px 14px 0px 12px;
+    height: 35px;
+    line-height: 34px;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+
+.customer_review a {
+    font-size: 14px;
+    color: #999;
+    text-decoration: none;
+}
+
+.comp-customer-review a {
+    cursor: pointer;
+}
+
+.reviewBtn {
+    color: #fff !important;
+    padding: 2px 45px !important;
+    text-transform: none;
+}
+
+.rippleWhite, .rippleGrey {
+    position: relative;
+    overflow: hidden;
+}
+
+#defaultReviewsCard {
+    margin-top: 40px;
+}
+
+.sort {
+    line-height: 38px;
+    border-bottom: solid 1px #d8d8d8;
+    line-height: 38px;
+    float: left;
+    width: 100%;
+    color: #999;
+}
+
+
+.sort .cust_review {
+    float: left;
+    font-size: 18px;
+    color: #344c55;
+    padding-right: 20px;
+    border-right: solid 1px #efefef;
+}
+
+.sort li.active {
+    border-bottom: 2px solid #e40046;
+}
+
+.sort li {
+    float: left;
+    margin-left: 13px;
+    font-size: 13px;
+}
+
+.sort li {
+    margin-top: 1px !important;
+}
+
+.reviewareain {
+    padding: 0px;
+}
+
+.commentlist.first {
+    padding-top: 10px;
+    margin-bottom: 60px;
+}
+
+.commentlist .userimg {
+    float: left;
+    font-size: 12px;
+    line-height: 17px;
+    padding: 3px;
+}
+
+.commentlist .userimg span {
+    margin-top: 10px;
+    display: block;
+    padding: 3px;
+}
+
+.reviewer-imgName {
+    padding-left: 2px;
+    font-size: 25px;
+    line-height: 54px;
+    color: #fff;
+    text-align: center;
+    width: 52px;
+    height: 52px;
+    margin-top: 0px;
+    border-radius: 50%;
+    background: url(/img/snapdeal/qna/Qna_Sprite.png) 0 -365px no-repeat;
+    display: inline-block;
+}
+
+.commentlist .text {
+    margin-left: 94px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.commentlist .text .user-review {
+    padding: 10px 0px;
+}
+
+.commentlist .rating {
+    font-size: 18px;
+    color: #ececec;
+    display: block;
+    padding: 0 0 6px 0;
+}
+
+.commentlist .head {
+    font-size: 15px;
+    line-height: 18px;
+    white-space: pre-wrap;
+    color: #333333;
+}
+
+._reviewUserName {
+    height: 14px;
+    display: inline-block;
+    line-height: 13px;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 13px;
+    white-space: nowrap;
+    color: #999999;
+    margin-top: 5px;
+}

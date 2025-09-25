@@ -5824,11 +5824,11 @@ hr.divider-horizontal {
     vertical-align: text-top
 }
 
-.sdRadio input[checked=checked]+label:before {
+.sdRadio input:checked+label:before {
     color: #fff;
     font-family: snapdeal_font2;
     font-size: 12px;
-    content: "\f114";
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
     border-color: #333;
     background-color: #333;
     line-height: 15px;
@@ -5863,11 +5863,11 @@ hr.divider-horizontal {
     vertical-align: bottom
 }
 
-.sdCheckbox input[checked=checked]+label:before {
+.sdCheckbox input:checked +label:before {
     color: #fff;
     font-family: snapdeal_font2;
     font-size: 12px;
-    content: "\f114";
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
     border-color: #333;
     background-color: #333;
     line-height: 10px
@@ -7198,7 +7198,6 @@ header * {
 }
 
 .headerBar {
-    background: #fff;
     width: 100%;
     position: fixed;
     backface-visibility: hidden
@@ -8150,11 +8149,11 @@ input[type=text]::-ms-clear {
 }
 
 .menuIconBar {
-    width: 54px;
+    /* width: 54px;
     height: 60px;
-    border-radius: 1.9px;
+    border-radius: 1.9px; */
     float: right;
-    text-align: center;
+    /* text-align: center; */
     margin: -10px auto
 }
 
@@ -13327,4 +13326,45 @@ a.faq_search_list_label_anchor:hover {
   cursor: pointer;
   z-index: 10;
   transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pageWrapper {
+    width: 998px;
+    margin: 0 auto;
+    position: relative
+}
+
+.comp-breadcrumb {
+    position: relative;
+    font-size: 12px;
+    width: 85%
+}
+
+.comp-breadcrumb #breadCrumbWrapper2 {
+    line-height: initial;
+    display: inline
+}
+
+.comp-breadcrumb #breadCrumbWrapper2>* {
+    display: inline
+}
+
+.comp-breadcrumb #breadCrumbWrapper2 a {
+    display: inline-block
+}
+
+.leftWrapper {
+    width: 227px;
+    float: left
+}
+
+.rightWrapper {
+    width: 757px;
+    float: right;
+}
+
+.pageWrapper {
+    width: 998px;
+    margin: 0 auto;
+    position: relative
 }

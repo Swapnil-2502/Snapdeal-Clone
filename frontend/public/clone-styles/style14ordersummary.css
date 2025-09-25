@@ -1,0 +1,689 @@
+.ordersummarybox .timeLineStatusDate {
+    font-size: 12px
+}
+
+.ordersummarybox .hideTrackHistory {
+    padding-bottom: 10px
+}
+
+.ordersummarybox .timelineStatusText.timelineTextOther2 {
+    width: 481px;
+    margin-left: 18px
+}
+
+.ordersummarybox .timelineStatusText.timelineTextOther2:nth-child(2) {
+    text-align: right
+}
+
+.ordersummarybox {
+    padding-left: 13px;
+    width: 1019px
+}
+
+.ordersummarybox table td.cusinfo {
+    width: 365px
+}
+
+.ordersummarybox .accountOrder {
+    font-size: 18px;
+    padding: 0;
+    color: #ce1f24;
+    border-bottom: 1px solid #d0d0d0;
+    width: 1015px
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine {
+    width: 453px
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine6 {
+    width: 131px
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine7 {
+    width: 107px
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine5 {
+    width: 163px
+}
+
+.ordersummarybox .timelineStatusText.timelineText6:nth-child(3) {
+    padding-left: 25px;
+    text-align: left
+}
+
+.ordersummarybox .timelineStatusText.timelineText6:nth-child(4) {
+    padding-left: 0px;
+    width: 130px !important
+}
+
+.ordersummarybox .timelineStatusText.timelineText6:nth-child(5) {
+    width: 154px !important;
+    padding-left: 43px
+}
+
+.ordersummarybox .timelineStatusText.timelineText6:nth-child(6) {
+    width: 118px !important;
+    text-align: right
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText7 {
+    width: 136px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText8 {
+    width: 116px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText6 {
+    width: 166px
+}
+
+.ordersummarybox .timelineStatusText.timelineText7:nth-child(3) {
+    text-align: left;
+    padding-left: 22px
+}
+
+.ordersummarybox .timelineStatusText.timelineText7:nth-child(2) {
+    text-align: left
+}
+
+.ordersummarybox .timelineStatusText.timelineText7:nth-child(5) {
+    padding-left: 16px
+}
+
+.ordersummarybox .timelineStatusText.timelineText7:nth-child(6) {
+    padding-left: 22px
+}
+
+.ordersummarybox .timelineStatusText.timelineText7:nth-child(7) {
+    width: 90px;
+    text-align: right
+}
+
+.ordersummarybox .timelineStatusText.timelineText7:nth-child(4) {
+    padding-left: 0px
+}
+
+.ordersummarybox .timelineStatusText {
+    width: 241px
+}
+
+.ordersummarybox .deliverText {
+    padding-left: 126px;
+    float: none;
+    text-align: right
+}
+
+.ordersummarybox .trackHistory {
+    padding-bottom: 7px
+}
+
+.ordersummarybox .suborderMessagesDiv {
+    margin-left: 0px
+}
+
+.ordersummarybox .shipText {
+    padding-left: 128px;
+    text-align: center
+}
+
+.ordersummarybox .trackingDetails {
+    width: 978px;
+    border-bottom: 1px dashed #dbdbdb;
+    min-height: 28px;
+    margin-left: 20px;
+    clear: both;
+    margin-top: 30px
+}
+
+.subOrdTopActions {
+    min-height: 185px;
+    position: relative
+}
+
+.ordersummarybox .trackingDetails.trackTop {
+    padding-top: 40px
+}
+
+.ordersummarybox .subOrdTimeLine {
+    width: 984px;
+    position: relative
+}
+
+.ordersummarybox .timelineStatusText.timelineText3 {
+    width: 325px;
+    margin-left: 0
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine.statusLine1 {
+    width: 937px;
+    margin-bottom: 8px;
+    margin-top: 0px
+}
+
+.ordersummarybox .whiteCross {
+    background: url(/img/snapdeal/sprite/StatusspritelatestOne.png) no-repeat -313px -19px
+}
+
+.ordersummarybox .timelineStatusText.timelineText2 {
+    width: 489px
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine.statusLine4 {
+    width: 211px
+}
+
+.ordersummarybox .timelineStatusText.timelineTextOther5 {
+    width: 257px
+}
+
+.ordersummarybox .timelineStatusText.timelineTextOther5:nth-child(4) {
+    width: 118px
+}
+
+.ordersummarybox .timelineStatusText.timelineTextOther5:nth-child(5) {
+    text-align: right;
+    padding-right: 17px
+}
+
+.ordersummarybox .subOrdTimeLine .statusLine.statusLine3 {
+    width: 292px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText4 {
+    width: 244px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText4:nth-child(2) {
+    width: 178px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText4:nth-child(3) {
+    padding-left: 0px;
+    width: 259px;
+    text-align: right
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText4:nth-child(4) {
+    padding-left: 47px
+}
+
+.ordersummarybox .notCancel .tooltip-content {
+    width: 413px;
+    margin-left: -89px
+}
+
+.notCancel .iconArrow {
+    margin-left: 99px
+}
+
+.ordersummarybox .writeReviewImg {
+    background: url(/img/snapdeal/sprite/StatusspritelatestOne.png) no-repeat -369px -16px;
+    width: 17px;
+    height: 17px
+}
+
+.ordersummarybox .timeLineText {
+    width: 984px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineTextOther5:nth-child(1) {
+    width: 223px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText5:nth-child(2),.ordersummarybox .timelineStatusText.timelineTextOther5:nth-child(2) {
+    width: 239px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText5:nth-child(3),.ordersummarybox .timelineStatusText.timelineTextOther5:nth-child(3) {
+    width: 242px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText5:nth-child(4) {
+    padding-left: 50px;
+    width: 137px
+}
+
+.ordersummarybox .timeLineText .timelineStatusText.timelineText5:nth-child(5) {
+    width: 172px
+}
+
+.ordersummarybox .suborderMessagesDiv .suborderMessages {
+    margin-left: 0px
+}
+
+.autoDetails {
+    font-size: 14px
+}
+
+.ordersummarybox .promoBtns {
+    width: 977px
+}
+
+.ordersummarybox .promotionalBtn .promotionalActionBttns.lastPromotional {
+    padding-left: 0px
+}
+
+.noMinHght {
+    min-height: 0px
+}
+
+.ordersummarybox .timelineStatusText.fourTimelineText:nth-child(4) {
+    padding-left: 50px
+}
+
+.ordersummarybox .priceDetails * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.ordersummarybox .priceDetails span {
+    width: 50% !important
+}
+
+.ordersummarybox .priceDetails div span:first-child {
+    text-align: left !important
+}
+
+.ordersummarybox .priceDetails .paymentDiv {
+    border-top: 1px solid #c1c1c1;
+    margin-top: 5px;
+    padding-top: 5px
+}
+
+.ordersummarybox .priceDetails .paymentDiv div .amountDetails {
+    font-size: 17px;
+    color: #666666
+}
+
+.ordersummarybox .priceDetails .paymentDiv div .amntVal.amtPaid {
+    font-size: 17px;
+    color: #666666
+}
+
+.ordersummarybox .priceDetails .paymentDiv .walletCashBackBlck {
+    font-size: 13px;
+    color: #666666
+}
+
+.ordersummarybox .priceDetails .paymentDiv .walletCashBackBlck div span {
+    display: inline-block !important;
+    color: #666666;
+    width: 50% !important
+}
+
+.ordersummarybox .priceDetails .paymentDiv .walletCashBackBlck div .wCBAmt {
+    color: #000
+}
+
+.ordersummarybox .priceDetails .paymentDiv .walletCashBackBlck div .freeChargeCircle {
+    display: inline-block;
+    background-color: transparent;
+    position: relative;
+    top: 1px;
+    color: #e3714d !important;
+    font-size: 16px;
+    width: auto !important;
+    left: 5px
+}
+
+.ordersummarybox .customerInfomation:after {
+    content: '';
+    display: block;
+    clear: both
+}
+.ordersummarybox .disableCancelMsg {
+    margin-top: 10px
+}
+
+.ordHeaderDetails {
+    padding-top: 18px
+}
+
+.orderNo {
+    font-size: 14px !important;
+    color: #212121 !important;
+}
+
+span {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+}
+
+.orderPlacedOn {
+    font-weight: normal !important;
+    font-size: 15px !important;
+    color: #757575 !important;
+    line-height: 18px;
+    margin-left: 3px;
+    text-transform: capitalize;
+}
+
+.customerInfomation, .neftInfomation {
+    background-color: #f7f7f7;
+    margin-top: 10px;
+    padding-bottom: 20px;
+    padding-top: 12px;
+}
+
+.customerEmail {
+    padding-left: 22px;
+    font-size: 18px;
+    color: #212121;
+    width: 400px;
+    float: left;
+    font-weight: normal;
+    padding-top: 5px;
+}
+
+.customerInfomation .priceDetails {
+    float: right;
+    padding-right: 25px;
+}
+
+.priceDetails {
+    width: 300px;
+    font-size: 14px;
+    line-height: 23px;
+    color: #212121;
+    font-weight: normal;
+    text-align: right;
+    padding-left: 42px;
+    padding-top: 5px;
+    min-height: 100px;
+}
+
+.paymentMethod {
+    float: right;
+    width: 195px;
+    margin-top: 7px;
+    font-size: 14px;
+    color: #757575;
+    line-height: 16px;
+}
+
+.cusEmail {
+    padding-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.ordersummarybox .priceDetails div span:first-child {
+    text-align: left !important;
+}
+
+.ordersummarybox .priceDetails span {
+    width: 50% !important;
+}
+
+.ordersummarybox .priceDetails * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.amountDetails {
+    text-align: right;
+    padding-right: 3px;
+    font-size: 14px;
+}
+
+.amntVal {
+    text-align: right;
+    min-width: 80px;
+}
+
+.ordersummarybox .priceDetails span {
+    width: 50% !important;
+}
+
+.ordersummarybox .priceDetails .paymentDiv {
+    border-top: 1px solid #c1c1c1;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.paymentMethod {
+    float: right;
+    width: 195px;
+    margin-top: 7px;
+    font-size: 14px;
+    color: #757575;
+    line-height: 16px;
+}
+
+.ordCOD {
+    color: #212121;
+    font-weight: normal;
+    font-size: 16px;
+    padding-top: 3px;
+}
+
+.suborderSummary {
+    border: 1px solid #e1e1e1;
+    width: 1017px;
+    margin-top: 24px;
+    min-height: 155px;
+}
+
+
+.subOrdId {
+    margin-left: 23px;
+    padding-top: 20px;
+}
+
+.orderNo {
+    font-size: 14px !important;
+    color: #212121 !important;
+}
+
+.subOrdTopActions {
+    min-height: 185px;
+    position: relative;
+}
+
+.subordSumImage {
+    height: 124px;
+    width: 121px;
+    margin-left: 23px;
+    padding: 3px 0 2px 0px;
+    margin-top: 20px;
+    float: left;
+}
+
+.subOrdSumAction {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 435px;
+    float: left;
+    position: relative;
+}
+
+.subOrderItemNo {
+    font-size: 12px;
+    color: #757575;
+}
+
+.subOrdSumaryName {
+    font-size: 18px;
+    color: #212121;
+    width: 477px;
+}
+
+.pinnacle-product-attrs {
+    margin: 15px 0;
+    font-size: 13px;
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-key {
+    color: #000;
+}
+
+.pinnacle-product-attrs .pinnacle-product-attr .pinn-attr-value {
+    color: #9C9B9B;
+}
+
+.subOrdSumAction .actionButtons {
+    padding-bottom: 10px;
+    width: 455px;
+    float: left;
+}
+
+.notAuto {
+    padding-top: 12px;
+}
+
+.forMoreHelp, .forMoreHelp .sd-icon-nhelpfilled {
+    color: #3f3f3f !important;
+}
+
+.forMoreHelp {
+    margin-top: 10px;
+    font-size: 13px;
+    padding: 0;
+    cursor: pointer;
+    color: #9C9B9B;
+    width: 160px;
+}
+
+.subOrdPriceDetails {
+    width: 290px;
+    margin-left: 0px;
+    font-size: 13px;
+    margin-top: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+}
+
+.subOrdPriceDetails .totalAmntOuter {
+    width: auto !important;
+    margin-right: 0 !important;
+}
+
+.totalAmntOuter {
+    text-align: right;
+    margin-right: 13px;
+}
+
+.trackingDetails.bottomBorderTrack {
+    border-bottom: 1px dashed #dbdbdb;
+    margin-bottom: 10px;
+}
+
+.ordersummarybox .trackingDetails {
+    width: 978px;
+    border-bottom: 1px dashed #dbdbdb;
+    min-height: 28px;
+    margin-left: 20px;
+    clear: both;
+    margin-top: 30px;
+}
+
+.btn-theme-secondary.btn-line {
+    border-color: #333;
+    color: #333;
+    background: none;
+}
+
+.btn.btn-line {
+    border: 1px solid #e40046;
+    color: #e40046;
+    background: none;
+    z-index: 13;
+}
+
+.treak-btn {
+    padding: 0px 12px;
+    margin-left: 20px;
+}
+
+.btn {
+    border-radius: 3px;
+    display: inline-block;
+    height: 35px;
+    line-height: 36px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease-out 0s;
+    font-weight: 500;
+    overflow: hidden;
+    position: relative;
+    background-color: #e40046;
+}
+
+.deliverySellerDetails {
+    padding-left: 20px;
+    padding-top: 14px;
+    display: table;
+}
+
+.deliveryDet {
+    width: 466px;
+    display: inline-block;
+    float: left;
+    min-height: 150px;
+    background-color: #f7f7f7;
+    margin-right: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.delHead {
+    font-size: 18px;
+    color: #212121;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+.delName {
+    padding-left: 20px;
+    color: #212121;
+    font-size: 14px;
+    padding-top: 10px;
+    text-transform: capitalize;
+    display: table;
+}
+
+.delContent {
+    font-size: 14px;
+    color: #757575;
+    padding-left: 20px;
+    text-transform: capitalize;
+    display: table;
+}
+
+.mobDetails {
+    padding-top: 12px;
+    display: block;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #757575;
+    text-transform: capitalize;
+}
+
+.padB5 {
+    padding-bottom: 5px;
+}
+
+.delMob {
+    color: #212121;
+    font-size: 14px;
+}
+
+.subOrderItemNo {
+    font-size: 12px;
+    color: #757575;
+}

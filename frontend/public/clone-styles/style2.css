@@ -1642,7 +1642,7 @@
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .nbaFinalImage {
-        background-image:url("/img/artboardNext@2x.png");
+        background-image:url("https://i2.sdlcdn.com/img/artboardNext@2x.png");
         background-size: 385px 138px
     }
 }
@@ -2152,14 +2152,14 @@ section {
 }
 
 .downloadBackImage {
-    background-image: url("../Img/leaves1x.png");
+    background-image: url("https://i2.sdlcdn.com/img/leaves2x.png");
     display: block;
     vertical-align: middle
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .downloadBackImage {
-        background-image:url("../Img/leaves1x.png");
+        background-image:url("https://i2.sdlcdn.com/img/leaves2x.png");
         background-size: 220px 300px
     }
 }
