@@ -43,12 +43,13 @@ const Header = () => {
             setResults([])
             return;
         }
-
+       
         const newRecentSearches = [searchTerm, ...showSearches.filter(s => s!= searchTerm)].slice(0,5)
         setShowSearches(newRecentSearches)
         localStorage.setItem("RecentSearches",JSON.stringify(newRecentSearches))
 
-        setSearchKeyword(keyword)
+        setSearchKeyword(searchTerm)
+        setKeyword(searchTerm)
         navigate("/products/search")
 
     }
@@ -73,7 +74,7 @@ const Header = () => {
             setShowRecentSearches(false)
         }, 200)
     }
-    console.log(showRecentSearches,showSearches.length)
+    
   return (
     <>
     <div className={`headerBar reset-padding ${isSticky ? 'stickHeadNew' : '' }`}>
@@ -110,7 +111,7 @@ const Header = () => {
         <div className="topBar  top-bar-homepage  top-freeze-reference-point">
             <div className="header_wrapper">
                 
-                <div className="logoWidth lfloat col-xs-3 reset-padding">
+                <div className="logoWidth lfloat col-xs-3 reset-padding" style={{width: "200px", marginTop: "19px", position: "relative"}}>
                     <a className="notIeLogoHeader" href="/" onClick={() => {
                         setFilters({...filters, type:"", minStars:"", sortby: ""}); setSearchKeyword("")
                         }}>
@@ -119,7 +120,7 @@ const Header = () => {
                     <a className="ieLogoHeader" href="/">
                         <img title="Snapdeal" className="ieLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" />
                     </a>
-                    <div className="menuIconBar hidden"><i className="sd-icon sd-icon-menu" style={{color: "rgb(255, 255, 255)"}}></i></div>
+                    <div className="menuIconBar hidden"><span style={{  color: "white", fontSize: "28px", fontWeight: "bold", bottom: '-10px', position: "absolute",right: "10px",  top: "50%", transform: "translateY(-50%)", lineHeight: "0"}}>☰</span></div>
                 </div>
 
                 <div className="col-xs-14 search-box-wrapper" style={{paddingLeft: "15px"}}>
@@ -137,16 +138,17 @@ const Header = () => {
                             </span>
                         </button>
                         <div className="searchAutoSuggstn">
-                            {showRecentSearches && showSearches.length > 0 &&
+                            {showRecentSearches &&
                             <div className="topSearch-container autoSuggestor-container-shadow">
                                 <div className="topsearch-suggestionBox">
+                                    {showSearches.length > 0 && 
                                     <ul className="topSearchCont recentSearchContainer">
                                         <div className="searchContainer recentSearches">
                                             <span className="topsearches recentSearc">Recent Searches</span>
                                             <span className="clearRecentSearches" onClick={clearSearches}>CLEAR<button style={{background: "none",border: "none",fontSize: "18px",color: "grey",cursor: "pointer", paddingLeft:'10px'}}>×</button></span>
                                         </div>
                                         {showSearches.map((search, index) => (
-                                            <li key={index} className="recentCont" data-index="1">
+                                            <li key={index} className="recentCont" data-index="1" >
                                                 <div>
                                                     <span className="firstRecntDiv">
                                                         <a href="" className="subDefault recentLink">
@@ -161,7 +163,35 @@ const Header = () => {
                                                 </div>
                                             </li>
                                         ))}
-                                    </ul>
+                                    </ul>}
+                                    {showRecentSearches && 
+                                    <ul className="topSearchCont trendingSearchContainer ">
+                                        <div className="searchContainer">
+                                            <i className="sd-icon sd-icon-android-trending-up-512px iconTrend"></i>
+                                            <span className="topsearches">Trending Searches</span>
+                                        </div>
+
+				                   		<li data-index="1">
+				                       			<div onClick={() => {handleSearch('kitchen')}}>
+													<a className="subDefault" href="">kitchen product</a>
+												</div>
+                                        </li>
+										<li data-index="1">
+				                       			<div onClick={() => {handleSearch('shirts')}}>
+													<a className="subDefault" href="">shirts for men</a>
+												</div>
+                                        </li>
+										<li data-index="1">
+				                       			<div onClick={() => {handleSearch('shoes')}}>
+													<a className="subDefault" href="">shoes for men</a>
+												</div>
+                                        </li>
+										<li data-index="1">
+				                       			<div onClick={() => {handleSearch('books')}}>
+													<a className="subDefault" href="">books</a>
+												</div>
+                                        </li>
+                                    </ul>}
                                 </div>
                             </div>
                             }
