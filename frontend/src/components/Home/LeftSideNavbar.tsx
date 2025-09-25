@@ -1,5 +1,13 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useProductFilters } from "../../contexts/ProductFilterContext";
 
 export const LeftSideNavbar = () => {
+	const [hoverMenFashion, setHoverMenFashion] = useState(false)
+	const [hoverWomenFashion, setHoverWomenFashion] = useState(false)
+	const [hoverHomeAndKitchen, setHoverHomeAndKitchen] = useState(false)
+	const [hoverToys, setHoverToys] = useState(false);
+	const {setFilters} = useProductFilters()
   return (
     <>
 	<div className="dp-click-widgets">
@@ -10,70 +18,73 @@ export const LeftSideNavbar = () => {
 		            <ul className="nav smallNav">
 			            <div className="leftHead topCats">Top Categories</div>
                         
-                        <li className="navlink" data-nav-index="1">
-                            <a href="javascript:void(0);" className="menuLinks leftCategoriesProduct ">
+                        <li className={`navlink ${hoverMenFashion ? 'hoverIn': ""}`} onMouseEnter={() => setHoverMenFashion(true)} onMouseLeave={() => setHoverMenFashion(false)} data-nav-index="1">
+                            <a className="menuLinks leftCategoriesProduct ">
                                 <span className="labelIcon" style={{ backgroundImage: "url('https://g.sdlcdn.com/imgs/k/v/x/Men_sitenavigation-b972a.jpg')" }}></span>
                                 <span className="catText">Men's Fashion</span>
                             </a>
-                            <div id="category1Data" className="leftNavigationRightBlock" style={{display: "none", width: "896px", top: "0px"}}>
+                            <div id="category1Data" className={`leftNavigationRightBlock  ${hoverMenFashion ? 'slideLeft': ""}`}  style={{display: hoverMenFashion? "block" : "none", width: "450px", top: "0px"}}>
                                 <div className="leftData colDataBlk">
-                                            <div className="colDataSection noBorder">
-                                            <div className="colDataInnerBlk"> 
-                                                <p><a href="https://www.snapdeal.com/products/mens-footwear" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Footwear</span></a>
+									<div className="colDataSection noBorder">
+										<div className="colDataInnerBlk"> 
+												<p><a href="" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Clothing</span></a></p>
+																	<p>
+																		<Link to={"/products/Shirts-for-men"} data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																			<span className="linkTest" onClick={() => setFilters(prev => ({...prev,type:'Shirts'}))}>Shirts</span>
+																		</Link>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-footwear-sports-shoes" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Sports Shoes</span></a>
+                                                						<p><a href="" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Footwear</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-footwear-casual-shoes" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p>
+																		<Link to={"/products/Shoes-for-men"} data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    		<span className="linkTest" onClick={() => setFilters(prev => ({...prev,type:'Shoes'}))}>Sports Shoes</span>
+																		</Link>
+                                                                    </p>
+                                                                    <p><a href="" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Casual Shoes</span></a>
                                                                     </p>
-                                                                    <p><a href="http://www.snapdeal.com/products/mens-footwear-slippers-floaters?sort=plrty" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Slippers &amp; Flip Flops</span></a>
                                                                     </p>
-                                                                    <p><a href="http://www.snapdeal.com/products/mens-footwear-floater-sandals?sort=plrty" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Sandals &amp; Floaters</span></a>
                                                                     </p>
-                                                                    <p><a href="http://www.snapdeal.com/products/mens-footwear-formal-shoes" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Formal Shoes</span></a>
                                                                     </p>
-                                                                    <p><a href="http://www.snapdeal.com/products/mens-footwear-loafers?sort=plrty" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Loafers</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-footwear-sneakers?sort=plrty#bcrumbLabelId:18" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Sneakers</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-footwear-ethnic?sort=plrty" data-index="1.1.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Ethnic Footwear</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-footwear-accessories?sort=plrty" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Shoe Accessories</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-footwear" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
+                                                                    <p><a href="" data-index="1.1.12" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Bags &amp; Luggage</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/bags" data-index="1.1.12" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Bags &amp; Luggage</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/lifestyle-backpacks" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Backpacks</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/lifestyle-laptop-bags" data-index="1.1.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Laptop Bags</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/bags-hiking-rucksacks" data-index="1.1.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Hiking Bags</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/lifestyle-luggage" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Luggage &amp; Suitcases</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/lifestyle-travel-accessories" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Travel Accessories</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/bags-briefcases" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
+                                                                    <p><a href="" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
                                                                     <span className="linkTest">Office Bags</span></a>
                                                                     </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/bags?sort=plrty" data-index="1.1.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-                                                                    </p>
+                                                                    
                                                                     <p style={{display:"none"}}><a href="" data-index="20" className="rightMenuLink  headingTextLink noHasTagWidth noCursor">
                                                                     <span className="headingText"></span></a>
                                                         </p><p style={{display:"none"}}><a href="" data-index="21" className="rightMenuLink  headingTextLink noHasTagWidth noCursor">
@@ -85,154 +96,9 @@ export const LeftSideNavbar = () => {
                                                         </p></div>
                                             </div>
                                     </div>
-                                <div className="midData colDataBlk">
-                                        <div className="colDataSection ">
-                                            <div className="colDataInnerBlk">
-                                                <p><a href="https://www.snapdeal.com/products/men-apparel" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
-                                                                    dp-widget-link"><span className="headingText">Clothing</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-tshirts-polos" data-index="1.2.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">T-Shirts &amp; Polos</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-shirts" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Shirts</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-jeans" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Jeans</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-trousers?sort=plrty" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Trousers &amp; Chinos</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-innerwear" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Innerwear &amp; Sleepwear</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel?sort=plrty" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-winter-wear-store?sort=plrty" data-index="1.2.8" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
-                                                                    dp-widget-link"><span className="headingText">Winter Wear</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-outerwear-jackets?sort=plrty" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Jackets</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-sweatshirts?sort=plrty" data-index="1.2.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Sweatshirts</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-sweaters?sort=plrty" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Sweaters</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/mens-winter-wear-thermals?sort=plrty#" data-index="1.2.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Thermals</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-sports-wear" data-index="1.2.13" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
-                                                                    dp-widget-link"><span className="headingText">Sportswear</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-sports-tshirts-polos?sort=plrty" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">T-Shirts &amp; Polos</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-trackpants-tracksuits?sort=plrty" data-index="1.2.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Trackpants &amp; Tracksuits</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/men-apparel-sports-wear?sort=plrty" data-index="1.2.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/perfumes-beauty-mens-grooming" data-index="1.2.17" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
-                                                                    dp-widget-link"><span className="headingText">Men's Grooming</span></a>
-                                                                    </p>
-                                                                    <p><a href="https://www.snapdeal.com/products/shaving-foams-creams-gels" data-index="1.2.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                    <span className="linkTest">Shaving Creams &amp; Gels</span></a>
-                                                                    </p>
-                                                                    <p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                        </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                        </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                        </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                        </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                        </p></div>
-                                        </div>
-                                    </div>
-                                <div className="rightData colDataBlk">
-                                    <div className="colDataSection ">
-                                        <div className="colDataInnerBlk"> 
-                                                                <p><a href="https://www.snapdeal.com/products/eyewear?sort=plrty&amp;q=Gender_s%3AMen%20Only%5EUnisex%7C" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link">
-                                                                <span className="headingText">Eyewear</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/lifestyle-sunglasses?sort=plrty" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Sunglasses</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/eyewear?sort=plrty&amp;q=Gender_s%3AMen%20Only%5EUnisex%7C" data-index="1.3.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/watches-men" data-index="1.3.4" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Watches</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/fashion-mens-jewellery?sort=plrty" data-index="1.3.5" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Jewellery &amp; Cufflinks</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/fashion-men" data-index="1.3.6" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Accessories</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/mens-wallets?sort=plrty" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Wallets</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/lifestyle-belts" data-index="1.3.8" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Belts</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/fashion-caps-hats?sort=plrty" data-index="1.3.9" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Hats &amp; Caps</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/lifestyle-gift-sets" data-index="1.3.10" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Gift Sets</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/lifestyle-necktie?sort=plrty" data-index="1.3.11" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Neckties &amp; Cravats</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/mens-card-holder?sort=plrty" data-index="1.3.12" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Card Holders</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/fashion-keychains?sort=plrty" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Keychains</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/fashion-suspenders" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
-                                                                <span className="linkTest">Suspenders</span></a>
-                                                                </p>
-                                                                <p><a href="https://www.snapdeal.com/products/fashion-men" data-index="1.3.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
-                                                                <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-                                                                </p>
-                                                                <p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLink noHasTagWidth &nbsp; noCursor">
-                                                                <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLink noHasTagWidth &nbsp; noCursor">
-                                                                <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLink noHasTagWidth &nbsp; noCursor">
-                                                                <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink 
-                                                                    headingTextLink noHasTagWidth
-                                                                    &nbsp; noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink 
-                                                                    headingTextLink noHasTagWidth
-                                                                    &nbsp; noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink 
-                                                                    headingTextLink noHasTagWidth
-                                                                    &nbsp; noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink 
-                                                                    headingTextLink noHasTagWidth
-                                                                    &nbsp; noCursor">
-                                                                    <span className="headingText"></span></a>
-                                                                </p><p style={{display:"none"}}><a href="" className="rightMenuLink 
-                                                                    headingTextLink noHasTagWidth
-                                                                    &nbsp; noCursor">
-                                                                <span className="headingText"></span></a>
-                                                                </p>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div className="commonOffer fstOffer">
                                     <div className="firstOfferForm">
-                                        <a className="bannerLink dp-widget-link" href="https://www.snapdeal.com/products/men-apparel?q=Topbrands_s%3Abranded%7ChpsaScore_tf1%3A1%7Cdiscount%3A40%20-%2080%7C&amp;sort=plrty">
+                                        <a className="bannerLink dp-widget-link" href="">
                                             <img className="bigOfferBanner hidden-inview wooble" height="510" width="195" src="https://g.sdlcdn.com/imgs/i/1/o/MF-05994.jpg" />
                                         </a>
                                     </div>
@@ -241,73 +107,73 @@ export const LeftSideNavbar = () => {
                         </li>
 						
                         
-                        <li className="navlink" data-nav-index="2">
-								<a href="javascript:void(0);" className="menuLinks leftCategoriesProduct ">
+                        <li className={`navlink ${hoverWomenFashion ? 'hoverIn': ""}`} onMouseEnter={() => setHoverWomenFashion(true)} onMouseLeave={() => setHoverWomenFashion(false)} data-nav-index="2">
+								<a href="" className="menuLinks leftCategoriesProduct ">
 									<span className="labelIcon" style={{ backgroundImage: "url('https://g.sdlcdn.com/imgs/k/v/x/WoMen_sitenav-5a8ca.jpg')" }}></span>
 									<span className="catText">Women's Fashion</span>
                                 </a>
-								<div id="category2Data" className="leftNavigationRightBlock" style={{display: "none", width: "896px", top: "0px"}}>
+								<div id="category2Data" className={`leftNavigationRightBlock ${hoverWomenFashion ? 'slideLeft': ""}`} style={{display: hoverWomenFashion ? "block":"none", width: "896px", top: "0px"}}>
 									<div className="leftData colDataBlk">
 											 <div className="colDataSection noBorder">
 											    <div className="colDataInnerBlk"> 
-											    	<p><a href="https://www.snapdeal.com/products/womens-ethnicwear?sort=plrty" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Ethnic Wear</span></a>
+											    	<p><a href="" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Ethnic Wear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-sarees" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sarees</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-stiched-kurtis?sort=plrty" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Kurtas &amp; Kurtis</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-lehenga" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Lehengas</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-salwar-suits?sort=plrty" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Salwar Suits</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-ethnic-bottomwear?sort=plrty" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Ethnic Bottomwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-ethnicwear-blouse?sort=plrty" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Saree Blouses</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-ethnicwear?sort=plrty" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear" data-index="1.1.9" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Footwear</span></a>
+																      </p> */}
+																     <p><a href="" data-index="1.1.9" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Footwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-heeled-slipon-pump" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Heels</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-sandal" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Flats &amp; Sandals</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-slippers-floaters" data-index="1.1.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Slippers &amp; Flip Flops</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-ballerina?sort=plrty" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Ballerinas</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-casual-shoes?" data-index="1.1.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Casual Shoes</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-sports-shoes?" data-index="1.1.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sports Shoes</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-ethnic?sort=plrty" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Ethnic Footwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear-floater-sandal?sort=plrty" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Floater Sandal</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/womens-footwear?sort=plrty" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/fragrances-women?sort=plrty" data-index="1.1.19" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Perfumes &amp; Fragrances</span></a>
+																      </p> */}
+																     <p><a href="" data-index="1.1.19" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Perfumes &amp; Fragrances</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/perfumes-women?sort=plrty" data-index="1.1.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Perfumes</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/deodorants-women?sort=plrty" data-index="1.1.21" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.21" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Deodorants</span></a>
 																     </p>
 																     <p style={{display:"none"}}><a href="" data-index="22" className="rightMenuLink  headingTextLink noHasTagWidth noCursor">
@@ -320,70 +186,70 @@ export const LeftSideNavbar = () => {
 								    <div className="midData colDataBlk">
 									  		<div className="colDataSection ">
 										  		<div className="colDataInnerBlk">
-										  			                <p><a href="https://www.snapdeal.com/products/women-apparel" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
+										  			                <p><a href="" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Women's Clothing</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-dresses?sort=plrty" data-index="1.2.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Dresses &amp; Gowns</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-tops-tunics" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Tops &amp; Tunics</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-tees?sort=plrty" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">T-Shirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-shirts-blouses?sort=plrty" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Shirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-trousers-jeans?sort=plrty" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Jeans</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-tousers?sort=plrty" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Trousers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-innerwear?sort=plrty" data-index="1.2.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Innerwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-lingeriesleepwear?sort=plrty" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Nightwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-sportswear-gymwear?sort=plrty" data-index="1.2.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sportswear &amp; Gymwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel?sort=plrty" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-winterwear?sort=plrty" data-index="1.2.12" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																      </p> */}
+																     <p><a href="" data-index="1.2.12" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Winter Wear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-outerwear-jackets?sort=plrty" data-index="1.2.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Outerwear &amp; Jackets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-sweatshirts?sort=plrty" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sweatshirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-sweaters-cardigans?sort=plrty" data-index="1.2.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Cardigans &amp; Pullovers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-apparel-shrugs-waistcoats?sort=plrty" data-index="1.2.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Shrugs &amp; Waistcoats</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/maternity-wear?sort=plrty" data-index="1.2.17" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																     <p><a href="" data-index="1.2.17" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Maternity Wear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/handbags-clutches" data-index="1.2.18" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																     <p><a href="" data-index="1.2.18" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Handbags &amp; Clutches</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/lifestyle-handbags-wallets?sort=plrty" data-index="1.2.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Handbags</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-wallets?sort=plrty" data-index="1.2.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Wallets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/bags-clutches?sort=plrty" data-index="1.2.21" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.21" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Clutches</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/bags-utility" data-index="1.2.22" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.22" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Utility bags</span></a>
 																     </p>
 																     <p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
@@ -395,49 +261,49 @@ export const LeftSideNavbar = () => {
 							  		<div className="rightData colDataBlk">
 									  		<div className="colDataSection ">
 										  		<div className="colDataInnerBlk"> 
-										  			<p><a href="https://www.snapdeal.com/products/eyewear?sort=plrty" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Eyewear</span></a>
+										  			<p><a href="" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Eyewear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/lifestyle-sunglasses" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sunglasses</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/lifestyle-frames" data-index="1.3.3" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.3" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Spectacle Frames</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/watches-women" data-index="1.3.4" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Watches</span></a>
+																     <p><a href="" data-index="1.3.4" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Watches</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/jewellery-fashion?sort=plrty" data-index="1.3.5" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Fashion Jewellery</span></a>
+																     <p><a href="" data-index="1.3.5" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Fashion Jewellery</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/jewelry-necklaces-sets?sort=plrty" data-index="1.3.6" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.6" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Necklaces &amp; Sets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/jewelry-earrings?sort=plrty" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Earrings</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/jewelry-bangles-bracelets?sort=plrty" data-index="1.3.8" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.8" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Bangles &amp; Bracelets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/jewelry-pendant-sets?sort=plrty" data-index="1.3.9" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.9" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Pendants &amp; Sets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/jewellery-fashion" data-index="1.3.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.3.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/jewelry-coins-bars?sort=plrty" data-index="1.3.11" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Gold Coins &amp; Bars</span></a>
+																      </p> */}
+																     <p><a href="" data-index="1.3.11" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Gold Coins &amp; Bars</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/fashion-women?sort=plrty" data-index="1.3.12" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Fashion Accessories</span></a>
+																     <p><a href="" data-index="1.3.12" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Fashion Accessories</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-hair-accessories?sort=plrty" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Hair Accessories</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-stoles-scarves?sort=plrty" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Stoles &amp; Scarves</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/women-socks-stockings?sort=plrty" data-index="1.3.15" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.15" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Socks &amp; Stockings</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/fashion-women?sort=plrty" data-index="1.3.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.3.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
+																      </p> */}
 																     <p style={{display:"none"}}><a href="" className="rightMenuLink 
 														             headingTextLink noHasTagWidth
 														             &nbsp; noCursor">
@@ -471,83 +337,83 @@ export const LeftSideNavbar = () => {
 								  		</div>
 							  		<div className="commonOffer fstOffer">
 											     <div className="firstOfferForm">
-												    <a className="bannerLink dp-widget-link" href="https://www.snapdeal.com/products/watches-women?q=hpsaScore_tf1%3A1%7Cdiscount%3A50%20-%2060%5E60%20-%2070%5E70%20-%2080%5E80%20-%2090%7C&amp;sort=plrty">
+												    <a className="bannerLink dp-widget-link" >
 														    <img className="bigOfferBanner hidden-inview wooble" height="510" width="195" src="https://g.sdlcdn.com/imgs/i/n/g/MS_WomenWatches_LeftNav1Aug-e15a1.jpg" /></a>
 															</div>
 											     </div>
 									     </div>
                         </li>
 						
-                        <li className="navlink" data-nav-index="3">
-								<a href="javascript:void(0);" className="menuLinks leftCategoriesProduct ">
+                        <li className={`navlink ${hoverHomeAndKitchen ? 'hoverIn': ""}`} onMouseEnter={() => setHoverHomeAndKitchen(true)} onMouseLeave={() => setHoverHomeAndKitchen(false)} data-nav-index="3">
+								<a href="" className="menuLinks leftCategoriesProduct ">
 									<span className="labelIcon" style={{ backgroundImage: "url('https://g.sdlcdn.com/imgs/k/v/x/HOme_sitenavigation-d7a00.jpg')" }}></span>
 									<span className="catText">Home &amp; Kitchen</span>
 									</a>
-								<div id="category3Data" className="leftNavigationRightBlock" style={{display: "none", width: "896px", top: "0px"}}>
+								<div id="category3Data" className={`leftNavigationRightBlock ${hoverHomeAndKitchen? 'slideLeft': ''}`} style={{display:hoverHomeAndKitchen ? "block": "none", width: "896px", top: "0px"}}>
 									<div className="leftData colDataBlk">
 											 <div className="colDataSection noBorder">
 											    <div className="colDataInnerBlk"> 
-											    	<p><a href="https://www.snapdeal.com/products/appliances-kitchen" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Kitchen Appliances</span></a>
+											    	<p><a href="" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Kitchen Appliances</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-juicer-mixer-grinders" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Juicer Mixer Grinders</span></a>
 																     </p>
-																     <p><a href="http://www.snapdeal.com/products/appliances-water-purifiers" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Water Purifiers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-gas-stoves-hobs" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Gas Stoves &amp; Hobs</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-induction-cookers" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Induction Cooktops</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-coffee-makers-kettles" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Kettles &amp; Coffee Makers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-choppers-blenders" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Choppers &amp; Blenders</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/sandwich-makers?sort=plrty" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sandwich Makers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-toasters-roti-makers" data-index="1.1.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Roti Makers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-rice-cookers-steamers" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Electric Cookers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/appliances-kitchen?sort=plrty" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="https://www.snapdeal.com/products/appliances-kitchen?sort=plrty" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen" data-index="1.1.12" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kitchenware</span></a>
+																      </p> */}
+																     <p><a href="" data-index="1.1.12" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kitchenware</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-cookware-bakeware/?" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Cookware &amp; Bakeware</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-kitchen-storage" data-index="1.1.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Kitchen Storage</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-dining-serving" data-index="1.1.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Dining &amp; Serving</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-cutting-cooking-tools" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Kitchen Tools</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/pressure-cookers?sort=plrty" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Pressure Cookers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/water-bottles?sort=plrty" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Water Bottles</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-tea-coffee-serveware" data-index="1.1.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Tea &amp; Coffeeware</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-bar-glassware" data-index="1.1.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Bar Accessories</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen?sort=plrty" data-index="1.1.21" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="https://www.snapdeal.com/products/home-kitchen?sort=plrty" data-index="1.1.21" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
+																      </p> */}
 																     <p style={{display:"none"}}><a href="" data-index="22" className="rightMenuLink  headingTextLink noHasTagWidth noCursor">
 														             <span className="headingText"></span></a>
 														 </p><p style={{display:"none"}}><a href="" data-index="23" className="rightMenuLink  headingTextLink noHasTagWidth noCursor">
@@ -558,48 +424,48 @@ export const LeftSideNavbar = () => {
 								    <div className="midData colDataBlk">
 									  		<div className="colDataSection ">
 										  		<div className="colDataInnerBlk">
-										  			<p><a href="https://www.snapdeal.com/products/home-furnishing" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
+										  			<p><a href="" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Home Furnishing</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-bed-linen" data-index="1.2.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Bed Linen</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/bathroom-furnishing" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Bath Linen</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-furnishing-blankets-quilts" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Blankets &amp; Quilts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-curtains-blinds" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Curtains &amp; Accessories</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-furnishing-mattress-protectors" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Mattresses</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-furnishing?sort=plrty" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-home-decoratives" data-index="1.2.8" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																      </p> */}
+																     <p><a href="" data-index="1.2.8" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Home Décor</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-lamps" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Lighting Fixtures</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-wall-decor" data-index="1.2.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Wall Decor</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-home-decor?sort=plrty" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Gifts &amp; Decor</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-religion-spirituality" data-index="1.2.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Religion &amp; Spirituality</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/led-bulbs?sort=plrty" data-index="1.2.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">LED Bulbs</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-home-decoratives?sort=plrty" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
+																      </p> */}
 																     <p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
 														             <span className="headingText"></span></a>
 														 </p><p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
@@ -624,69 +490,69 @@ export const LeftSideNavbar = () => {
 							  		<div className="rightData colDataBlk">
 									  		<div className="colDataSection ">
 										  		<div className="colDataInnerBlk"> 
-										  			<p><a href="https://www.snapdeal.com/products/home-improvement" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Home Improvement</span></a>
+										  			<p><a href="" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Home Improvement</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-improvement-utility" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Home Utility</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-cleaning-mops?sort=plrty" data-index="1.3.3" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.3" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Cleaning Mops</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-gardening" data-index="1.3.4" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.4" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Plants &amp; Gardening</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-utility-ironing-boards?sort=plrty" data-index="1.3.5" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.5" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Ironing Boards</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-home-cleaning" data-index="1.3.6" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.6" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Home Cleaning</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-utility-laundry-bath-accessories?sort=plrty" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Laundry Accessories</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-improvement" data-index="1.3.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.3.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/kitchen-bathroom-fittings" data-index="1.3.9" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Tools &amp; Hardware</span></a>
+																      </p> */}
+																     <p><a href="" data-index="1.3.9" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Tools &amp; Hardware</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-hardware-fixtures" data-index="1.3.10" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.10" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Power &amp; Hand Tools</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-sanitary-bathroom-fittings" data-index="1.3.11" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.11" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Bathroom Accessories</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kitchen-bathroom-fittings-electrical-equipment" data-index="1.3.12" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.12" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Electrical</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kitchen-bathroom-fittings-taps-faucets" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Taps &amp; Showers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/safes-locks-door-fittings" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Safes Lock &amp; Door Fitting</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kitchen-bathroom-fittings-sanitaryware" data-index="1.3.15" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.15" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Sanitaryware</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kitchen-bathroom-fittings?sort=plrty" data-index="1.3.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="https://www.snapdeal.com/products/kitchen-bathroom-fittings?sort=plrty" data-index="1.3.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-pet-supplies" data-index="1.3.17" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Pet Supplies</span></a>
+																      </p> */}
+																     <p><a href="" data-index="1.3.17" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Pet Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/dog-supplies?sort=plrty&amp;showAds=false" data-index="1.3.18" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.18" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Dog Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/cat-supplies?sort=plrty&amp;showAds=false" data-index="1.3.19" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.19" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Cat Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/aquatic-supplies?sort=plrty&amp;showAds=false" data-index="1.3.20" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.20" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Fish &amp; Aquatic Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/bird-supplies?sort=plrty" data-index="1.3.21" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.21" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Bird Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/home-kitchen-pet-supplies?sort=plrty&amp;showAds=false" data-index="1.3.22" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     {/* <p><a href="" data-index="1.3.22" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																      <span className="viewText animArrowLink">View All<i className="sd-icon sd-icon-next animArrowIco"></i></span></a>
-																      </p>
+																      </p> */}
 																     <p style={{display:"none"}}><a href="" className="rightMenuLink 
 														             headingTextLink noHasTagWidth
 														             &nbsp; noCursor">
@@ -703,69 +569,69 @@ export const LeftSideNavbar = () => {
 									     </div>
                         </li>
 
-						<li className="navlink" data-nav-index="4">
-								<a href="javascript:void(0);" className="menuLinks leftCategoriesProduct ">
+						<li className={`navlink ${hoverToys ? 'hoverIn': ""}`} onMouseEnter={() => setHoverToys(true)} onMouseLeave={() => setHoverToys(false)} data-nav-index="4">
+								<a href="" className="menuLinks leftCategoriesProduct ">
 									<span className="labelIcon" style={{ backgroundImage: "url('https://g.sdlcdn.com/imgs/k/v/x/Toys_Sitenavigation-ef666.jpg')" }}></span>
 									<span className="catText">Toys, Kids' Fashion &amp; more</span>
 									</a>
-								<div id="category4Data" className="leftNavigationRightBlock" style={{display: "none", width: "896px", top: "0px"}}>
+								<div id="category4Data" className={`leftNavigationRightBlock ${hoverToys? 'slideLeft':''}`} style={{display: hoverToys? "block" : "none", width: "896px", top: "0px"}}>
 									<div className="leftData colDataBlk">
 											 <div className="colDataSection noBorder">
 											    <div className="colDataInnerBlk"> 
-											    	<p><a href="https://www.snapdeal.com/products/kids-toys" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Toys</span></a>
+											    	<p><a href="" data-index="1.1.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Toys</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/car-toys?sort=plrty" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.2" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Toy Cars</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-electronic-toys" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Electronic Toys</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-action-games-figures?sort=plrty" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Action  Toys  &amp; Figures</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-ride-ons" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Ride On &amp; Scooters</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-outdoor-sports-accessories?sort=plrty" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Outdoor Toys</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-soft-toys" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Soft Toys</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-educational-products" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Educational Toys</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-baby-toys-accessories?sort=plrty" data-index="1.1.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Toddler Toys</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-dolls" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.10" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Dolls &amp; Doll Houses</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-activity-sets?sort=plrty" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Activity Sets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-indoor-games-puzzles?sort=plrty" data-index="1.1.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Indoor &amp; Board Games</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-party-supplies" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Party Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-bicycles-tricycles" data-index="1.1.14" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Bicycles &amp; Tricycles</span></a>
+																     <p><a href="" data-index="1.1.14" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Bicycles &amp; Tricycles</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-footwear" data-index="1.1.15" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kids' Footwear</span></a>
+																     <p><a href="" data-index="1.1.15" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kids' Footwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-footwear-boys?sort=plrty" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Footwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-footwear-girls?sort=plrty" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.17" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Girls Footwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-footwear-infants?sort=plrty" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.1.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Footwear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/eyewear-kids?sort=plrty" data-index="1.1.19" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kids Eyewear</span></a>
+																     <p><a href="" data-index="1.1.19" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kids Eyewear</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/watches-kids?sort=plrty" data-index="1.1.20" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kids' Watches</span></a>
+																     <p><a href="" data-index="1.1.20" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Kids' Watches</span></a>
 																     </p>
 																     <p style={{display:"none"}}><a href="" data-index="21" className="rightMenuLink  headingTextLink noHasTagWidth noCursor">
 														             <span className="headingText"></span></a>
@@ -779,67 +645,67 @@ export const LeftSideNavbar = () => {
 								    <div className="midData colDataBlk">
 									  		<div className="colDataSection ">
 										  		<div className="colDataInnerBlk">
-										  			<p><a href="https://www.snapdeal.com/products/kids-clothing" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
+										  			<p><a href="" data-index="1.2.1" className="rightMenuLink  shiftHeadTop noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Kids' Fashion</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing?sort=plrty" data-index="1.2.2" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																     <p><a href="" data-index="1.2.2" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Girls' Clothing</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-sets?sort=plrty" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.3" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Girls Clothing Sets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-frocks-dresses?sort=plrty" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.4" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Frocks &amp; Dresses</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-tops-tees-tshirts?sort=plrty" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.5" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">T-Shirts, Tops &amp; Shirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-jumpsuit-dungarees?sort=plrty" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.6" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Jumpsuits &amp; Dungarees</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-sweatshirts?sort=plrty" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.7" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Girls Sweatshirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-jackets?sort=plrty" data-index="1.2.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.8" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Girls Jackets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/girls-clothing-jeans-pants?sort=plrty" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.9" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Girls Jeans</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing?sort=plrty" data-index="1.2.10" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																     <p><a href="" data-index="1.2.10" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Boys' Clothing</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing-sets?sort=plrty" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.11" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Clothing Sets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing-tshirt-polo?sort=plrty" data-index="1.2.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.12" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Tshirt &amp; Polos</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing-shirts?sort=plrty" data-index="1.2.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.13" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Shirt</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing-trackpants?sort=plrty" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.14" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Trackpant</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing-denims-jeans?sort=plrty" data-index="1.2.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.15" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Jeans</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/boys-clothing-sweatshirts?sort=plrty" data-index="1.2.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.16" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Boys Sweatshirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-clothing?sort=plrty" data-index="1.2.17" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																     <p><a href="" data-index="1.2.17" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Baby Clothing</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-clothing-top-bottom-sets?sort=plrty" data-index="1.2.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.18" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Boys &amp; Girls Sets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-clothing-tshirts-tops?sort=plrty" data-index="1.2.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.19" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby T-Shirt, Tops&amp;Shirts</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-clothing-girls-dresses?sort=plrty" data-index="1.2.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.2.20" className="rightMenuLink  noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Girl Frock, &amp;Dresses</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-accessories?sort=plrty" data-index="1.2.21" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
+																     <p><a href="" data-index="1.2.21" className="rightMenuLink  headingTextLink noHasTagWidth &nbsp; 
 																       dp-widget-link"><span className="headingText">Kids Accessories</span></a>
 																     </p>
 																     <p style={{display:"none"}}><a href="" className="rightMenuLink headingTextLinknoHasTagWidth noCursor">
@@ -852,67 +718,67 @@ export const LeftSideNavbar = () => {
 							  		<div className="rightData colDataBlk">
 									  		<div className="colDataSection ">
 										  		<div className="colDataInnerBlk"> 
-										  			<p><a href="https://www.snapdeal.com/products/baby-care?sort=plrty" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Baby Care</span></a>
+										  			<p><a href="" data-index="1.3.1" className="rightMenuLink  shiftHeadTop noHasTagWidth dp-widget-link"><span className="headingText">Baby Care</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-mosquito-nets?sort=plrty" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.2" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Mosquito Nets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-blankets-quilts?sort=plrty" data-index="1.3.3" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.3" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Blankets</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/baby-carriers?sort=plrty" data-index="1.3.4" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.4" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Carriers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-strollers?sort=plrty" data-index="1.3.5" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.5" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Baby Strollers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-walkers?sort=plrty" data-index="1.3.6" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.6" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Walkers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/kids-toys-baby-feeding?sort=plrty" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.7" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Feeding &amp; Nursing</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/office-equipment-lab?sort=plrty" data-index="1.3.8" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Lab Equipment</span></a>
+																     <p><a href="" data-index="1.3.8" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Lab Equipment</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery?sort=plrty" data-index="1.3.9" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Stationery</span></a>
+																     <p><a href="" data-index="1.3.9" className="rightMenuLink  headingTextLink noHasTagWidth dp-widget-link"><span className="headingText">Stationery</span></a>
 																     </p>
-																     <p><a href="http://www.snapdeal.com/products/stationery-pens-marker?sort=plrty" data-index="1.3.10" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.10" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Pens &amp; Markers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-school-supplies-pencil-boxes?sort=plrty" data-index="1.3.11" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.11" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Pencil Boxes</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-files-folders?sort=plrty" data-index="1.3.12" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.12" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Files &amp; Folders</span></a>
 																     </p>
-																     <p><a href="http://www.snapdeal.com/products/stationery-calculators?sort=plrty" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.13" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Calculators</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-diaries-planners?sort=plrty" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.14" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Diaries &amp; Planners</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-printing-papers?sort=plrty" data-index="1.3.15" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.15" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Printing Papers</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-notebooks?sort=plrty" data-index="1.3.16" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.16" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Notebooks</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-writing-pads?sort=plrty" data-index="1.3.17" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.17" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Writing Pads</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-photo-paper?sort=plrty" data-index="1.3.18" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.18" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Photo Papers</span></a>
 																     </p>
-																     <p><a href="http://www.snapdeal.com/products/stationery-art-craft-supplies" data-index="1.3.19" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.19" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Art &amp; Craft Supplies</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-tapes?sort=plrty" data-index="1.3.20" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.20" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Tapes</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-card-holders?sort=plrty" data-index="1.3.21" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.21" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Card Holders</span></a>
 																     </p>
-																     <p><a href="https://www.snapdeal.com/products/stationery-basic-supplies-staplers-punches?sort=plrty" data-index="1.3.22" className="rightMenuLink   noHasTagWidth dp-widget-link">
+																     <p><a href="" data-index="1.3.22" className="rightMenuLink   noHasTagWidth dp-widget-link">
 																     <span className="linkTest">Staplers</span></a>
 																     </p>
 																     <p style={{display:"none"}}><a href="" className="rightMenuLink 
@@ -924,7 +790,7 @@ export const LeftSideNavbar = () => {
 								  		</div>
 							  		<div className="commonOffer fstOffer">
 											     <div className="firstOfferForm">
-												    <a className="bannerLink dp-widget-link" href="https://www.snapdeal.com/products/kids-toys?q=Occasion_s%3AKids%20Bestselling%20Sale%20Toys%7Cdiscount%3A40%20-%2090%7C&amp;sort=plrty">
+												    <a className="bannerLink dp-widget-link" href="">
 														    <img className="bigOfferBanner hidden-inview wooble" height="510" width="195" src="https://g.sdlcdn.com/imgs/i/1/o/toys-7fc92.jpg" /></a>
 															</div>
 											     </div>
@@ -2965,7 +2831,7 @@ export const LeftSideNavbar = () => {
                         </li>
 
 						<li data-nav-index="14" className="navlink lastNav lnHeight marB18">
-							 <a href="javascript:void(0);" className="leftCategoriesProduct &nbsp;"><span className="catText blue-text"></span></a>
+							 <a href="" className="leftCategoriesProduct &nbsp;"><span className="catText blue-text"></span></a>
                         </li>
 			            <input type="hidden" className="dp-info-collect" value="[ {'k2': '', 'k4': 'Mens Fashion'},  {'k2': '', 'k4': 'Womens Fashion'},  {'k2': '', 'k4': 'Home &amp; Kitchen'},  {'k2': '', 'k4': 'Toys, Kids Fashion &amp; more'},  {'k2': '', 'k4': 'Beauty, Health &amp; Daily Needs'},  {'k2': '', 'k4': 'Automotives'},  {'k2': '', 'k4': 'Mobile &amp; Accessories'},  {'k2': '', 'k4': 'Electronics'},  {'k2': '', 'k4': 'Sports, Fitness &amp; Outdoor'},  {'k2': '', 'k4': 'Computers &amp; Gaming'},  {'k2': '', 'k4': 'Books, Media &amp; Music'},  {'k2': '', 'k4': 'Hobbies'},  {'k2': '', 'k4': ''},  {'k2': '', 'k4': ''},  ]"/>
 			</ul>
@@ -2974,24 +2840,44 @@ export const LeftSideNavbar = () => {
    		 <div className="leftHead trendSearch" style={{}}>Trending Searches</div>
 					<ul id="topsearches" className="trendSearches marB10" style={{display: "block"}}>
 					<li>
-							<a className="subDefaultLink" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=kitchen product&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-											<i className="sd-icon sd-icon-search search-Icon grey-bbb"></i>kitchen product</a>
+							<a className="subDefaultLink">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="2" style={{display: 'inline-block', verticalAlign: 'middle',paddingRight:'2px'}}>
+									<circle cx="11" cy="11" r="8"/>
+									<path d="m21 21-4.35-4.35"/>
+								</svg>kitchen product
+							</a>
 						</li>
 					<li>
-							<a className="subDefaultLink" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=shoes for men&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-											<i className="sd-icon sd-icon-search search-Icon grey-bbb"></i>shoes for men</a>
+							<a className="subDefaultLink" >
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="2" style={{display: 'inline-block', verticalAlign: 'middle',paddingRight:'2px'}}>
+									<circle cx="11" cy="11" r="8"/>
+									<path d="m21 21-4.35-4.35"/>
+								</svg>shoes for men
+							</a>
 						</li>
 					<li>
-							<a className="subDefaultLink" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=kurti set&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-											<i className="sd-icon sd-icon-search search-Icon grey-bbb"></i>kurti set</a>
+							<a className="subDefaultLink" >
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="2" style={{display: 'inline-block', verticalAlign: 'middle',paddingRight:'2px'}}>
+									<circle cx="11" cy="11" r="8"/>
+									<path d="m21 21-4.35-4.35"/>
+								</svg>kurti set
+							</a>
 						</li>
 					<li>
-							<a className="subDefaultLink" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=sandal men&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-											<i className="sd-icon sd-icon-search search-Icon grey-bbb"></i>sandal men</a>
+							<a className="subDefaultLink" >
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="2" style={{display: 'inline-block', verticalAlign: 'middle',paddingRight:'2px'}}>
+									<circle cx="11" cy="11" r="8"/>
+									<path d="m21 21-4.35-4.35"/>
+								</svg>sandal men
+							</a>
 						</li>
 					<li>
-							<a className="subDefaultLink" href="https://www.snapdeal.com/search?clickSrc=top_searches&amp;keyword=sport shoe men&amp;categoryId=0&amp;vertical=p&amp;noOfResults=20&amp;SRPID=topsearch">
-											<i className="sd-icon sd-icon-search search-Icon grey-bbb"></i>sport shoe men</a>
+							<a className="subDefaultLink" >
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="2" style={{display: 'inline-block', verticalAlign: 'middle',paddingRight:'2px'}}>
+									<circle cx="11" cy="11" r="8"/>
+									<path d="m21 21-4.35-4.35"/>
+								</svg>Sports Shoe man
+							</a>
 						</li>
 					</ul>
                 </div>
