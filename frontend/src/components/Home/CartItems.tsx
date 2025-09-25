@@ -10,7 +10,6 @@ interface CartItemsProps {
 export const CartItems = ({index,currentIndex,onNext}:CartItemsProps) => {
 
     const {cartItems, openCartModal} = useCart()
-    console.log(cartItems)
 
     const isActive = index === currentIndex;
 
@@ -59,8 +58,14 @@ export const CartItems = ({index,currentIndex,onNext}:CartItemsProps) => {
                         </div> */}
                     </div>
                 </div>)
-                })}
-           
+            })}
+
+            {cartItems.length === 0 && 
+                <div style={{margin: "105px 0px"}}>
+                    <p> Your Cart is Empty</p>
+                </div>
+            }
+
             <div className="controls nextBestActionControls padT10 col-xs-24">
                 <button className="btn viewAllCartBtn button--reject btn-theme-secondary col-xs-16 nextBestActionTrack" data-stack="stack_yuda" onClick={() => openCartModal()}>
                     <span className="">VIEW ALL</span>
