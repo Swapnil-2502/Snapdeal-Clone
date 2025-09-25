@@ -4,6 +4,7 @@ import { useCart } from "../contexts/CartContext";
 import { type ProductData } from "../types/types";
 import { useProductFilters } from "../contexts/ProductFilterContext";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Header/Navbar";
 
 
 const Header = () => {
@@ -120,7 +121,8 @@ const Header = () => {
                     <a className="ieLogoHeader" href="/">
                         <img title="Snapdeal" className="ieLogoHeader aspectRatioEqual sdHomepage cur-pointer" height="28" width="132" />
                     </a>
-                    <div className="menuIconBar hidden"><span style={{  color: "white", fontSize: "28px", fontWeight: "bold", bottom: '-10px', position: "absolute",right: "10px",  top: "50%", transform: "translateY(-50%)", lineHeight: "0"}}>☰</span></div>
+                    {/* <div className="menuIconBar hidden"><span style={{  color: "white", fontSize: "28px", fontWeight: "bold", bottom: '-10px', position: "absolute",right: "10px",  top: "50%", transform: "translateY(-50%)", lineHeight: "0"}}>☰</span></div> */}
+                    <Navbar />
                 </div>
 
                 <div className="col-xs-14 search-box-wrapper" style={{paddingLeft: "15px"}}>
