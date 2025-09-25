@@ -146,6 +146,13 @@ const Header = () => {
                                     {showSearches.length > 0 && 
                                     <ul className="topSearchCont recentSearchContainer">
                                         <div className="searchContainer recentSearches">
+                                            <span style={{marginLeft: "10px"}}>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <circle cx="12" cy="12" r="9"/>
+                                                <line x1="12" y1="12" x2="12" y2="7"/> 
+                                                <line x1="12" y1="12" x2="16" y2="12"/> 
+                                            </svg>
+                                             </span>
                                             <span className="topsearches recentSearc">Recent Searches</span>
                                             <span className="clearRecentSearches" onClick={clearSearches}>CLEAR<button style={{background: "none",border: "none",fontSize: "18px",color: "grey",cursor: "pointer", paddingLeft:'10px'}}>×</button></span>
                                         </div>
@@ -169,7 +176,12 @@ const Header = () => {
                                     {showRecentSearches && 
                                     <ul className="topSearchCont trendingSearchContainer ">
                                         <div className="searchContainer">
-                                            <i className="sd-icon sd-icon-android-trending-up-512px iconTrend"></i>
+                                            <span style={{marginLeft: "10px"}}>
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <polyline points="3 17 9 11 13 15 21 7"/> 
+                                                    <polyline points="15 7 21 7 21 13"/>      
+                                                </svg>  
+                                            </span>
                                             <span className="topsearches">Trending Searches</span>
                                         </div>
 
