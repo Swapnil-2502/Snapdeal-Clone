@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Pincode } from "./Pincode"
+import { SquareComp } from "./SquareComp"
 
 
 export const Carousel = () => {
@@ -64,7 +64,7 @@ export const Carousel = () => {
                     ))}
                 </div>
             </div>
-            <Pincode />
+            <SquareComp />
 		</section>
 	</section>
     </>
