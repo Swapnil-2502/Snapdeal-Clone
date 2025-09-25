@@ -1,19 +1,26 @@
 import { useState, useEffect } from "react";
 
-export const Pincode = () => {
+interface PincodeProps{
+  index: number;
+  currentIndex: number;
+  onNext: () => void;
+}
+
+export const Pincode = ({index,currentIndex,onNext}:PincodeProps) => {
+
   const [pincode, setPincode] = useState("");
   const [savedPincode, setSavedPincode] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
-  // Load saved pincode from localStorage on mount
+
   useEffect(() => {
     const stored = localStorage.getItem("UserPincode");
     if (stored) {
       setSavedPincode(stored);
-      setIsEditing(false); // Hide input if already saved
+      setIsEditing(false); 
     } else {
-      setIsEditing(true); // Show input if no saved pincode
+      setIsEditing(true); 
     }
   }, []);
 
@@ -25,14 +32,26 @@ export const Pincode = () => {
     localStorage.setItem("UserPincode", pincode);
     setSavedPincode(pincode);
     setError("");
-    setIsEditing(false); // Hide input after saving
+    setIsEditing(false); 
   };
 
+    const isActive = index === currentIndex;
+
+    const styles = {
+      opacity: 1,
+      zIndex: isActive ? 4 : 3,
+      pointerEvents: isActive ? "auto" : "none",
+      transform: isActive
+        ? "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)"
+        : "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -50, 1)",
+      transition: "transform 0.5s ease-out",
+      margin: isActive ? "0px" : "14px 0px 0px 12px",
+    } as React.CSSProperties
+
   return (
-    <div className="next-Best-Action-Widget">
-      <div className="content">
-        <ul id="stack_yuda" className="nextBestActnWidget stack stack--yuda perspective">
-          <li className="stack__item nextBestActlist pincodeActnWidget stack__item--current" style={{opacity: "1",zIndex: "4",pointerEvents: "auto",transform:"matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)",transition: "transform 0.5s ease-out",margin: "0px",}}>
+    
+          <li className="stack__item nextBestActlist pincodeActnWidget stack__item--current" 
+            style={styles}>
             <div className="widgetImage nbaFinalImage pincodeImg"></div>
             <div className="deliveryPin">Your Delivery Pincode</div>
             <div className="dashPincode"></div>
@@ -58,7 +77,7 @@ export const Pincode = () => {
 
             {error && <div className="errorPincode">{error}</div>}
 
-            <div className="controls nextBestActionControls padT20 col-xs-24" style={{display:'flex',justifyContent:'center'}}>
+            <div className="controls nextBestActionControls padT20 col-xs-24">
               {isEditing ? (
                 <button
                   className="btn btn-theme-secondary pincodeNbaSubmit col-xs-16"
@@ -78,11 +97,9 @@ export const Pincode = () => {
                 </button>
               )}
 
-             
+              <button className="btn pincodeSkipSubmit btn-light col-xs-7 rfloat button--accept" data-stack="stack_yuda" onClick={onNext}><span className="">NEXT</span></button>
             </div>
+            
           </li>
-        </ul>
-      </div>
-    </div>
   );
 };
