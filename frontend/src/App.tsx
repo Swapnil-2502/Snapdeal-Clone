@@ -17,6 +17,7 @@ import { ListProductsPage } from './pages/ListProductsPage'
 import { AdminProduct } from './admin/pages/AdminProduct'
 import { AdminOrder } from './admin/pages/AdminOrder'
 import { AdminOrderDetails } from './admin/pages/AdminOrderDetail'
+import { OrderCancel } from './components/Account/OrderCancel'
 
 function App() {
   const {isOpen} = usePayment()
@@ -67,6 +68,7 @@ function App() {
             <Route path="myorders" element={<Orders />} />
             <Route path="savedAddresses" element={<SavedAddresses />} />
         </Route>
+        <Route path='/myaccount/myorders/cancelorder/:orderId' element={<OrderCancel />} />
         <Route path="/orderSummary/order/:orderId" element={<OrderPage />} />
 
       </Routes>
