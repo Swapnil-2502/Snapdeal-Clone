@@ -17,21 +17,27 @@ import '../public/clone-styles/style11savedAddress.css'
 import '../public/clone-styles/style13chechkout.css'
 import '../public/clone-styles/style14ordersummary.css'
 import '../public/clone-styles/style12myorders.css'
+import '../public/clone-styles/style15Review.css'
+import '../public/clone-styles/style16Category.css'
+import '../public/clone-styles/style17OrderCancel.css'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { CartProvider } from './contexts/CartContext.tsx'
 import { PaymentProvider } from './contexts/PaymentContext.tsx'
+import { ProductFilterProvider } from './contexts/ProductFilterContext.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-    <PaymentProvider>
-    <CartProvider>
-      <AuthProvider>
-          <App />
-      </AuthProvider>
-    </CartProvider>
-    </PaymentProvider>
+    <ProductFilterProvider>
+      <PaymentProvider>
+        <CartProvider>
+          <AuthProvider>
+              <App />
+          </AuthProvider>
+        </CartProvider>
+      </PaymentProvider>
+    </ProductFilterProvider>
     </BrowserRouter>
   </StrictMode>,
 )
