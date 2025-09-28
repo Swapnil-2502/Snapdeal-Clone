@@ -14,10 +14,13 @@ import orderRoutes from "./routes/orderroutes"
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT_NUMBER
+const PORT = process.env.PORT_NUMBER || 5000
 
 app.use(cors({
-    origin:["http://localhost:5173"],
+    origin: [
+    "http://localhost:5173", 
+    "http://localhost:3004"  
+  ],
     credentials: true,
 }))
 
