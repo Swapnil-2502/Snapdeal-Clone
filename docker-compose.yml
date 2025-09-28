@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  backend:
+    image: my-app-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: my-app-backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "4000:3001"
+    restart: always
+
+  frontend:
+    image: my-app-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: my-app-frontend
+    env_file:
+      - ./frontend/.env
+    ports:
+      - "5173:80"
+    restart: always
+    depends_on:
+      - backend
