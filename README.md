@@ -5,6 +5,12 @@ This project replicates core e-commerce functionalities such as **product listin
 
 ---
 
+### Currently deployed at AWS EC2 (Ubuntu Machine):
+Backend: http://65.0.6.84:4000/api
+Frontend: http://65.0.6.84:5173
+
+---
+
 ## 🚀 Tech Stack
 
 **Frontend:**
